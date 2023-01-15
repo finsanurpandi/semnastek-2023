@@ -10,6 +10,7 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        {{-- <link href="{{ asset('css/flowbite.css') }}" rel="stylesheet"> --}}
 
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -98,14 +99,16 @@
           </ul>
           @if (Route::has('login'))
             @auth
-            <form action="/logout" method="POST">
+            <form action="/logout" class="flex justify-end" method="POST">
                 @csrf
-                <button class="text-sm text-white dark:text-gray-500 underline">Keluar</button>
+                <button class="text-sm text-white underline">Keluar</button>
             </form>
             @else
-                <a href="{{ route('login') }}" id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                Masuk/Daftar
+            <div class="flex justify-end">
+                <a href="{{ route('login') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    Masuk/Daftar
                 </a>
+            </div>
             @endauth
             @endif
         </div>
@@ -116,21 +119,21 @@
     <div class="pt-20">
       <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center justify-between">
         <!--Left Col-->
-        <div class="w-3/5 pt-12 text-center" data-aos="fade-up" data-aos-duration="500">
+        <div class="w-1/2 text-center" data-aos="fade-up" data-aos-duration="500">
             <img class="w-full md:w-4/5 z-50" src="{{ asset('img/hero.png') }}" />
         </div>
         <!--Right Col-->
         <div class="flex flex-col w-full md:w-2/5 justify-center items-center md:items-start text-center md:text-left"  data-aos="fade-bottom" data-aos-duration="1000" data-aos-delay="500">
-            <h1 class="my-4 text-5xl font-bold leading-tight">
+            <h1 class="my-4 text-4xl font-bold leading-tight">
                 SEMINAR NASIONAL SAINS & TEKNOLOGI 2023
             </h1>
             <p class="uppercase tracking-loose w-full">fakultas teknik</p>
             <p class="uppercase tracking-loose w-full">universitas suryakancana</p>
-            <p class="leading-normal text-2xl mb-8">
+            <p class="leading-normal text-2xl mb-2 md:mb-8">
                 Penerapan Teknologi Terintegrasi untuk Peningkatan IPM
             </p>
-            <div class="flex flex-col-reverse md:flex-row items-center justify-between w-full" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="1000">
-                <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <div class="flex flex-col-reverse md:flex-row items-center justify-between w-full" data-aos="zoom-in-left" data-aos-delay="500">
+                <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-2 md:my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   DAFTAR SEKARANG!
                 </button>
             </div>
@@ -138,7 +141,7 @@
       </div>
     </div>
 
-    <div class="relative -mt-12 lg:-mt-1">
+    <div class="relative -mt-2 lg:-mt-24">
       <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -158,51 +161,51 @@
       </svg>
     </div>
 
-    <section id="call_for_paper" class="bg-white border-b py-8">
+    <section id="call_for_paper" class="bg-white py-8">
           <div class="container p-10 max-w-5xl mx-auto m-8">
-            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-600">
+            <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
               Call For Paper
             </h2>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <div class="flex flex-col md:flex-row justify-between">
-                <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-xl hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-xl hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Teknik Informatika</h5>
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Geography Information System</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Security Network</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Big Data</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Information System</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Enterprise Resource Planning</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Internet of Things, Cloud Computing</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Artificial Intelligent</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Soft Computing</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Multimedia</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Game</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Human Computer Interaction</span>
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Geography Information System</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Security Network</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Big Data</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Information System</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Enterprise Resource Planning</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Internet of Things, Cloud Computing</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Artificial Intelligent</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Soft Computing</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Multimedia</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Game</span> <br />
+                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Human Computer Interaction</span>
                 </div>
-                <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-md hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800">
                   <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Teknik Industri</h5>
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Industrial systems</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Manufacturing systems</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Systems Engineering & Ergonomics</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Industrial Management</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Supply Chain and Logistics</span>
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Industrial systems</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Manufacturing systems</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Systems Engineering & Ergonomics</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Industrial Management</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Supply Chain and Logistics</span>
               </div>
-                <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-md hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800">
                   <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Teknik Sipil</h5>
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Structure engineering</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Transportation engineering</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Project management engineering</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Traffic engineering</span>
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Structure engineering</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Transportation engineering</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Project management engineering</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Traffic engineering</span>
               </div>
             </div>
         </div>
     </section>
 
-    <section id="narasumber" class="bg-white border-b py-8">
+    <section id="narasumber" class="bg-gray-100 py-8">
       <div class="container mx-auto flex flex-wrap pt-4 pb-12" data-aos="fade-up" data-aos-duration="1000">
-        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-600">
+        <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
           Narasumber
         </h2>
         <div class="w-full mb-4">
@@ -272,8 +275,8 @@
     </section>
 
     <section id="tanggal_penting" class="bg-white py-8">
-        <div class="container max-w-5xl mx-auto m-8">
-            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-600">
+        <div class="hidden md:block container max-w-5xl mx-auto m-8">
+            <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
             Tanggal Penting
             </h2>
             <div class="w-full mb-4">
@@ -283,13 +286,13 @@
                 <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
                 <!-- right timeline -->
                 <div class="mb-8 flex justify-between items-center w-full right-timeline">
-                    <div class="order-1 w-5/12"></div>
-                    <div class="z-20 flex items-center order-1 bg-gray-400 shadow-xl w-24 h-24 rounded-full">
-                    <h1 class="mx-auto font-semibold text-lg text-white">31 Maret</h1>
+                    <div class="order-first md:order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-first md:order-1 bg-gray-400 shadow-xl w-24 h-24 rounded-full">
+                        <h1 class="mx-auto font-semibold text-sm text-white">31 Maret</h1>
                     </div>
-                    <div class="order-1 gradient rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-left" data-aos-duration="1000">
-                    <h3 class="mb-3 font-bold text-white text-xl">Deadline Submission</h3>
-                    <p class="text-sm leading-snug tracking-wide text-white text-opacity-100">Batas akhir pengiriman artikel.</p>
+                    <div class="order-last md:order-1 gradient rounded-lg shadow-xl px-6 py-4 w-5/12" data-aos="zoom-in-left" data-aos-duration="1000">
+                        <h3 class="mb-3 font-bold text-white text-lg">Deadline Submission</h3>
+                        <p class="text-sm leading-snug tracking-wide text-white text-opacity-100">Batas akhir pengiriman artikel.</p>
                     </div>
                 </div>
 
@@ -297,10 +300,10 @@
                 <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                     <div class="order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-1 gradient shadow-xl w-24 h-24 rounded-full">
-                        <h1 class="mx-auto font-semibold text-lg text-white">19 April</h1>
+                        <h1 class="mx-auto font-semibold text-sm text-white">19 April</h1>
                     </div>
                     <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-right" data-aos-duration="1000">
-                    <h3 class="mb-3 font-bold text-white text-xl">Acceptance Notice</h3>
+                    <h3 class="mb-3 font-bold text-white text-lg">Acceptance Notice</h3>
                     <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">Tanggal Pengumuman penerimaan artikel seminar nasional.</p>
                     </div>
                 </div>
@@ -309,10 +312,10 @@
                 <div class="mb-8 flex justify-between items-center w-full right-timeline">
                     <div class="order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-1 bg-gray-400 shadow-xl w-24 h-24 rounded-full">
-                    <h1 class="mx-auto font-semibold text-lg text-white">19 Mei</h1>
+                    <h1 class="mx-auto font-semibold text-sm text-white">19 Mei</h1>
                     </div>
                     <div class="order-1 gradient rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-left" data-aos-duration="1000">
-                    <h3 class="mb-3 font-bold text-white text-xl">Deadline Registration</h3>
+                    <h3 class="mb-3 font-bold text-white text-lg">Deadline Registration</h3>
                     <p class="text-sm leading-snug tracking-wide text-white text-opacity-100">Batas akhir pembayaran biaya registrasi seminar nasional.</p>
                     </div>
                 </div>
@@ -321,13 +324,59 @@
                 <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                     <div class="order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-1 gradient shadow-xl w-24 h-24 rounded-full">
-                        <h1 class="mx-auto font-semibold text-lg text-white">20 Juni</h1>
+                        <h1 class="mx-auto font-semibold text-sm text-white">20 Juni</h1>
                     </div>
                     <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-right" data-aos-duration="1000">
-                    <h3 class="mb-3 font-bold text-white text-xl">The BIG Day</h3>
+                    <h3 class="mb-3 font-bold text-white text-lg">The BIG Day</h3>
                     <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">Hari pelaksanaan SEMNASTEK-UNSUR 2023.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        {{-- date line for mobile --}}
+        <div class="container block md:hidden lg:hidden max-w-5xl mx-auto m-8">
+            <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
+                Tanggal Penting
+            </h2>
+            <div class="w-full mb-4">
+                    <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+            </div>
+            <div class="relative wrap overflow-hidden p-10 h-full">
+              <ol class="relative border-l border-blue-800">
+                  <li class="mb-10 ml-4 p-4">
+                      <div class="flex">
+                        <div class="w-3 h-3 gradient rounded-full mt-1.5 -left-1.5 border border-blue-800"></div>
+                        <time class="mb-1 text-sm font-normal leading-none text-gray-400">31 Maret 2023</time>
+                      </div>
+                      <h3 class="text-lg font-semibold text-gray-900">Deadline Submission</h3>
+                      <p class="text-base font-normal text-gray-500">Batas akhir pengiriman artikel.</p>
+                  </li>
+                  <li class="mb-10 ml-4 p-4">
+                    <div class="flex">
+                      <div class="w-3 h-3 gradient rounded-full mt-1.5 -left-1.5 border border-blue-800"></div>
+                      <time class="mb-1 text-sm font-normal leading-none text-gray-400">19 April 2023</time>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Acceptance Notice</h3>
+                    <p class="text-base font-normal text-gray-500">Tanggal Pengumuman penerimaan artikel seminar nasional.</p>
+                  </li>
+                  <li class="mb-10 ml-4 p-4">
+                    <div class="flex">
+                      <div class="w-3 h-3 gradient rounded-full mt-1.5 -left-1.5 border border-blue-800"></div>
+                      <time class="mb-1 text-sm font-normal leading-none text-gray-400">19 Mei 2023</time>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Deadline Registration</h3>
+                    <p class="text-base font-normal text-gray-500">Batas akhir pembayaran biaya registrasi seminar nasional.</p>
+                  </li>
+                  <li class="mb-10 ml-4 p-4">
+                    <div class="flex">
+                      <div class="w-3 h-3 gradient rounded-full mt-1.5 -left-1.5 border border-blue-800"></div>
+                      <time class="mb-1 text-sm font-normal leading-none text-gray-400">20 Juni 2023</time>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">The Big Day</h3>
+                    <p class="text-base font-normal text-gray-500">Hari pelaksanaan SEMNASTEK-UNSUR 2023.</p>
+                  </li>
+              </ol>
             </div>
         </div>
     </section>
@@ -372,9 +421,9 @@
         </g>
     </svg>
 
-    <section id="informasi" class="bg-gray-100 border-b py-8">
+    <section id="informasi" class="bg-gray-100 py-8">
       <div class="container max-w-5xl mx-auto m-8">
-        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-600">
+        <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
           Informasi
         </h2>
         <div class="w-full mb-4">
@@ -390,12 +439,12 @@
                 <b> Annisa Ayu Utami, ST.</b> : +62-85721818109
             </p>
           </div>
-          <div class="w-full sm:w-1/2 p-6">
+          <div class="w-1/2 p-6 mt-6 mx-auto">
             <img src="{{ asset('img/contact_icon.svg') }}" alt="" srcset="">
           </div>
         </div>
         <div class="flex flex-wrap flex-col md:flex-row justify-center">
-          <div class="w-full sm:w-1/2 p-6 mt-6">
+          <div class="w-1/2 p-6 mt-6 mx-auto">
             <img src="{{ asset('img/address_icon.svg') }}" alt="" srcset="">
           </div>
           <div class="w-5/6 sm:w-1/2 p-6 bg-white shadow-xl rounded-xl mx-auto" data-aos="fade-up-right" data-aos-delay="100">
@@ -415,14 +464,14 @@
 
     <section class="bg-gray-100 py-8">
       <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
-        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-600">
+        <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
           Biaya Registrasi
         </h2>
         <div class="w-full mb-4">
           <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
         <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
-          <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="600">
+          <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
             <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
               <div class="w-full p-8 text-3xl font-bold text-center">Umum</div>
               <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
@@ -439,7 +488,7 @@
               </div>
             </div>
           </div>
-          <div class="flex flex-col w-5/6 lg:w-1/4 mx-auto lg:mx-0 rounded-none lg:rounded-l-lg bg-white mt-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="flex flex-col w-5/6 lg:w-1/4 mx-auto lg:mx-0 rounded-none lg:rounded-l-lg bg-white mt-4" data-aos="fade-up" data-aos-delay="100">
             <div class="flex-1 bg-white text-gray-600 rounded-t rounded-b-none overflow-hidden shadow">
               <div class="p-8 text-3xl font-bold text-center border-b-4">
                 Mahasiswa
@@ -461,11 +510,56 @@
       </div>
     </section>
 
+    <section id="list_makalah" class="bg-white py-8">
+        <div class="container mx-auto text-gray-800 w-full" data-aos="fade-up" data-aos-duration="800">
+            <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600 mt-8">
+                List Makalah
+            </h2>
+              <div class="w-full mb-4">
+                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+              </div>
+              <div class="relative wrap overflow-hidden p-10 h-full">
+                <ol class="relative border-l border-gray-200">
+                  <li class="mb-10 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-8 ring-white">
+                          <svg aria-hidden="true" class="w-3 h-3 text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                      </span>
+                      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Makalah V1</h3>
+                      <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on January 13th, 2022</time>
+                      <p class="mb-4 text-base font-normal text-gray-500">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
+                      <a href="#" class="mb-8 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"><svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path></svg> Download</a>
+                      <div class="h-1 gradient w-full opacity-25 my-0 py-0 -ml-8 mb-0 rounded-t"></div>
+                  </li>
+                  <li class="mb-10 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-8 ring-white">
+                          <svg aria-hidden="true" class="w-3 h-3 text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                      </span>
+                      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Makalah V1</h3>
+                      <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on January 13th, 2022</time>
+                      <p class="mb-4 text-base font-normal text-gray-500">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
+                      <a href="#" class="mb-8 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"><svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path></svg> Download</a>
+                      <div class="h-1 gradient w-full opacity-25 my-0 py-0 -ml-8 mb-0 rounded-t"></div>
+                  </li>
+                  <li class="mb-10 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-8 ring-white">
+                          <svg aria-hidden="true" class="w-3 h-3 text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                      </span>
+                      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Makalah V1</h3>
+                      <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on January 13th, 2022</time>
+                      <p class="mb-4 text-base font-normal text-gray-500">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
+                      <a href="#" class="mb-8 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"><svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path></svg> Download</a>
+                      <div class="h-1 gradient w-full opacity-25 my-0 py-0 -ml-8 mb-0 rounded-t"></div>
+                  </li>
+              </ol>
+            </div>
+        </div>
+    </section>
+
     <!-- additional style -->
     <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
-          <g class="wave" fill="#f8fafc">
+          <g class="wave" fill="#fff">
             <path
               d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z"
             ></path>
@@ -485,13 +579,13 @@
     </svg>
 
     <section id="materi_seminar" class="container mx-auto text-center py-6 mb-12">
-      <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
+      <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-white">
         Materi Seminar
       </h2>
       <div class="w-full mb-4">
         <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
-      <h3 class="my-12 text-3xl leading-tight">
+      <h3 class="my-12 text-xl leading-tight">
         Materi seminar dapat diunduh pada tombol dibawah ini!
       </h3>
       <a href="#" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
@@ -499,7 +593,7 @@
       </a>
     </section>
 
-    <div id="backToTop"></div>
+    <div id="backToTop" class="rounded-full"></div>
 
     <!--Footer-->
     <footer class="text-center bg-gray-900 text-white">
@@ -509,6 +603,7 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {{-- <script defer src="{{ asset('js/flowbite.js') }}"></script> --}}
     <script src="{{ asset('js/app.js') }}"></script>
 
     {{-- script menu responsive --}}
