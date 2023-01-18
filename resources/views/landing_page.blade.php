@@ -352,7 +352,7 @@
               <ol class="relative border-l border-blue-800">
                   <li class="mb-10 ml-4 p-4">
                       <div class="flex">
-                        <div class="w-3 h-3 gradient rounded-full mt-1.5 -left-1.5 border border-blue-800"></div>
+                        <div class="w-3 h-3 gradient rounded-full mt-3 mr-3 -left-1.5 border border-blue-800"></div>
                         <time class="mb-1 text-sm font-normal leading-none text-gray-400">31 Maret 2023</time>
                       </div>
                       <h3 class="text-lg font-semibold text-gray-900">Deadline Submission</h3>
@@ -360,7 +360,7 @@
                   </li>
                   <li class="mb-10 ml-4 p-4">
                     <div class="flex">
-                      <div class="w-3 h-3 gradient rounded-full mt-1.5 -left-1.5 border border-blue-800"></div>
+                      <div class="w-3 h-3 gradient rounded-full mt-3 mr-3 -left-1.5 border border-blue-800"></div>
                       <time class="mb-1 text-sm font-normal leading-none text-gray-400">19 April 2023</time>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900">Acceptance Notice</h3>
@@ -368,7 +368,7 @@
                   </li>
                   <li class="mb-10 ml-4 p-4">
                     <div class="flex">
-                      <div class="w-3 h-3 gradient rounded-full mt-1.5 -left-1.5 border border-blue-800"></div>
+                      <div class="w-3 h-3 gradient rounded-full mt-3 mr-3 -left-1.5 border border-blue-800"></div>
                       <time class="mb-1 text-sm font-normal leading-none text-gray-400">19 Mei 2023</time>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900">Deadline Registration</h3>
@@ -376,7 +376,7 @@
                   </li>
                   <li class="mb-10 ml-4 p-4">
                     <div class="flex">
-                      <div class="w-3 h-3 gradient rounded-full mt-1.5 -left-1.5 border border-blue-800"></div>
+                      <div class="w-3 h-3 gradient rounded-full mt-3 mr-3 -left-1.5 border border-blue-800"></div>
                       <time class="mb-1 text-sm font-normal leading-none text-gray-400">20 Juni 2023</time>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900">The Big Day</h3>
@@ -519,7 +519,7 @@
     <section id="list_makalah" class="bg-white py-8">
         <div class="container mx-auto text-gray-800 w-full" data-aos="fade-up" data-aos-duration="800">
             <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600 mt-8">
-                List Makalah
+                Template Artikel
             </h2>
               <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -530,31 +530,10 @@
                       <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-8 ring-white">
                           <svg aria-hidden="true" class="w-3 h-3 text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                       </span>
-                      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Makalah V1</h3>
+                      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Template Artikel</h3>
                       <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on January 13th, 2022</time>
                       <p class="mb-4 text-base font-normal text-gray-500">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
                       <a href="#" class="mb-8 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"><svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path></svg> Download</a>
-                      <div class="h-1 gradient w-full opacity-25 my-0 py-0 -ml-8 mb-0 rounded-t"></div>
-                  </li>
-                  <li class="mb-10 ml-6">
-                      <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-8 ring-white">
-                          <svg aria-hidden="true" class="w-3 h-3 text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
-                      </span>
-                      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Makalah V1</h3>
-                      <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on January 13th, 2022</time>
-                      <p class="mb-4 text-base font-normal text-gray-500">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
-                      <a href="#" class="mb-8 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"><svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path></svg> Download</a>
-                      <div class="h-1 gradient w-full opacity-25 my-0 py-0 -ml-8 mb-0 rounded-t"></div>
-                  </li>
-                  <li class="mb-10 ml-6">
-                      <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-8 ring-white">
-                          <svg aria-hidden="true" class="w-3 h-3 text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
-                      </span>
-                      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Makalah V1</h3>
-                      <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on January 13th, 2022</time>
-                      <p class="mb-4 text-base font-normal text-gray-500">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
-                      <a href="#" class="mb-8 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"><svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path></svg> Download</a>
-                      <div class="h-1 gradient w-full opacity-25 my-0 py-0 -ml-8 mb-0 rounded-t"></div>
                   </li>
               </ol>
             </div>
