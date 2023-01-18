@@ -22,7 +22,17 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('landing_page');
+            if (Auth::user()->roles_id == 1) {
+                $role = 'admin';
+            } else if (Auth::user()->roles_id == 2) {
+                $role = 'keuangan';
+            } else if (Auth::user()->roles_id == 3) {
+                $role = 'reviewer';
+            } else {
+                $role = 'participant';
+            }
+
+            return redirect()->route($role);
         }
 
         return back()->withErrors([

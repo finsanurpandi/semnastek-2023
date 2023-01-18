@@ -1,47 +1,57 @@
-@extends('layouts.auth_layout')
+@extends('layouts.default')
 
 @section('content')
-<section class="bg-gray-50 min-h-screen flex items-center justify-center">
-    <!-- login container -->
-    <div class="flex rounded-2xl shadow-lg max-w-3xl p-5 items-center w-full">
-      <!-- form -->
-      <div class="w-full px-8 md:px-16">
-        <h2 class="font-bold text-2xl text-center text-gray-600">Register</h2>
-        <form action="{{route('register')}}" method="POST">
-            @csrf
-            <div class="relative z-0 w-full mb-6 group">
-                <input type="email" name="email" id="email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-800 peer" placeholder=" " autocomplete="off" required />
-                <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+<main class="mt-0 transition-all duration-200 ease-soft-in-out">
+    <section class="min-h-screen">
+      <div class="relative flex items-start pt-12 pb-56 m-4 overflow-hidden bg-center bg-cover min-h-50-screen rounded-xl" style="background-image: url('/img/curved14.jpg')">
+        <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-60"></span>
+        <div class="container z-10">
+          <div class="flex flex-wrap justify-center -mx-3">
+            <div class="w-full max-w-full px-3 mx-auto mt-0 text-center lg:flex-0 shrink-0 lg:w-5/12">
+                <svg class="h-16 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
+                    <rect fill="#fff" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
+                    <path
+                      class="plane-take-off"
+                      d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z "
+                    />
+                </svg>
+              <h1 class="mb-2 text-white">DAFTAR</h1>
+              <p class="text-white">SELAMAT DATANG DI SEMNASTEK UNSUR 2023!</p>
             </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <input type="text" name="name" id="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-800 peer" placeholder=" " autocomplete="off" required />
-                <label for="name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Lengkap</label>
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <input type="password" name="password" id="password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-800 peer" placeholder=" " autocomplete="off" required />
-                <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
-            </div>
-            {{-- <div class="relative z-0 w-full mb-6 group">
-                <input type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-800 peer" placeholder=" " required />
-                <label for="floating_repeat_password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm password</label>
-            </div> --}}
-            <div class="relative z-0 w-full mb-6 group">
-                <textarea name="address" id="address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-800 peer" placeholder=" " autocomplete="off" required></textarea>
-                <label for="address" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Alamat</label>
-            </div>
-            <button type="submit" class="py-2 w-full px-5 gradient text-white border rounded-xl hover:scale-110 duration-300">Register</button>
-        </form>
-
-        <div class="mt-6 grid grid-cols-3 items-center text-gray-400">
-          <hr class="border-gray-400">
-          <p class="text-center text-sm">OR</p>
-          <hr class="border-gray-400">
-        </div>
-        <div class="mt-3 text-xs flex justify-between items-center text-gray-600">
-          <p>have an already account?</p>
-          <a href="{{route('login')}}" class="py-2 px-5 gradient text-white border rounded-xl hover:scale-110 duration-300">Login</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="container">
+        <div class="flex flex-wrap -mx-3 -mt-48 md:-mt-56 lg:-mt-48">
+          <div class="w-full max-w-full px-3 mx-auto mt-0 md:flex-0 shrink-0 md:w-7/12 lg:w-5/12 xl:w-4/12">
+            <div class="relative z-0 flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+              <div class="flex-auto p-6">
+                <form action="{{route('register')}}" method="POST">
+                    @csrf
+                    <div class="mb-4">
+                        <input type="text" name="email" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Email" aria-label="Email" aria-describedby="email-addon" autocomplete="off"/>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" name="name" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Nama Lengkap" aria-label="NamaLengkap" aria-describedby="nama-addon" autocomplete="off"/>
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" name="password" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Password" aria-label="Password" aria-describedby="password-addon" autocomplete="off"/>
+                    </div>
+                    {{--
+                    <div class="mb-4">
+                        <input type="text" name="confirm_password" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Confirm Password" aria-label="ConfirmPassword" aria-describedby="confirm_password-addon" autocomplete="off"/>
+                    </div> --}}
+                    <div class="mb-4">
+                        <input type="text" name="address" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Alamat" aria-label="Alamat" aria-describedby="alamat-addon" autocomplete="off"/>
+                    </div>
+                    <button type="submit" class="py-2 w-full px-5 gradient text-white border rounded-xl hover:scale-110 duration-300">DAFTAR</button>
+                    <p class="mt-4 mb-0 leading-normal text-sm">Sudah memiliki akun? <a href="{{route('login')}}" class="font-bold text-slate-700">LOGIN</a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
 @stop

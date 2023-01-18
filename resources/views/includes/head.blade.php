@@ -1,19 +1,22 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SEMNASTEK UNSUR</title>
+    <meta name="description" content="">
+    <meta name="author" content="ftunsur">
+    <meta name="robots" content="noindex, nofollow">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/flowbite.css') }}" rel="stylesheet">
+    <title>SISTEM - SEMNASTEK UNSUR</title>
+
+    <link href="{{ asset('css/admin-template.css') }}" rel="stylesheet">
 
     <!-- Font -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
     <style>
         /* warna tema */
         .gradient {
             background: linear-gradient(90deg, #36368d 0%, #343563 100%);
-            }
+        }
     </style>
 </head>
