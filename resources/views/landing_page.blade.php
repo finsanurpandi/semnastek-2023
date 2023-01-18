@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
+        <meta name="description" content="Seminar Nasional Sains Teknologi 2023, yang diselenggarakan oleh Fakulas Teknik Universitas Suryakancana dengan tema Penerapan Teknologi Terintegrasi untuk Peningkatan IPM">
+        <meta name="keywords" content="semnastek, unsur, semnastekunsur, ftunsur, teknik">
+        <meta name="author" content="ftunsur">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>SEMNASTEK UNSUR</title>
