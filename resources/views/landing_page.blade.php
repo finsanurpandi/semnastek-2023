@@ -13,18 +13,21 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        {{-- <link href="{{ asset('css/flowbite.css') }}" rel="stylesheet"> --}}
 
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
         <style>
+            /* untuk smooth scroll */
             html{
                 scroll-behavior: smooth;
             }
+            /* warna tema */
             .gradient {
                 background: linear-gradient(90deg, #36368d 0%, #343563 100%);
             }
+
+            /* style back to top */
             .backToTop{
                 display: none;
                 position: fixed;

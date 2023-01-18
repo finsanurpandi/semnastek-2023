@@ -20,24 +20,28 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@unsur.ac.id',
                 'password' => bcrypt('12345'),
+                'address' => 'Cianjur, Jawa Barat',
                 'roles_id' => 1
             ],
             [
                 'name' => 'Keuangan',
                 'email' => 'keuangan@unsur.ac.id',
                 'password' => bcrypt('12345'),
+                'address' => 'Cianjur, Jawa Barat',
                 'roles_id' => 2
             ],
             [
                 'name' => 'Reviewer',
                 'email' => 'reviewer@unsur.ac.id',
                 'password' => bcrypt('12345'),
+                'address' => 'Cianjur, Jawa Barat',
                 'roles_id' => 3
             ],
             [
                 'name' => 'Participant',
                 'email' => 'participant@unsur.ac.id',
                 'password' => bcrypt('12345'),
+                'address' => 'Cianjur, Jawa Barat',
                 'roles_id' => 4
             ]
         ];
