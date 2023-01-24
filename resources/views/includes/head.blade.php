@@ -8,12 +8,17 @@
 
     <title>SISTEM - SEMNASTEK UNSUR</title>
 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin-template.css') }}" rel="stylesheet">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
         /* warna tema */
         .gradient {
             background: linear-gradient(90deg, #36368d 0%, #343563 100%);
