@@ -13,7 +13,8 @@ class ParticipantController extends Controller
     {
         $name = Auth::user()->name;
         $email = Auth::user()->email;
-        return view('participant_page', compact('name', 'email'));
+        $article = Article::all()->where('users_id', Auth::id());
+        return view('participant_page', compact('name', 'email', 'article'));
     }
 
     public function upload(Request $request)
