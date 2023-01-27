@@ -9,6 +9,7 @@
 
         <title>SEMNASTEK UNSUR</title>
 
+        <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
 
         <!-- Styles -->
@@ -64,13 +65,6 @@
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
         <div class="pl-4 flex items-center">
           <a class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-            <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
-              <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
-              <path
-                class="plane-take-off"
-                d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z "
-              />
-            </svg>
             SEMNASTEK
           </a>
         </div>
@@ -125,29 +119,27 @@
       <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
 
-    <div class="pt-20">
-      <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center justify-between">
-        <!--Left Col-->
-        <div class="w-1/2 text-center" data-aos="fade-up" data-aos-duration="500">
-            <img class="w-full md:w-4/5 z-50" src="{{ asset('img/hero.png') }}" />
+    <div class="container mx-auto flex flex-wrap flex-col md:flex-row items-center justify-center">
+    <!--Left Col-->
+    <div class="w-1/2 text-center py-8" data-aos="fade-up" data-aos-duration="500">
+            <img class="w-1/2 md:w-4/5 z-50" src="{{ asset('img/logo.png') }}"/>
+    </div>
+    <!--Right Col-->
+    <div class="flex flex-col w-full md:w-2/5 justify-center items-center md:items-start text-center md:text-left"  data-aos="fade-bottom" data-aos-duration="1000" data-aos-delay="500">
+        <h1 class="my-4 text-4xl font-bold leading-tight">
+        SEMINAR NASIONAL SAINS & TEKNOLOGI UNIVERSITAS SURYAKANCANA (SEMNASTEK-UNSUR)
+        </h1>
+        <p class="tracking-loose w-full">20 Juni 2023</p>
+        <p class="tracking-loose w-full">09.00 - Selesai.</p>
+        <p class="leading-normal text-2xl">
+            Hotel Palace, Cipanas-Cianjur.
+        </p>
+        <div class="flex flex-col-reverse md:flex-row items-center justify-between w-full" data-aos="zoom-in-left" data-aos-delay="500">
+            <a href="{{ route('register')}}" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-2 md:my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                DAFTAR SEKARANG!
+            </a>
         </div>
-        <!--Right Col-->
-        <div class="flex flex-col w-full md:w-2/5 justify-center items-center md:items-start text-center md:text-left"  data-aos="fade-bottom" data-aos-duration="1000" data-aos-delay="500">
-          <h1 class="my-4 text-4xl font-bold leading-tight">
-            SEMINAR NASIONAL SAINS & TEKNOLOGI UNIVERSITAS SURYAKANCANA (SEMNASTEK-UNSUR)
-          </h1>
-          <p class="uppercase tracking-loose w-full">20 Juni 2023</p>
-          <p class="uppercase tracking-loose w-full">09.00 - Selesai.</p>
-          <p class="leading-normal text-2xl mb-2 md:mb-8">
-              Hotel Palace, Cipanas-Cianjur.
-          </p>
-            <div class="flex flex-col-reverse md:flex-row items-center justify-between w-full" data-aos="zoom-in-left" data-aos-delay="500">
-                <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-2 md:my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                  DAFTAR SEKARANG!
-                </button>
-            </div>
-        </div>
-      </div>
+    </div>
     </div>
 
     <div class="relative -mt-2 lg:-mt-24">
@@ -171,56 +163,30 @@
     </div>
 
     <section id="tentang" class="bg-white py-8">
-        <div class="container p-10 max-w-5xl mx-auto m-8">
+        <div class="container p-10 max-w-5xl mx-auto m-8" data-aos="fade-up" data-aos-duration="1000">
           <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
             SEMNASTEK-UNSUR
           </h2>
           <div class="w-full mb-4">
               <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
-          <hdiv class="my-12 text-gray-800 text-base">
+          <div class="my-12 text-gray-800 text-base">
+            <div class="flex flex-row mx-auto">
+            </div>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus, placeat cumque sed adipisci mollitia doloremque perferendis aspernatur quia molestias numquam! Voluptatum quisquam placeat et doloribus repudiandae non distinctio cum ducimus?
           </div>
       </div>
     </section>
     <section id="call_for_paper" class="bg-white py-8">
-          <div class="container p-10 max-w-5xl mx-auto m-8">
+          <div class="container max-w-5xl mx-auto m-8" data-aos="fade-up" data-aos-duration="1000">
             <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
               Lingkup
             </h2>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <div class="flex flex-col md:flex-row justify-between">
-                <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-xl hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Teknik Informatika</h5>
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Geography Information System</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Security Network</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Big Data</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Information System</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Enterprise Resource Planning</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Internet of Things, Cloud Computing</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Artificial Intelligent</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Soft Computing</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Multimedia</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Game</span> <br />
-                    <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Human Computer Interaction</span>
-                </div>
-                <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-md hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Teknik Industri</h5>
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Industrial systems</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Manufacturing systems</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Systems Engineering & Ergonomics</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Industrial Management</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Supply Chain and Logistics</span>
-              </div>
-                <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-md hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Teknik Sipil</h5>
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Structure engineering</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Transportation engineering</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Project management engineering</span> <br />
-                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Traffic engineering</span>
-              </div>
+            <div class="">
+                <img src="{{ asset('img/callforpaper.png') }}" alt="" srcset="">
             </div>
         </div>
     </section>
@@ -234,11 +200,11 @@
           <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/avatar.png') }}" alt="Profile image"/>
-              <div class="w-full font-bold text-xl text-gray-600 px-6">
-                Prof. Marsudi
+              <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/marsudi.jpg') }}" alt="Profile image"/>
+              <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
+                Prof. Dr. Marsudi Wahyu Kisworo, IPU
               </div>
               <p class="text-gray-800 text-base px-6 mb-5">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
@@ -247,11 +213,11 @@
           </div>
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/avatar.png') }}" alt="Profile image"/>
-                <div class="w-full font-bold text-xl text-gray-600 px-6">
-                    Prof. Manlian
+                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/manlian.jpg') }}" alt="Profile image"/>
+                <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
+                    Prof. Dr. Manlian Ronald A. Simanjuntak, S.T., M.T.
                 </div>
                 <p class="text-gray-800 text-base px-6 mb-5">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
@@ -259,14 +225,14 @@
             </a>
           </div>
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            
+
           </div>
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+          <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/avatar.png') }}" alt="Profile image"/>
-                <div class="w-full font-bold text-xl text-gray-600 px-6">
+                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/alisubhan.jpg') }}" alt="Profile image"/>
+                <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                     Dr. Ali Subhan, S.T., M.T.
                 </div>
                 <p class="text-gray-800 text-base px-6 mb-5">
@@ -450,9 +416,9 @@
                 Sertifikat Co-Host</br>
               </div>
               <div class="flex items-center justify-center">
-                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                <a href="{{ route('register')}}" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   GABUNG SEKARANG!
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -472,9 +438,9 @@
                 Sertifikat Co-Host</br>
               </div>
               <div class="flex items-center justify-center">
-                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                <a href="{{ route('register')}}" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   GABUNG SEKARANG!
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -507,9 +473,9 @@
                 Coffee Break dan Makan Siang
               </div>
               <div class="flex items-center justify-center">
-                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                <a href="{{ route('register')}}" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   DAFTAR SEKARANG!
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -529,9 +495,9 @@
                 Coffee Break dan Makan Siang
               </div>
               <div class="flex items-center justify-center">
-                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                <a href="{{ route('register')}}" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   DAFTAR SEKARANG!
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -539,7 +505,7 @@
       </div>
     </section>
 
-    <section id="informasi" class="bg-gray-100 py-8">
+    <section id="narahubung" class="bg-gray-100 py-8">
       <div class="container max-w-5xl mx-auto m-8">
         <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
           Narahubung
@@ -556,6 +522,12 @@
                 <b> Anjani, ST.</b> : +62-87847491053 <br />
                 <b> Annisa Ayu Utami, ST.</b> : +62-85721818109
             </p>
+            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+                Alamat
+              </h3>
+              <p class="text-gray-600 mb-8">
+                Fakultas Teknik Universitas Suryakancana - Jl. Pasirgede Raya, Bojongherang, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43216
+              </p>
           </div>
           <div class="w-1/2 p-6 mt-6 mx-auto">
             <img src="{{ asset('img/contact_icon.svg') }}" alt="" srcset="">
@@ -570,17 +542,15 @@
                 Tempat dan Waktu Kegiatan Semnas Ristek
               </h3>
               <p class="text-gray-600 mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                Kegiatan ini dilaksanakan pada <b> 20 Juni 2023 </b> bertempat di Hotel Palace, Cipanas-Cianjur.
             </p>
-            <br />
-            <br />
-            <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=240&amp;hl=en&amp;q=Universitas Suryakancana&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.gachacute.com/">www.gachacute.com</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:240px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:240px;}.gmap_iframe {height:240px!important;}</style></div>
+            <div style="overflow:hidden;max-width:100%;width:600px;height:240px;"><div id="google-maps-canvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Palace+Hotel+Cipanas,+Jalan+Raya+Cipanas,+Cipanas,+Kabupaten+Cianjur,+Jawa+Barat,+Indonesia&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe></div><a class="googlecoder" rel="nofollow" href="https://www.bootstrapskins.com/themes" id="auth-map-data">premium bootstrap themes</a><style>#google-maps-canvas img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style></div>
           </div>
         </div>
       </div>
     </section>
 
-    
+
 
     <!-- additional style -->
     <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -616,7 +586,7 @@
         Template penulisan artikel dapat diunduh pada tombol dibawah ini!
       </h3>
       <a href="#" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-        Unduh Materi!
+        Unduh Template!
       </a>
     </section>
 
@@ -625,6 +595,13 @@
     <!--Footer-->
     <footer class="text-center bg-gray-900 text-white">
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+            <div class="w-full mb-4">
+              <div class="flex flex-row mx-auto justify-center opacity-90">
+                <img src="{{ asset('img/unsur_logo.png') }}" width="80px" alt="" srcset="">
+                <img src="{{ asset('img/ft_logo.png') }}" width="80px" class="ml-5" alt="" srcset="">
+                <img src="{{ asset('img/km_logo.png') }}" width="80px" class="ml-5" alt="" srcset="">
+              </div>
+          </div>
             © 2023 Copyright <a class="text-white" href="https://ft.unsur.ac.id/">Fakultas Teknik Universitas Suryakancana</a>
         </div>
     </footer>
