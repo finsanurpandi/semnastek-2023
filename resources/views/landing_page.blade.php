@@ -85,7 +85,10 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
               <li class="mr-3">
-                <a href="#call_for_paper" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Call For Paper</a>
+                <a href="#tentang" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Tentang</a>
+              </li>
+              <li class="mr-3">
+                <a href="#call_for_paper" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Lingkup</a>
               </li>
               <li class="mr-3">
                 <a href="#narasumber" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Narasumber</a>
@@ -94,13 +97,13 @@
                 <a href="#tanggal_penting" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Tanggal Penting</a>
               </li>
               <li class="mr-3">
-                <a href="#informasi" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Informasi</a>
+                <a href="#co-host" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Co-Host</a>
               </li>
               <li class="mr-3">
-                <a href="#list_makalah" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">List Makalah</a>
+                <a href="#registrasi" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Registrasi</a>
               </li>
               <li class="mr-3">
-                <a href="#materi_seminar" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Materi Seminar</a>
+                <a href="#narahubung" class="inline-block no-underline text-white hover:text-underline py-2 px-4" href="#">Narahubung</a>
               </li>
           </ul>
           @if (Route::has('login'))
@@ -130,14 +133,14 @@
         </div>
         <!--Right Col-->
         <div class="flex flex-col w-full md:w-2/5 justify-center items-center md:items-start text-center md:text-left"  data-aos="fade-bottom" data-aos-duration="1000" data-aos-delay="500">
-            <h1 class="my-4 text-4xl font-bold leading-tight">
-                SEMINAR NASIONAL SAINS & TEKNOLOGI 2023
-            </h1>
-            <p class="uppercase tracking-loose w-full">fakultas teknik</p>
-            <p class="uppercase tracking-loose w-full">universitas suryakancana</p>
-            <p class="leading-normal text-2xl mb-2 md:mb-8">
-                Penerapan Teknologi Terintegrasi untuk Peningkatan IPM
-            </p>
+          <h1 class="my-4 text-4xl font-bold leading-tight">
+            SEMINAR NASIONAL SAINS & TEKNOLOGI UNIVERSITAS SURYAKANCANA (SEMNASTEK-UNSUR)
+          </h1>
+          <p class="uppercase tracking-loose w-full">20 Juni 2023</p>
+          <p class="uppercase tracking-loose w-full">09.00 - Selesai.</p>
+          <p class="leading-normal text-2xl mb-2 md:mb-8">
+              Hotel Palace, Cipanas-Cianjur.
+          </p>
             <div class="flex flex-col-reverse md:flex-row items-center justify-between w-full" data-aos="zoom-in-left" data-aos-delay="500">
                 <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-2 md:my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   DAFTAR SEKARANG!
@@ -167,10 +170,23 @@
       </svg>
     </div>
 
+    <section id="tentang" class="bg-white py-8">
+        <div class="container p-10 max-w-5xl mx-auto m-8">
+          <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
+            SEMNASTEK-UNSUR
+          </h2>
+          <div class="w-full mb-4">
+              <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+          </div>
+          <hdiv class="my-12 text-gray-800 text-base">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus, placeat cumque sed adipisci mollitia doloremque perferendis aspernatur quia molestias numquam! Voluptatum quisquam placeat et doloribus repudiandae non distinctio cum ducimus?
+          </div>
+      </div>
+    </section>
     <section id="call_for_paper" class="bg-white py-8">
           <div class="container p-10 max-w-5xl mx-auto m-8">
             <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
-              Call For Paper
+              Lingkup
             </h2>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -229,13 +245,6 @@
               </p>
             </a>
           </div>
-          <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            <div class="flex items-center justify-center">
-                <a href="instagram.com" target="_blank" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                  Lihat
-                </a>
-              </div>
-          </div>
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
@@ -250,11 +259,7 @@
             </a>
           </div>
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            <div class="flex items-center justify-center">
-              <a href="instagram.com" target="_blank" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                Lihat
-              </a>
-            </div>
+            
           </div>
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
@@ -268,13 +273,6 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
                 </p>
             </a>
-          </div>
-          <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-            <div class="flex items-center justify-center">
-                <a href="instagram.com" target="_blank" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                  Lihat
-                </a>
-              </div>
           </div>
         </div>
       </div>
@@ -427,10 +425,124 @@
         </g>
     </svg>
 
+    <section id="co-host" class="bg-gray-100 py-8">
+      <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
+        <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
+          Co-Host/Sponsorship
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
+          <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+              <div class="w-full p-8 text-3xl font-bold text-center">Umum</div>
+              <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
+            </div>
+            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+              <div class="w-full pt-6 text-4xl font-bold text-center">
+                Rp.5.000.000,-
+              </div>
+              <div class="flex items-center justify-center">
+                Free biaya registrasi untuk 10 artikel<br/>
+                Logo dari institusi akan dipasang di media seminar</br>
+                Nama dari institusi akan disebutkan oleh MC selama seminar</br>
+                Sertifikat Co-Host</br>
+              </div>
+              <div class="flex items-center justify-center">
+                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  GABUNG SEKARANG!
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+              <div class="w-full p-8 text-3xl font-bold text-center">Sponsorship</div>
+              <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
+            </div>
+            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+              <div class="w-full pt-6 text-4xl font-bold text-center">
+                Rp.1.000.000,-
+              </div>
+              <div class="flex items-center justify-center">
+                Free biaya registrasi untuk 10 artikel<br/>
+                Logo dari institusi akan dipasang di media seminar</br>
+                Nama dari institusi akan disebutkan oleh MC selama seminar</br>
+                Sertifikat Co-Host</br>
+              </div>
+              <div class="flex items-center justify-center">
+                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  GABUNG SEKARANG!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="registrasi" class="bg-gray-100 py-8">
+      <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
+        <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
+          Biaya Registrasi
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
+          <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+              <div class="w-full p-8 text-3xl font-bold text-center">Publikasi Artikel dan Seminar</div>
+              <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
+            </div>
+            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+              <div class="w-full pt-6 text-4xl font-bold text-center">
+                Rp.350.000
+                <span class="text-base">/orang</span>
+              </div>
+              <div class="flex items-center justify-center">
+                Sertifikat Digital<br/>
+                Materi Presentasi</br>
+                Coffee Break dan Makan Siang
+              </div>
+              <div class="flex items-center justify-center">
+                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  DAFTAR SEKARANG!
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+              <div class="w-full p-8 text-3xl font-bold text-center">Registrasi Seminar</div>
+              <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
+            </div>
+            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+              <div class="w-full pt-6 text-4xl font-bold text-center">
+                Rp.100.000
+                <span class="text-base">/orang</span>
+              </div>
+              <div class="flex items-center justify-center">
+                Sertifikat Digital<br/>
+                Materi Presentasi</br>
+                Coffee Break dan Makan Siang
+              </div>
+              <div class="flex items-center justify-center">
+                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  DAFTAR SEKARANG!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="informasi" class="bg-gray-100 py-8">
       <div class="container max-w-5xl mx-auto m-8">
         <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
-          Informasi
+          Narahubung
         </h2>
         <div class="w-full mb-4">
           <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -468,77 +580,7 @@
       </div>
     </section>
 
-    <section class="bg-gray-100 py-8">
-      <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
-        <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
-          Biaya Registrasi
-        </h2>
-        <div class="w-full mb-4">
-          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
-          <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
-            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div class="w-full p-8 text-3xl font-bold text-center">Umum</div>
-              <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
-            </div>
-            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-              <div class="w-full pt-6 text-4xl font-bold text-center">
-                Rp.250.000
-                <span class="text-base">/orang</span>
-              </div>
-              <div class="flex items-center justify-center">
-                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                  DAFTAR SEKARANG!
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-col w-5/6 lg:w-1/4 mx-auto lg:mx-0 rounded-none lg:rounded-l-lg bg-white mt-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="flex-1 bg-white text-gray-600 rounded-t rounded-b-none overflow-hidden shadow">
-              <div class="p-8 text-3xl font-bold text-center border-b-4">
-                Mahasiswa
-              </div>
-            </div>
-            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-              <div class="w-full pt-6 text-3xl text-gray-600 font-bold text-center">
-                Rp.150.000
-                <span class="text-base">/orang</span>
-              </div>
-              <div class="flex items-center justify-center">
-                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                  DAFTAR SEKARANG!
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="list_makalah" class="bg-white py-8">
-        <div class="container mx-auto text-gray-800 w-full" data-aos="fade-up" data-aos-duration="800">
-            <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600 mt-8">
-                Template Artikel
-            </h2>
-              <div class="w-full mb-4">
-                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-              </div>
-              <div class="relative wrap overflow-hidden p-10 h-full">
-                <ol class="relative border-l border-gray-200">
-                  <li class="mb-10 ml-6">
-                      <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full -left-3 ring-8 ring-white">
-                          <svg aria-hidden="true" class="w-3 h-3 text-blue-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
-                      </span>
-                      <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">Template Artikel</h3>
-                      <time class="block mb-2 text-sm font-normal leading-none text-gray-400">Released on January 13th, 2022</time>
-                      <p class="mb-4 text-base font-normal text-gray-500">Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.</p>
-                      <a href="#" class="mb-8 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"><svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"></path></svg> Download</a>
-                  </li>
-              </ol>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- additional style -->
     <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -565,13 +607,13 @@
 
     <section id="materi_seminar" class="container mx-auto text-center py-6 mb-12">
       <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-white">
-        Materi Seminar
+        Template Artikel
       </h2>
       <div class="w-full mb-4">
         <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
       <h3 class="my-12 text-xl leading-tight">
-        Materi seminar dapat diunduh pada tombol dibawah ini!
+        Template penulisan artikel dapat diunduh pada tombol dibawah ini!
       </h3>
       <a href="#" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
         Unduh Materi!
