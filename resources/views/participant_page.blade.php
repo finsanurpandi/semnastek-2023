@@ -18,9 +18,13 @@
                 </div>
             </div>
             <div class="w-full text-right max-w-full px-3 mt-4 sm:my-auto right-0 sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
-                <a href="{{ route('logout') }}"  class="bg-gradient-to-tl from-red-600 to-orange-500 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+
+            <form action="/logout" class="flex justify-end" method="POST">
+                @csrf
+                <button type="submit"  class="bg-gradient-to-tl from-red-600 to-orange-500 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
                    Keluar
-                </a>
+                </button>
+            </form>
             </div>
           </div>
         </div>
