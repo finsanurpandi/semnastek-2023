@@ -8,7 +8,7 @@
           <span class="absolute inset-y-0 w-full h-full bg-center bg-contain bg-gradient-to-tl from-purple-700 to-blue-500 opacity-60"></span>
         </div>
         <div class="relative flex flex-col flex-auto min-w-0 p-4 mx-6 -mt-16 overflow-hidden break-words border-0 shadow-blur rounded-2xl bg-white/80 bg-clip-border backdrop-blur-2xl backdrop-saturate-200">
-          <div class="flex flex-wrap justify-between -mx-3 w-full">
+          <div class="flex justify-between -mx-3 w-full">
             <div class="flex">
                 <div class="flex-none w-auto max-w-full px-3 my-auto">
                 <div class="h-full">
@@ -18,8 +18,8 @@
                 </div>
             </div>
             <div class="w-full text-right max-w-full px-3 mt-4 sm:my-auto right-0 sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
-                <a href="#upload"  class="w-1/2 px-6 py-3 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl gradient hover:shadow-soft-xs active:opacity-85">
-                   UPLOAD ARTIKEL
+                <a href="{{ route('logout') }}"  class="bg-gradient-to-tl from-red-600 to-orange-500 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+                   Keluar
                 </a>
             </div>
           </div>
@@ -40,32 +40,32 @@
                 @if (count($article) == 0)
                 <div class="flex flex-col mx-auto justify-center bg-gray-50 p-8 rounded-xl">
                     <h6>Belum ada artikel, Upload Sekarang!</h6>
-                    <a href="#upload"  class="px-6 py-3 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl gradient hover:shadow-soft-xs active:opacity-85">
+                    <a href="#upload"  class="add-motion px-6 py-3 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl gradient hover:shadow-soft-xs active:opacity-85">
                         UPLOAD ARTIKEL
                     </a>
                 </div>
                 @endif
                 @foreach ($article as $data)
                 <div class="w-full max-w-full px-3 mb-6 md:flex-none xl:mb-0 xl:w-3/12">
-                    <div class="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
+                    <div class="relative bg-gray-50 flex flex-col min-w-0 break-words p-4 border-0 shadow-none rounded-2xl bg-clip-border">
                     <div class="flex-auto px-1 pt-6">
                         <a href="javascript:;">
-                            <h5>{{$data->title}}</h5>
+                            <h6>{{$data->title}}</h6>
                         </a>
                         @if ($data->article_status == "approved")
-                            <span class="bg-gradient-to-tl from-green-600 to-lime-400 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">DITERIMA</span>
+                            <span class="add-motion bg-gradient-to-tl from-green-600 to-lime-400 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">DITERIMA</span>
                         @elseif ($data->article_status == "rejected")
-                            <span class="bg-gradient-to-tl from-red-600 to-orange-500 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">DITOLAK</span>
+                            <span class="add-motion bg-gradient-to-tl from-red-600 to-orange-500 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">DITOLAK</span>
                         @elseif ($data->article_status == "revised")
-                            <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">SEDANG DIPERIKSA</span>
+                            <span class="add-motion bg-gradient-to-tl from-slate-600 to-slate-300 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">SEDANG DIPERIKSA</span>
                         @elseif ($data->article_status == "inreview")
-                            <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">SEDANG DIPERIKSA</span>
+                            <span class="add-motion bg-gradient-to-tl from-slate-600 to-slate-300 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">SEDANG DIPERIKSA</span>
                         @elseif ($data->article_status == "pending")
-                            <span class="bg-gradient-to-tl from-slate-600 to-slate-300 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">PENDING</span>
+                            <span class="add-motion bg-gradient-to-tl from-slate-600 to-slate-300 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">PENDING</span>
                         @endif
-                        <p class="mb-6 leading-normal text-sm">{{$data->article_scope}}</p>
+                        <p class="mb-6 leading-normal text-sm">Lingkup : {{$data->article_scope}}</p>
                         <div class="flex items-center justify-between">
-                        <button type="button" class="inline-block text-white px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs active:shadow-soft-xs tracking-tight-soft border-blue-500 text-blueborder-blue-500 hover:border-blue-500 gradient hover:text-blueborder-blue-500 hover:opacity-75 hover:shadow-none active:bg-blueborder-blue-500 active:text-white active:gradient active:hover:text-blueborder-blue-500">Lihat Detail</button>
+                            <button type="button" class="inline-block text-white px-2 md:px-8 lg:px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs active:shadow-soft-xs tracking-tight-soft border-blue-500 text-blueborder-blue-500 hover:border-blue-500 gradient hover:text-blueborder-blue-500 hover:opacity-75 hover:shadow-none active:bg-blueborder-blue-500 active:text-white active:gradient active:hover:text-blueborder-blue-500">Lihat Detail</button>
                         </div>
                     </div>
                     </div>
@@ -90,7 +90,7 @@
                     <option value="dosen">Dosen</option>
                 </select>
             </div>
-            <div id="ktm_field" class="form-group flex flex-col mb-4">
+            <div id="ktm_field" class="form-group hidden flex-col mb-4">
                 <label for="ktm_file">Upload KTM</label>
                 <input type="file" name="ktm_file" id="ktm_file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" autocomplete="off" accept="application/pdf">
             </div>
@@ -133,8 +133,8 @@
                     <button type="button" class="inline-block text-white px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs active:shadow-soft-xs tracking-tight-soft border-blue-500 text-blueborder-blue-500 hover:border-blue-500 gradient hover:text-blueborder-blue-500 hover:opacity-75 hover:shadow-none active:bg-blueborder-blue-500 active:text-white active:gradient active:hover:text-blueborder-blue-500 btn-add-author">Tambah Author</button>
                 </div>
                 <div id="author-container" class="">
-                    <div class="author-row w-full md:1/2 relative mx-auto justify-center bg-gray-50 p-8 rounded-xl mb-4">
-                        <div class="bg-gray-500 flex justify-end">
+                    <div class="author-row bg-gray-50 w-full md:1/2 relative mx-auto justify-center p-8 rounded-xl mb-4">
+                        <div class="flex justify-end">
                             <button type="button" class="bg-gradient-to-tl from-red-600 to-orange-500 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white btn-remove-author" disabled>Hapus Author</button>
                         </div>
                         <div class="flex flex-col">

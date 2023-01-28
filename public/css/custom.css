@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* for smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* warna tema */
+.gradient {
+    background: linear-gradient(90deg, #36368d 0%, #343563 100%);
+}
+
+/* motion */
+.add-motion {
+    animation-name: pulse;
+    -webkit-animation-name: pulse;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: scale(0.95);
+        opacity: 0.7;
+    }
+    50% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(0.95);
+        opacity: 0.7;
+    }
+}
+
+/* style back to top */
+.Gototop {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #36368d;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    animation: bounce 1.5s infinite;
+}
+.Gototop:hover {
+    background: #36368d;
+    animation: none;
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0%);
+    }
+    40%,
+    60% {
+        transform: translateY(50%);
+    }
+}
+
+/* loader */
+.Loader {
+    position: fixed;
+    z-index: 999999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+}
+.Loader .LoaderWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Loader .LoaderWrapper .circleBall {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: #36368d;
+    animation: Loadergrow 1.6s infinite ease-in both;
+}
+.Loader .LoaderWrapper .circleBall:nth-child(1) {
+    animation-delay: 0s;
+}
+.Loader .LoaderWrapper .circleBall:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.Loader .LoaderWrapper .circleBall:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes Loadergrow {
+    0%,
+    100% {
+        transform: scale(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

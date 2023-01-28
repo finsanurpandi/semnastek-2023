@@ -21,7 +21,7 @@ class ParticipantController extends Controller
     {
         $validatedData = $request->validate([
             'participant_category' => 'required',
-            'ktm_file' => 'required|file|mimes:pdf',
+            'ktm_file' => 'file|mimes:pdf',
             'title' => 'required',
             'abstract' => 'required',
             'knowledge_field' => 'required',
@@ -37,12 +37,14 @@ class ParticipantController extends Controller
         $article = new Article;
         $article->users_id = Auth::id();
         $article->participant_category = $request->participant_category;
-        //start upload ktm
-        $extension = $request->file('ktm_file')->extension();
-        $ktm = 'ktm' . time() . '.' . $extension;
-        $request->file('ktm_file')->storeAs('public/ktm', $ktm);
-        //finish upload ktm
-        $article->ktm_file = $ktm;
+        if (isset($request->ktm_file)) {
+            //start upload ktm
+            $extension = $request->file('ktm_file')->extension();
+            $ktm = 'ktm' . time() . '.' . $extension;
+            $request->file('ktm_file')->storeAs('public/ktm', $ktm);
+            //finish upload ktm
+            $article->ktm_file = $ktm;
+        }
         $article->title = $request->title;
         $article->abstract = $request->abstract;
         $article->knowledge_field = $request->knowledge_field;

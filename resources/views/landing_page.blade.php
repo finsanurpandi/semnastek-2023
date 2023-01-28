@@ -14,52 +14,22 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-
-        <style>
-            /* untuk smooth scroll */
-            html{
-                scroll-behavior: smooth;
-            }
-            /* warna tema */
-            .gradient {
-                background: linear-gradient(90deg, #36368d 0%, #343563 100%);
-            }
-
-            /* style back to top */
-            .backToTop{
-                display: none;
-                position: fixed;
-                bottom: 10px;
-                right: 10px;
-                font-size: 3em;
-                z-index: 9999;
-                height: 50px;
-                width: 50px;
-                background-color: gray;
-                text-align: center;
-                border-top-left-radius: 8px;
-                border-top-right-radius: 8px;
-            }
-            .backToTop:hover{
-                background: rgb(83, 81, 81);
-                transition: .5s ease-in all;
-            }
-            .backToTop i{
-                position: absolute;
-                top: 0px;
-                left: 10px;
-                color: #fff;
-            }
-            .backToTop i:hover{
-                color: #aaa;
-            }
-        </style>
     </head>
 
     <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+
+      <div class="Loader" id="Loader">
+        <div class="LoaderWrapper">
+           <div class="circleBall"></div>
+           <div class="circleBall"></div>
+           <div class="circleBall"></div>
+        </div>
+     </div>
+
     <!--Nav-->
     <nav id="header" class="fixed w-full z-30 top-0 text-white gradient">
       <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
@@ -119,14 +89,14 @@
       <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
     </nav>
 
-    <div class="container mx-auto flex flex-wrap flex-col md:flex-row items-center justify-center">
-    <!--Left Col-->
-    <div class="w-1/2 text-center py-8" data-aos="fade-up" data-aos-duration="500">
-            <img class="w-1/2 md:w-4/5 z-50" src="{{ asset('img/logo.png') }}"/>
+    <div class="container pt-8 px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center justify-center">
+        <!--Left Col-->
+    <div class="w-1/2 flex justify-center py-8 pb-0 md:pb-8 lg:pb-8" data-aos="fade-up" data-aos-duration="500">
+        <img class="w-4/5 md:w-4/5 lg:w-4/5 z-50 py-8 pb-0" src="{{ asset('img/logo.png') }}"/>
     </div>
     <!--Right Col-->
     <div class="flex flex-col w-full md:w-2/5 justify-center items-center md:items-start text-center md:text-left"  data-aos="fade-bottom" data-aos-duration="1000" data-aos-delay="500">
-        <h1 class="my-4 text-4xl font-bold leading-tight">
+        <h1 class="my-4 text-2xl md:text-4xl lg:text-4xl font-bold leading-tight">
         SEMINAR NASIONAL SAINS & TEKNOLOGI UNIVERSITAS SURYAKANCANA (SEMNASTEK-UNSUR)
         </h1>
         <p class="tracking-loose w-full">20 Juni 2023</p>
@@ -135,7 +105,7 @@
             Hotel Palace, Cipanas-Cianjur.
         </p>
         <div class="flex flex-col-reverse md:flex-row items-center justify-between w-full" data-aos="zoom-in-left" data-aos-delay="500">
-            <a href="{{ route('register')}}" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-2 md:my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <a href="{{ route('register')}}" class="add-motion mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-2 md:my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                 DAFTAR SEKARANG!
             </a>
         </div>
@@ -185,7 +155,7 @@
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <div class="">
+            <div class="px-4">
                 <img src="{{ asset('img/callforpaper.png') }}" alt="" srcset="">
             </div>
         </div>
@@ -523,10 +493,14 @@
                 <b> Annisa Ayu Utami, ST.</b> : +62-85721818109
             </p>
             <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                Alamat
+                Sekretariat
               </h3>
               <p class="text-gray-600 mb-8">
-                Fakultas Teknik Universitas Suryakancana - Jl. Pasirgede Raya, Bojongherang, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43216
+                Gedung Fakultas Teknik Universitas Suryakancana - Jl. Pasirgede Raya, Bojongherang, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43216
+                <br />
+                Instagram : <a href="https://www.instagram.com/ft.unsur" target="_blank">ftunsur</a><br />
+                Email : <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fteknik@unsur.ac.id" target="_blank">fteknik@unsur.ac.id</a><br />
+                Situs Website : <a href="https://ft.unsur.ac.id" target="_blank">ft.unsur.ac.id</a>
               </p>
           </div>
           <div class="w-1/2 p-6 mt-6 mx-auto">
@@ -590,7 +564,12 @@
       </a>
     </section>
 
-    <div id="backToTop" class="rounded-full"></div>
+    <!-- Go to top Button -->
+    <a href="#">
+        <div class="Gototop">
+              <i class="fa fa-angle-double-up text-white" aria-hidden="true"></i>
+        </div>
+     </a>
 
     <!--Footer-->
     <footer class="text-center bg-gray-900 text-white">
@@ -608,62 +587,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-
-    {{-- script menu responsive --}}
+    <script src="{{ asset('js/custom.js') }}"></script>
     <script>
-        var navMenuDiv = document.getElementById("nav-content");
-        var navMenu = document.getElementById("nav-toggle");
-
-        document.onclick = check;
-        function check(e) {
-          var target = (e && e.target) || (event && event.srcElement);
-
-          //Nav Menu
-          if (!checkParent(target, navMenuDiv)) {
-            if (checkParent(target, navMenu)) {
-              if (navMenuDiv.classList.contains("hidden")) {
-                navMenuDiv.classList.remove("hidden");
-              } else {
-                navMenuDiv.classList.add("hidden");
-              }
-            } else {
-              navMenuDiv.classList.add("hidden");
+        $(window).on("load", function () {
+            function HideLoader() {
+                setTimeout(() => {
+                    $("#Loader").fadeOut(100);
+                }, 500);
             }
-          }
-        }
-        function checkParent(t, elm) {
-          while (t.parentNode) {
-            if (t == elm) {
-              return true;
-            }
-            t = t.parentNode;
-          }
-          return false;
-        }
-      </script>
-
-    {{-- js back to top button --}}
-    <script>
-        jQuery(document).ready(function(){
-            $( "#backToTop" ).append('<a class="backToTop" href="javascript:void(null);" style="display: none;"><i class="fa fa-angle-up"></i><iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe></a>');
-            var $window = $(window);
-            var distance = 80;
-                // scroll
-            $window.scroll(function() {
-                // header
-                if($window.scrollTop() >= distance) {
-                $(".backToTop").fadeIn();
-                }else{
-                $(".backToTop").fadeOut();
-                }
-            });
-
-            $('.backToTop').click(function() {
-                $('html, body').animate({
-                        scrollTop: 0
-                    }, 800);
-            });
-        })
+            HideLoader();
+        });
     </script>
   </body>
 </html>
