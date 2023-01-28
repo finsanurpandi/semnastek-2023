@@ -13,6 +13,8 @@
     <link href="{{ asset('css/admin-template.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
-    <!-- Font -->
+    {{-- sweetalert --}}
+    <link href="{{ asset('css/sweetalert2.min.css') }}" rel="stylesheet">
+    <!-- Font Style-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 </head>

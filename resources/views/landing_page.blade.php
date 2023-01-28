@@ -10,14 +10,19 @@
         <title>SEMNASTEK UNSUR</title>
 
         <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
+
+        {{-- sweetalert --}}
+        <link href="{{ asset('css/sweetalert2.min.css') }}" rel="stylesheet">
+
         <!-- FontAwesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        {{-- Font Style --}}
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     </head>
 
     <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
@@ -72,10 +77,7 @@
           </ul>
           @if (Route::has('login'))
             @auth
-            <form action="/logout" class="flex justify-end" method="POST">
-                @csrf
-                <button class="text-sm text-white underline">Keluar</button>
-            </form>
+                <button onclick="logout()" class="text-sm text-white underline">Keluar</button>
             @else
             <div class="flex justify-end">
                 <a href="{{ route('login') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
@@ -585,10 +587,39 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
     <script>
+        // script menu responsive
+        var navMenuDiv = document.getElementById("nav-content");
+        var navMenu = document.getElementById("nav-toggle");
+
+        document.onclick = check;
+        function check(e) {
+            var target = (e && e.target) || (event && event.srcElement);
+
+            //Nav Menu
+            if (!checkParent(target, navMenuDiv)) {
+                if (checkParent(target, navMenu)) {
+                    if (navMenuDiv.classList.contains("hidden")) {
+                        navMenuDiv.classList.remove("hidden");
+                    } else {
+                        navMenuDiv.classList.add("hidden");
+                    }
+                } else {
+                    navMenuDiv.classList.add("hidden");
+                }
+            }
+        }
+        function checkParent(t, elm) {
+            while (t.parentNode) {
+                if (t == elm) {
+                    return true;
+                }
+                t = t.parentNode;
+            }
+            return false;
+        }
         $(window).on("load", function () {
             function HideLoader() {
                 setTimeout(() => {
@@ -597,6 +628,36 @@
             }
             HideLoader();
         });
+        // js back to top button
+        $(window).on("scroll load", function () {
+            if ($("#header").offset().top > 40) {
+                $("#header").addClass("shrink");
+                $(".Gototop").css("visibility", "visible");
+            } else {
+                $("#header").removeClass("shrink");
+                $(".Gototop").css("visibility", "hidden");
+            }
+        });
     </script>
+
+    <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
+    <script>
+        function logout(){
+            Swal.fire({
+            title: 'Anda yakin ingin keluar?',
+            showDenyButton: true,
+            confirmButtonText: 'Keluar',
+            confirmButtonColor: '#36368d',
+            denyButtonText: 'Tidak',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/logout';
+                }
+                // else if (result.isDenied) {
+                //     Swal.fire('Terima kasih!', '', 'success');
+                // }
+            })
+        }
+     </script>
   </body>
 </html>

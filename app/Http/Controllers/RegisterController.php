@@ -29,6 +29,10 @@ class RegisterController extends Controller
 
         User::create($validatedData);
 
-        return redirect('/login')->with('success', 'Daftar Berhasil, Silahkan untuk Login!');
+        $alert = array(
+            'message' => 'Registrasi Berhasil, silahkan Login!',
+            'alert-type' => 'success'
+        );
+        return redirect('/login')->with($alert);
     }
 }

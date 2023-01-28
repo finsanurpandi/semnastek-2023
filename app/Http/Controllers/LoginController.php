@@ -18,7 +18,6 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
@@ -32,11 +31,17 @@ class LoginController extends Controller
                 $role = 'participant';
             }
 
-            return redirect()->route($role);
+            $alert = array(
+                'message' => 'Berhasil Masuk',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route($role)->with($alert);
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+        return back()->with([
+            'message' => 'Email atau password anda salah.',
+            'alert-type' => 'error'
         ]);
     }
 

@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
@@ -31,4 +31,5 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register')
 Route::middleware('participants')->group(function () {
     Route::get('/participant', [ParticipantController::class, 'index'])->name('participant');
     Route::post('/participant/artikel', [ParticipantController::class, 'upload'])->name('participant.upload');
+    Route::get('/participant/unduh/{article_file}', [ParticipantController::class, 'unduh'])->name('participant.unduh');
 });

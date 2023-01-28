@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Article;
 use App\Models\Author;
+use Illuminate\Support\Facades\Storage;
 
 class ParticipantController extends Controller
 {
@@ -14,7 +15,29 @@ class ParticipantController extends Controller
         $name = Auth::user()->name;
         $email = Auth::user()->email;
         $article = Article::all()->where('users_id', Auth::id());
-        return view('participant_page', compact('name', 'email', 'article'));
+        $lingkup = array(
+            'Geography Information System',
+            'Security Network',
+            'Big Data',
+            'Information System',
+            'Enterprise Resource Planning',
+            'Internet of Things, Cloud Computing',
+            'Artificial Intelligent',
+            'Soft Computing',
+            'Multimedia',
+            'Game',
+            'Human Computer Interaction',
+            'Industrial systems',
+            'Manufacturing systems',
+            'Systems Engineering & Ergonomics',
+            'Industrial Management',
+            'Supply Chain and Logistics',
+            'Structure engineering',
+            'Transportation engineering',
+            'Project management engineering',
+            'traffic engineering',
+        );
+        return view('participant_page', compact('name', 'email', 'article', 'lingkup'));
     }
 
     public function upload(Request $request)
@@ -81,6 +104,16 @@ class ParticipantController extends Controller
 
         Author::insert($data);
 
-        return redirect()->route('participant');
+        $alert = array(
+            'message' => 'Artikel Berhasil diunggah',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('participant')->with($alert);
+    }
+
+    public function unduh($article_file)
+    {
+        $file = public_path('/storage/articles/' . $article_file);
+        return response()->download($file);
     }
 }

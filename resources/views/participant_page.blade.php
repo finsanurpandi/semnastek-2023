@@ -18,13 +18,9 @@
                 </div>
             </div>
             <div class="w-full text-right max-w-full px-3 mt-4 sm:my-auto right-0 sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
-
-            <form action="/logout" class="flex justify-end" method="POST">
-                @csrf
-                <button type="submit"  class="bg-gradient-to-tl from-red-600 to-orange-500 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
+                <button onclick="logout()" class="bg-gradient-to-tl from-red-600 to-orange-500 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">
                    Keluar
                 </button>
-            </form>
             </div>
           </div>
         </div>
@@ -67,9 +63,9 @@
                         @elseif ($data->article_status == "pending")
                             <span class="add-motion bg-gradient-to-tl from-slate-600 to-slate-300 px-2 text-xs rounded-1.8 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">PENDING</span>
                         @endif
-                        <p class="mb-6 leading-normal text-sm">Lingkup : {{$data->article_scope}}</p>
+                        <p class="mb-6 leading-normal text-sm">Lingkup : {{ Str::upper($data->article_scope)}}</p>
                         <div class="flex items-center justify-between">
-                            <button type="button" class="inline-block text-white px-2 md:px-8 lg:px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs active:shadow-soft-xs tracking-tight-soft border-blue-500 text-blueborder-blue-500 hover:border-blue-500 gradient hover:text-blueborder-blue-500 hover:opacity-75 hover:shadow-none active:bg-blueborder-blue-500 active:text-white active:gradient active:hover:text-blueborder-blue-500">Lihat Detail</button>
+                            <a href="{{ route('participant.unduh', ['article_file'=>$data->article_file]) }}" class="inline-block text-white px-2 md:px-8 lg:px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs active:shadow-soft-xs tracking-tight-soft border-blue-500 text-blueborder-blue-500 hover:border-blue-500 gradient hover:text-blueborder-blue-500 hover:opacity-75 hover:shadow-none active:bg-blueborder-blue-500 active:text-white active:gradient active:hover:text-blueborder-blue-500">Lihat Artikel</a>
                         </div>
                     </div>
                     </div>
@@ -119,8 +115,9 @@
                 <label for="article_scope">Lingkup Artikel</label>
                 <select name="article_scope" id="article_scope" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" required autocomplete="off">
                     <option value="" selected disabled>-- Pilih Lingkup Artikel --</option>
-                    <option value="game">Game</option>
-                    <option value="konstruksi">Konstruksi</option>
+                    @foreach ($lingkup as $data)
+                    <option value="{{$data}}">{{$data}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group flex flex-col mb-4">
