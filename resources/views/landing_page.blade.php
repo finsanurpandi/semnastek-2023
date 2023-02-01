@@ -142,10 +142,10 @@
           <div class="w-full mb-4">
               <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
-          <div class="my-12 text-gray-800 text-base">
+          <div class="my-12 text-gray-800 text-base text-justify">
             <div class="flex flex-row mx-auto">
             </div>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus, placeat cumque sed adipisci mollitia doloremque perferendis aspernatur quia molestias numquam! Voluptatum quisquam placeat et doloribus repudiandae non distinctio cum ducimus?
+            Seminar Nasional Teknik merupakan program tahunan dari Fakultas Teknik, Universitas Suryakancana yang ditujukan untuk mengumpulkan para akademisi, peneliti, maupun praktisi dalam forum ilmiah yang akan mempresentasikan hasil penelitian dalam bentuk seminar. Acara ini menggabungkan tiga bidang berbeda yaitu Industri, Sipil, dan Informatika yang menghasilkan lingkup yang semakin luas dan akan menghasilkan banyak manfaat bagi mahasiswa, akademisi, peneliti dan masyarakat luas. Seminar Nasional Teknik, Universitas Suryakancana (SEMNASTEK-UNSUR) kali ini mengangkat tema tentang <strong>"Penerapan Teknologi Terintegrasi untuk Peningkatan IPM"</strong> bertujuan untuk mempertemukan para ilmuan akademik, dan peneliti dalam berbagi hasil penelitian dan pengalaman terkait bagaimana menerapkan dan mengintegrasikan berbagai teknologi untuk kebutuhan masyarakat yang nantinya secara tidak langsung akan meningkatkan IPM di suatu wilayah. SEMNASTEK-UNSUR juga dapat berperan sebagai tempat para akademisi, peneliti, dan praktisi dalam mempresentasikan dan mendiskusikan topik tentang tren, inovasi, kemungkinan perkembangan teknologi di masa depan, serta tantangan yang dihadapi dan solusi yang solutif yang dapat berperan untuk peningkatan IPM.
           </div>
       </div>
     </section>
@@ -561,7 +561,7 @@
       <h3 class="my-12 text-xl leading-tight">
         Template penulisan artikel dapat diunduh pada tombol dibawah ini!
       </h3>
-      <a href="#" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+      <a href="{{ asset('template_semnastek.docx') }}" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" target="_blank">
         Unduh Template!
       </a>
     </section>
