@@ -142,26 +142,53 @@
           <div class="w-full mb-4">
               <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
-          <div class="my-12 text-gray-800 text-base text-justify">
-            <div class="flex flex-row mx-auto">
-            </div>
+          <div class="my-12 text-gray-800 text-base" style="text-align: justify;">
             Seminar Nasional Teknik merupakan program tahunan dari Fakultas Teknik, Universitas Suryakancana yang ditujukan untuk mengumpulkan para akademisi, peneliti, maupun praktisi dalam forum ilmiah yang akan mempresentasikan hasil penelitian dalam bentuk seminar. Acara ini menggabungkan tiga bidang berbeda yaitu Industri, Sipil, dan Informatika yang menghasilkan lingkup yang semakin luas dan akan menghasilkan banyak manfaat bagi mahasiswa, akademisi, peneliti dan masyarakat luas. Seminar Nasional Teknik, Universitas Suryakancana (SEMNASTEK-UNSUR) kali ini mengangkat tema tentang <strong>"Penerapan Teknologi Terintegrasi untuk Peningkatan IPM"</strong> bertujuan untuk mempertemukan para ilmuan akademik, dan peneliti dalam berbagi hasil penelitian dan pengalaman terkait bagaimana menerapkan dan mengintegrasikan berbagai teknologi untuk kebutuhan masyarakat yang nantinya secara tidak langsung akan meningkatkan IPM di suatu wilayah. SEMNASTEK-UNSUR juga dapat berperan sebagai tempat para akademisi, peneliti, dan praktisi dalam mempresentasikan dan mendiskusikan topik tentang tren, inovasi, kemungkinan perkembangan teknologi di masa depan, serta tantangan yang dihadapi dan solusi yang solutif yang dapat berperan untuk peningkatan IPM.
           </div>
       </div>
     </section>
+
     <section id="call_for_paper" class="bg-white py-8">
-          <div class="container max-w-5xl mx-auto m-8" data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
-              Lingkup
-            </h2>
-            <div class="w-full mb-4">
-                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        <div class="container p-10 max-w-5xl mx-auto m-8">
+          <h2 class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-600">
+            Lingkup
+          </h2>
+          <div class="w-full mb-4">
+              <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between">
+              <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-xl hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800">
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Teknik Informatika</h5>
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Geography Information System</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Security Network</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Big Data</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Information System</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Enterprise Resource Planning</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Internet of Things, Cloud Computing</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Artificial Intelligent</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Soft Computing</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Multimedia</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Game</span> <br />
+                  <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Human Computer Interaction</span>
+              </div>
+              <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-md hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Teknik Industri</h5>
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Industrial systems</span> <br />
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Manufacturing systems</span> <br />
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Systems Engineering & Ergonomics</span> <br />
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Industrial Management</span> <br />
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Supply Chain and Logistics</span>
             </div>
-            <div class="px-4">
-                <img src="{{ asset('img/callforpaper.png') }}" alt="" srcset="">
+              <div class="py-8 px-4 gradient border border-gray-200 rounded-lg shadow-md hover:bg-gray-100" data-aos="fade-up" data-aos-duration="800">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Teknik Sipil</h5>
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Structure engineering</span> <br />
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Transportation engineering</span> <br />
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Project management engineering</span> <br />
+                <span class="bg-indigo-100 text-indigo-800 text-sm font-medium px-2.5 py-0.5 rounded">Traffic engineering</span>
             </div>
-        </div>
-    </section>
+          </div>
+      </div>
+  </section>
 
     <section id="narasumber" class="bg-gray-100 py-8">
       <div class="container mx-auto flex flex-wrap pt-4 pb-12" data-aos="fade-up" data-aos-duration="1000">
@@ -174,7 +201,7 @@
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/marsudi.jpg') }}" alt="Profile image"/>
+              <img class="inline object-contain mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/marsudi.jpg') }}" style="width: 250px;" alt="Profile image"/>
               <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                 Prof. Dr. Marsudi Wahyu Kisworo, IPU
               </div>
@@ -187,7 +214,7 @@
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/manlian.jpg') }}" alt="Profile image"/>
+                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/manlian.jpg') }}" style="width: 250px;" alt="Profile image"/>
                 <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                     Prof. Dr. Manlian Ronald A. Simanjuntak, S.T., M.T.
                 </div>
@@ -203,7 +230,7 @@
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/alisubhan.jpg') }}" alt="Profile image"/>
+                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/alisubhan.jpg') }}" style="width: 250px;" alt="Profile image"/>
                 <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                     Dr. Ali Subhan, S.T., M.T.
                 </div>
@@ -288,7 +315,7 @@
               <ol class="relative border-l border-blue-800">
                   <li class="mb-10 ml-4 p-4">
                       <div class="flex">
-                        <div class="w-3 h-3 gradient rounded-full mt-3 mr-3 -left-1.5 border border-blue-800"></div>
+                        <div class="w-3 h-3 gradient rounded-full mt-0 mr-3 -left-1.5 border border-blue-800"></div>
                         <time class="mb-1 text-sm font-normal leading-none text-gray-400">31 Maret 2023</time>
                       </div>
                       <h3 class="text-lg font-semibold text-gray-900">Deadline Submission</h3>
@@ -296,7 +323,7 @@
                   </li>
                   <li class="mb-10 ml-4 p-4">
                     <div class="flex">
-                      <div class="w-3 h-3 gradient rounded-full mt-3 mr-3 -left-1.5 border border-blue-800"></div>
+                      <div class="w-3 h-3 gradient rounded-full mt-0 mr-3 -left-1.5 border border-blue-800"></div>
                       <time class="mb-1 text-sm font-normal leading-none text-gray-400">19 April 2023</time>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900">Acceptance Notice</h3>
@@ -304,7 +331,7 @@
                   </li>
                   <li class="mb-10 ml-4 p-4">
                     <div class="flex">
-                      <div class="w-3 h-3 gradient rounded-full mt-3 mr-3 -left-1.5 border border-blue-800"></div>
+                      <div class="w-3 h-3 gradient rounded-full mt-0 mr-3 -left-1.5 border border-blue-800"></div>
                       <time class="mb-1 text-sm font-normal leading-none text-gray-400">19 Mei 2023</time>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900">Deadline Registration</h3>
@@ -312,7 +339,7 @@
                   </li>
                   <li class="mb-10 ml-4 p-4">
                     <div class="flex">
-                      <div class="w-3 h-3 gradient rounded-full mt-3 mr-3 -left-1.5 border border-blue-800"></div>
+                      <div class="w-3 h-3 gradient rounded-full mt-0 mr-3 -left-1.5 border border-blue-800"></div>
                       <time class="mb-1 text-sm font-normal leading-none text-gray-400">20 Juni 2023</time>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900">The Big Day</h3>
