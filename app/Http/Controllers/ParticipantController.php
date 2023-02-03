@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ParticipantController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+    
     public function index()
     {
         $name = Auth::user()->name;
