@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="{{ asset('img/logo.png') }}">
 
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/app-custom.css') }}" rel="stylesheet">
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 
@@ -99,7 +99,7 @@
     <!--Right Col-->
     <div class="flex flex-col w-full md:w-2/5 justify-center items-center md:items-start text-center md:text-left"  data-aos="fade-bottom" data-aos-duration="1000" data-aos-delay="500">
         <h1 class="my-4 text-2xl md:text-4xl lg:text-4xl font-bold leading-tight">
-        SEMINAR NASIONAL SAINS & TEKNOLOGI UNIVERSITAS SURYAKANCANA (SEMNASTEK-UNSUR)
+        SEMINAR NASIONAL TEKNIK UNIVERSITAS SURYAKANCANA (SEMNASTEK-UNSUR)
         </h1>
         <p class="tracking-loose w-full">20 Juni 2023</p>
         <p class="tracking-loose w-full">09.00 - Selesai.</p>
@@ -615,7 +615,7 @@
     </footer>
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app-custom.js') }}"></script>
     <script>
         // script menu responsive
         var navMenuDiv = document.getElementById("nav-content");

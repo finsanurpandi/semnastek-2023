@@ -1,6 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/js/flowbite.js": "/js/flowbite.js",
-    "/css/app.css": "/css/app.css",
-    "/css/flowbite.css": "/css/flowbite.css"
+    "/css/app.css": "/css/app.css"
 }
