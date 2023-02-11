@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class Participants
+class CheckRole
 {
     /**
      * Handle an incoming request.
@@ -15,15 +14,15 @@ class Participants
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, string $role)
     {
-        if (Auth::check()) {
-            if (auth()->user()->role_id == 4) {
-                return $next($request);
-            }
-            return back()->with('error', 'Anda tidak memiliki akses sebagai participant');
-        } else {
-            return redirect('/login');
+        if($role == 'author' && auth()->user()->role_id != 4)
+        {
+            return redirect()->back();
         }
+
+        return $next($request);
+        
+
     }
 }

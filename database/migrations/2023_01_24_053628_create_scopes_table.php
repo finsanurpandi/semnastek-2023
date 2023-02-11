@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAuthorsTable extends Migration
+class CreateScopesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,16 @@ class CreateAuthorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('authors', function (Blueprint $table) {
+        Schema::create('scopes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('article_id')->unsigned();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('email');
-            $table->string('affiliation');
-            $table->integer('order');
+            $table->bigInteger('department_id')->unsigned();
+            $table->string('scope');
+            $table->boolean('active')->default(true);
             $table->timestamps();
 
-            $table->foreign('article_id')
+            $table->foreign('department_id')
                     ->references('id')
-                    ->on('articles')
+                    ->on('departments')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
         });
@@ -38,6 +35,6 @@ class CreateAuthorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('authors');
+        Schema::dropIfExists('scopes');
     }
 }

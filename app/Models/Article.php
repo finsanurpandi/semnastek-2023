@@ -10,14 +10,25 @@ class Article extends Model
     use HasFactory;
     protected $fillable = [
         'users_id',
-        'participant_category',
-        'ktm_file',
+        'scope_id',
         'title',
         'abstract',
-        'knowledge_field',
-        'article_scope',
-        'article_file',
-        'correspondence',
-        'article_status',
+        'keywords',
+        'corresponding_email',
     ];
+
+    public function scope()
+    {
+        return $this->belongsTo(Scope::class);
+    }
+
+    public function authors()
+    {
+        return $this->hasMany(Author::class);
+    }
+
+    public function manuscript()
+    {
+        return $this->hasOne(Manuscript::class);
+    }
 }
