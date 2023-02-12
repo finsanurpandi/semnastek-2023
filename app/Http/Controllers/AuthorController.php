@@ -254,7 +254,9 @@ class AuthorController extends Controller
 
     public function manuscript_store(Request $request)
     {
-        // $validated = $request->validated();
+        $request->validate([
+            'file' => 'required|mimes:docx,doc|max:5120',
+        ]);
 
         try {
             // Author::create($request->all());

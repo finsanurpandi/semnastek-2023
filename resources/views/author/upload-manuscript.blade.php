@@ -19,8 +19,14 @@
                     @endif
                     <form action="{{route('author.manuscript.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        @include('author.form-manuscript')
-                        <small><em>Format file yang diwajibkan diunggah adalah dalam bentuk *.docx atau *.doc</em></small>
+                        <div class="mb-3">
+                            <label id="file">File Manuscript</label>
+                            <input type="file" id="file" name="file" class="form-control" accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document" max="5120" required/>
+                            
+                        </div>
+                        
+                        {{ Form::hidden('article_id', $article->id, null) }}
+                        <small><em>Format file yang diwajibkan diunggah adalah dalam bentuk *.docx atau *.doc dengan ukuran maksimal 5MB</em></small>
                         <hr/>
                         <a href="{{ route('author.show', $article->id) }}" class="btn btn-danger">{{ __('Batal') }}</a>
                        {{ Form::submit('Kirim', ['class' => 'btn btn-primary']) }}
