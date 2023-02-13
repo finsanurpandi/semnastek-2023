@@ -201,12 +201,12 @@
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <img class="inline object-contain mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/marsudi.jpg') }}" style="width: 250px;" alt="Profile image"/>
+              <img class="inline object-contain mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/60111.jpg') }}" style="width: 250px;" alt="Profile image"/>
               <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
-                Prof. Dr. Marsudi Wahyu Kisworo, IPU
+                Dr. Ing. Mokhamad Hendayun, Ir
               </div>
-              <p class="text-gray-800 text-base px-6 mb-5">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+              <p class="text-gray-800 text-base px-6 mb-5" style="text-align: center;">
+                Narasumber (Menunggu konfirmasi)
               </p>
             </a>
           </div>
@@ -218,8 +218,8 @@
                 <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                     Prof. Dr. Manlian Ronald A. Simanjuntak, S.T., M.T.
                 </div>
-                <p class="text-gray-800 text-base px-6 mb-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                <p class="text-gray-800 text-base px-6 mb-5" style="text-align: center;">
+                  Narasumber (Menunggu konfirmasi)
                 </p>
             </a>
           </div>
@@ -234,8 +234,8 @@
                 <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                     Dr. Ali Subhan, S.T., M.T.
                 </div>
-                <p class="text-gray-800 text-base px-6 mb-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                <p class="text-gray-800 text-base px-6 mb-5" style="text-align: center;">
+                  Narasumber
                 </p>
             </a>
           </div>
@@ -409,13 +409,15 @@
                 Rp.5.000.000,-
               </div>
               <div class="flex items-center justify-center">
-                Free biaya registrasi untuk 10 artikel<br/>
-                Logo dari institusi akan dipasang di media seminar</br>
-                Nama dari institusi akan disebutkan oleh MC selama seminar</br>
-                Sertifikat Co-Host</br>
+                <ul>
+                  <li>Free biaya registrasi untuk 10 artikel</li>
+                  <li>Logo dari institusi akan dipasang di media promosi dan pelaksanaan seminar</li>
+                  <li>Nama dari institusi akan disebutkan oleh MC selama seminar</li>
+                  <li>Sertifikat Co-Host</li>
+                </ul>
               </div>
               <div class="flex items-center justify-center">
-                <a href="{{ route('register')}}" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                <a href="{{ asset('berkas_kerjasama_co_host.zip') }}" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   GABUNG SEKARANG!
                 </a>
               </div>
@@ -431,13 +433,13 @@
                 Rp.1.000.000,-
               </div>
               <div class="flex items-center justify-center">
-                Free biaya registrasi untuk 10 artikel<br/>
-                Logo dari institusi akan dipasang di media seminar</br>
-                Nama dari institusi akan disebutkan oleh MC selama seminar</br>
-                Sertifikat Co-Host</br>
+                <ul>
+                  <li>Logo dari institusi akan dipasang di media promosi dan pelaksanaan seminar</li>
+                  <li>Nama dari institusi akan disebutkan oleh MC selama seminar</li>
+                </ul>
               </div>
               <div class="flex items-center justify-center">
-                <a href="{{ route('register')}}" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                <a href="{{ asset('SuratKesediaanSponsorshipSEMNASTEK2023.docx') }}" class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   GABUNG SEKARANG!
                 </a>
               </div>
@@ -528,7 +530,7 @@
                 Gedung Fakultas Teknik Universitas Suryakancana - Jl. Pasirgede Raya, Bojongherang, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43216
                 <br />
                 Instagram : <a href="https://www.instagram.com/ft.unsur" target="_blank">ftunsur</a><br />
-                Email : <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fteknik@unsur.ac.id" target="_blank">fteknik@unsur.ac.id</a><br />
+                Email : <a href="https://mail.google.com/mail/?view=cm&fs=1&to=semantek@unsur.ac.id" target="_blank">fteknik@unsur.ac.id</a><br />
                 Situs Website : <a href="https://ft.unsur.ac.id" target="_blank">ft.unsur.ac.id</a>
               </p>
           </div>

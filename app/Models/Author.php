@@ -9,10 +9,11 @@ class Author extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'articles_id',
-        'affiliate',
-        'first_name',
-        'last_name',
+        'article_id',
+        'affiliation',
+        'firstname',
+        'lastname',
         'email',
+        'order'
     ];
 }

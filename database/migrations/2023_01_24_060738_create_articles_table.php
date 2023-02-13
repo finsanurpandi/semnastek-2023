@@ -15,17 +15,29 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id')->constrained();
-            $table->string('participant_category');
-            $table->string('ktm_file')->nullable();
+            // $table->foreignId('users_id')->constrained();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('scope_id')->unsigned();
             $table->string('title');
             $table->text('abstract');
-            $table->string('knowledge_field');
-            $table->string('article_scope');
-            $table->string('article_file');
-            $table->string('correspondence');
-            $table->string('article_status');
+            $table->string('keywords');
+            $table->string('corresponding_email');
+            // $table->string('file');
+            $table->boolean('active')->default(true);
+            $table->dateTime('submitted_at')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+
+            $table->foreign('scope_id')
+                    ->references('id')
+                    ->on('scopes')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
         });
     }
 
