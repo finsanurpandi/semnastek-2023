@@ -21,6 +21,11 @@ class CheckRole
             return redirect()->back();
         }
 
+        if($role == 'admin' && auth()->user()->role_id != 1)
+        {
+            return redirect()->back();
+        }
+
         return $next($request);
         
 
