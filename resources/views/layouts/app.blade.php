@@ -46,6 +46,14 @@
                             <a class="nav-link" href="{{ route('author.index') }}">{{ __('Article') }}</a>
                         </li>
                         @endcan
+                        @can('admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.registered.user') }}">{{ __('Registered User') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.article') }}">{{ __('Article') }}</a>
+                        </li>
+                        @endcan
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

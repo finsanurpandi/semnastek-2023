@@ -13,10 +13,10 @@ class CreateArticleReviewStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_review_statuses', function (Blueprint $table) {
+        Schema::create('article_review', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('article_id')->unsigned();
-            $table->bigInteger('review_status_id')->unsigned();
+            $table->bigInteger('review_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('article_id')
@@ -24,7 +24,7 @@ class CreateArticleReviewStatusesTable extends Migration
                     ->on('articles')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->foreign('review_status_id')
+            $table->foreign('review_id')
                     ->references('id')
                     ->on('review_statuses')
                     ->onUpdate('cascade')

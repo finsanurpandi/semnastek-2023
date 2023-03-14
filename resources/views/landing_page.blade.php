@@ -198,48 +198,51 @@
         <div class="w-full mb-4">
           <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
-        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <img class="inline object-contain mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/60111.jpg') }}" style="width: 250px;" alt="Profile image"/>
-              <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
-                Dr. Ing. Mokhamad Hendayun, Ir
-              </div>
-              <p class="text-gray-800 text-base px-6 mb-5" style="text-align: center;">
-                Narasumber (Menunggu konfirmasi)
-              </p>
-            </a>
+        
+        <div class="flex flex-col md:flex-row">
+          <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
+              <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                  <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/manlian.jpg') }}" style="width: 200px;" alt="Profile image"/>
+                  <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
+                      Prof. Dr. Manlian Ronald A. Simanjuntak, S.T., M.T.
+                  </div>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/manlian.jpg') }}" style="width: 250px;" alt="Profile image"/>
+          <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
+              <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                <img class="inline object-contain mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/60111.jpg') }}" style="width: 200px;" alt="Profile image"/>
                 <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
-                    Prof. Dr. Manlian Ronald A. Simanjuntak, S.T., M.T.
+                  Dr. Ing. Mokhamad Hendayun, Ir
                 </div>
-                <p class="text-gray-800 text-base px-6 mb-5" style="text-align: center;">
-                  Narasumber (Menunggu konfirmasi)
-                </p>
-            </a>
+              </a>
+            </div>
           </div>
-          <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-
+          
+          <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
+              <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                  <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/alisubhan.jpg') }}" style="width: 200px;" alt="Profile image"/>
+                  <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
+                      Dr. Ali Subhan, S.T., M.T.
+                  </div>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/alisubhan.jpg') }}" style="width: 250px;" alt="Profile image"/>
-                <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
-                    Dr. Ali Subhan, S.T., M.T.
-                </div>
-                <p class="text-gray-800 text-base px-6 mb-5" style="text-align: center;">
-                  Narasumber
-                </p>
-            </a>
+          <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+            <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
+              <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                  <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/60111.jpg') }}" style="width: 200px;" alt="Profile image"/>
+                  <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
+                      #
+                  </div>
+              </a>
+            </div>
           </div>
-        </div>
+      </div>
+        
       </div>
     </section>
 
@@ -253,15 +256,29 @@
             </div>
             <div class="relative wrap overflow-hidden p-10 h-full">
                 <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
+                
+                <!-- left timeline -->
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                  <div class="order-1 w-5/12"></div>
+                  <div class="z-20 flex items-center order-1 gradient shadow-xl w-24 h-24 rounded-full">
+                      <h1 class="mx-auto font-semibold text-sm text-white" style="text-decoration-line: line-through; text-decoration-color: red;">31 Maret</h1>
+                  </div>
+                  <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-right" data-aos-duration="1000">
+                  <h3 class="mb-3 font-bold text-white text-lg" style="text-decoration-line: line-through; text-decoration-color: red;">Deadline Submission</h3>
+                  <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100" style="text-decoration-line: line-through; text-decoration-color: red;">Batas akhir pengiriman artikel..</p>
+                  </div>
+              </div>
+
+
                 <!-- right timeline -->
                 <div class="mb-8 flex justify-between items-center w-full right-timeline">
                     <div class="order-first md:order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-first md:order-1 bg-gray-400 shadow-xl w-24 h-24 rounded-full">
-                        <h1 class="mx-auto font-semibold text-sm text-white">31 Maret</h1>
+                        <h1 class="mx-auto font-semibold text-sm text-white">30 April</h1>
                     </div>
                     <div class="order-last md:order-1 gradient rounded-lg shadow-xl px-6 py-4 w-5/12" data-aos="zoom-in-left" data-aos-duration="1000">
-                        <h3 class="mb-3 font-bold text-white text-lg">Deadline Submission</h3>
-                        <p class="text-sm leading-snug tracking-wide text-white text-opacity-100">Batas akhir pengiriman artikel.</p>
+                        <h3 class="mb-3 font-bold text-white text-lg">Extended Deadline Submission</h3>
+                        <p class="text-sm leading-snug tracking-wide text-white text-opacity-100">Penambahan batas akhir pengiriman artikel.</p>
                     </div>
                 </div>
 
@@ -269,7 +286,7 @@
                 <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                     <div class="order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-1 gradient shadow-xl w-24 h-24 rounded-full">
-                        <h1 class="mx-auto font-semibold text-sm text-white">19 April</h1>
+                        <h1 class="mx-auto font-semibold text-sm text-white">15 Mei</h1>
                     </div>
                     <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-right" data-aos-duration="1000">
                     <h3 class="mb-3 font-bold text-white text-lg">Acceptance Notice</h3>
@@ -281,7 +298,7 @@
                 <div class="mb-8 flex justify-between items-center w-full right-timeline">
                     <div class="order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-1 bg-gray-400 shadow-xl w-24 h-24 rounded-full">
-                    <h1 class="mx-auto font-semibold text-sm text-white">19 Mei</h1>
+                    <h1 class="mx-auto font-semibold text-sm text-white">10 Juni</h1>
                     </div>
                     <div class="order-1 gradient rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-left" data-aos-duration="1000">
                     <h3 class="mb-3 font-bold text-white text-lg">Deadline Registration</h3>
@@ -296,8 +313,8 @@
                         <h1 class="mx-auto font-semibold text-sm text-white">20 Juni</h1>
                     </div>
                     <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-right" data-aos-duration="1000">
-                    <h3 class="mb-3 font-bold text-white text-lg">The BIG Day</h3>
-                    <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">Hari pelaksanaan SEMNASTEK-UNSUR 2023.</p>
+                    <h3 class="mb-3 font-bold text-white text-lg">Pelaksanaan SEMNASTEK-UNSUR 2023</h3>
+                    
                     </div>
                 </div>
             </div>
@@ -460,7 +477,7 @@
         <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
           <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
             <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div class="w-full p-8 text-3xl font-bold text-center">Publikasi Artikel dan Seminar</div>
+              <div class="w-full p-8 text-3xl font-bold text-center">Registrasi Pemakalah Artikel</div>
               <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
             </div>
             <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
@@ -470,7 +487,8 @@
               </div>
               <div class="flex items-center justify-center">
                 Sertifikat Digital<br/>
-                Materi Presentasi</br>
+                Materi Presentasi<br/>
+                Presentasi Artikel<br/>
                 Coffee Break dan Makan Siang
               </div>
               <div class="flex items-center justify-center">
@@ -482,12 +500,12 @@
           </div>
           <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
             <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div class="w-full p-8 text-3xl font-bold text-center">Registrasi Seminar</div>
+              <div class="w-full p-8 text-3xl font-bold text-center">Registrasi Seminar Tanpa Artikel</div>
               <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
             </div>
             <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
               <div class="w-full pt-6 text-4xl font-bold text-center">
-                Rp.100.000
+                Rp.280.000
                 <span class="text-base">/orang</span>
               </div>
               <div class="flex items-center justify-center">
@@ -544,7 +562,7 @@
           </div>
           <div class="w-5/6 sm:w-1/2 p-6 bg-white shadow-xl rounded-xl mx-auto" data-aos="fade-up-right" data-aos-delay="100">
               <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                Tempat dan Waktu Kegiatan Semnas Ristek
+                Tempat dan Waktu Kegiatan SEMNASTEK-UNSUR
               </h3>
               <p class="text-gray-600 mb-8">
                 Kegiatan ini dilaksanakan pada <b> 20 Juni 2023 </b> bertempat di Hotel Palace, Cipanas-Cianjur.
@@ -593,6 +611,9 @@
       <a href="{{ asset('template_semnastek.docx') }}" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" target="_blank">
         Unduh Template!
       </a>
+      <h4 class="my-12 text-xl leading-tight">
+        Keseluruhan artikel akan diterbitkan di prosiding Online yang terindeks Google Scholar. <br/>Artikel terpilih akan memiliki kesempatan untuk diterbitkan di Jurnal yang terindeks SINTA <br/>(Prodi Industri SINTA 3, Prodi Informatika SINTA 5, Prodi Sipil SINTA 6)
+      </h4>
     </section>
 
     <!-- Go to top Button -->
@@ -609,6 +630,7 @@
               <div class="flex flex-row mx-auto justify-center opacity-90">
                 <img src="{{ asset('img/unsur_logo.png') }}" width="80px" alt="" srcset="">
                 <img src="{{ asset('img/ft_logo.png') }}" width="80px" class="ml-5" alt="" srcset="">
+                <img src="{{ asset('img/stmik_im.png') }}" width="80px" class="ml-5" title="STMIK IM Bandung" srcset="">
                 <img src="{{ asset('img/km_logo.png') }}" width="80px" class="ml-5" alt="" srcset="">
               </div>
           </div>

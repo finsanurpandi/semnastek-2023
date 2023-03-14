@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Scope extends Model
+class Submission extends Model
 {
     use HasFactory;
 
-    public function department()
-    {
-        return $this->belongsTo(Department::class);
-    }
+    protected $table = 'submission_statuses';
 }

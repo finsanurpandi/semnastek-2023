@@ -5,6 +5,7 @@ use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,8 +74,18 @@ Route::group([
     Route::get('/ajax/getDataScope/{id}', [AuthorController::class, 'getDataScope']);
 
 });
+
+Route::group([
+    'middleware' => 'role:admin',
+    'prefix' => 'admin',
+    'as' => 'admin.'
+], function(){
+    Route::get('/registered-user', [AdminController::class, 'registered_user'])->name('registered.user');
+    Route::get('/article', [AdminController::class, 'article'])->name('article');
+
+});
 Auth::routes();
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
