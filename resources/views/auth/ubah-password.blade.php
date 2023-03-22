@@ -17,7 +17,7 @@
                             </ul>
                         </div>
                     @endif
-                    {!! Form::open(['url' => route('author.password.change.update') ]) !!}
+                    {!! Form::open(['url' => route('password.change.update') ]) !!}
                     <div class="mb-3">
                         {{ Form::label('currentpassword', 'Password Saat Ini') }}
                         {{ Form::password('currentpassword', ['class' => 'form-control', 'required' => 'true']) }}

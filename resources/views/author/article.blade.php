@@ -35,6 +35,10 @@
                                         <button class="btn btn-link text-danger text-small show_confirm" data-name="{{$article->id}}" title="hapus draft">[hapus draft]</button>
                                     {!! Form::close() !!}
                                 @endif
+                                @if($article->submission_status_id == 3)
+                                <a href="{{ route('author.revised_result', $article->id) }}" class="btn btn-warning">Lihat Revisi</a>
+                                @endif
+
                             </td>
                         </tr>
                         @endforeach

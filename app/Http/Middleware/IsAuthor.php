@@ -21,7 +21,7 @@ class IsAuthor
             if (auth()->user()->role_id == 4) {
                 return $next($request);
             }
-            return back()->with('error', 'Anda tidak memiliki akses sebagai participant');
+            return back()->with('error', 'Anda tidak memiliki akses sebagai author');
         } else {
             return redirect('/login');
         }

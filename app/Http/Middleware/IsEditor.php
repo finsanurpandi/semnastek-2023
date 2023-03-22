@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CheckRole
+class IsEditor
 {
     /**
      * Handle an incoming request.
@@ -14,15 +14,15 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, string $role)
+    public function handle(Request $request, Closure $next)
     {
-        if ($role == 'author' && auth()->user()->role_id != 4) {
-            return redirect()->back();
+        if (Auth::check()) {
+            if (auth()->user()->role_id == 5) {
+                return $next($request);
+            }
+            return back()->with('error', 'Anda tidak memiliki akses sebagai participant');
+        } else {
+            return redirect('/login');
         }
-        if ($role == 'editor' && auth()->user()->role_id != 5) {
-            return redirect()->back();
-        }
-
-        return $next($request);
     }
 }

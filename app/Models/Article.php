@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\BlindManuscript;
 
 class Article extends Model
 {
@@ -30,5 +31,10 @@ class Article extends Model
     public function manuscript()
     {
         return $this->hasOne(Manuscript::class);
+    }
+
+    public function blindManuscripts()
+    {
+        return $this->hasMany(BlindManuscript::class, 'article_id');
     }
 }

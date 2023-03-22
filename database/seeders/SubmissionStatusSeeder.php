@@ -31,6 +31,10 @@ class SubmissionStatusSeeder extends Seeder
                 'id' => 4,
                 'name' => 'Published',
             ],
+            [
+                'id' => 5,
+                'name' => 'Declined',
+            ],
         ]);
     }
 }

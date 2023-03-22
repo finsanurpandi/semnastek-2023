@@ -198,48 +198,48 @@
         <div class="w-full mb-4">
           <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
+        <div class="flex flex-col md:flex-row">
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <img class="inline object-contain mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/60111.jpg') }}" style="width: 250px;" alt="Profile image"/>
+              <img class="inline object-contain mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/60111.jpg') }}" style="width: 200px;" alt="Profile image"/>
               <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                 Dr. Ing. Mokhamad Hendayun, Ir
               </div>
-              <p class="text-gray-800 text-base px-6 mb-5" style="text-align: center;">
-                Narasumber (Menunggu konfirmasi)
-              </p>
             </a>
           </div>
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/manlian.jpg') }}" style="width: 250px;" alt="Profile image"/>
+                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/manlian.jpg') }}" style="width: 200px;" alt="Profile image"/>
                 <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                     Prof. Dr. Manlian Ronald A. Simanjuntak, S.T., M.T.
                 </div>
-                <p class="text-gray-800 text-base px-6 mb-5" style="text-align: center;">
-                  Narasumber (Menunggu konfirmasi)
-                </p>
             </a>
-          </div>
-          <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-
           </div>
         </div>
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/alisubhan.jpg') }}" style="width: 250px;" alt="Profile image"/>
+                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/alisubhan.jpg') }}" style="width: 200px;" alt="Profile image"/>
                 <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                     Dr. Ali Subhan, S.T., M.T.
                 </div>
-                <p class="text-gray-800 text-base px-6 mb-5" style="text-align: center;">
-                  Narasumber
-                </p>
             </a>
           </div>
         </div>
+        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+          <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
+            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
+                <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/alisubhan.jpg') }}" style="width: 200px;" alt="Profile image"/>
+                <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
+                    Dr. Ali Subhan, S.T., M.T.
+                </div>
+            </a>
+          </div>
+        </div>
+    </div>
       </div>
     </section>
 
