@@ -13,10 +13,10 @@ class CreateArticleSubmissionStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_submission_statuses', function (Blueprint $table) {
+        Schema::create('article_submission', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('article_id')->unsigned();
-            $table->bigInteger('submission_status_id')->unsigned();
+            $table->bigInteger('submission_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('article_id')
@@ -24,7 +24,7 @@ class CreateArticleSubmissionStatusesTable extends Migration
                     ->on('articles')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->foreign('submission_status_id')
+            $table->foreign('submission_id')
                     ->references('id')
                     ->on('submission_statuses')
                     ->onUpdate('cascade')

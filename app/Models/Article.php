@@ -18,6 +18,11 @@ class Article extends Model
         'corresponding_email',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function scope()
     {
         return $this->belongsTo(Scope::class);
@@ -36,5 +41,18 @@ class Article extends Model
     public function blindManuscripts()
     {
         return $this->hasMany(BlindManuscript::class, 'article_id');
+    public function department()
+    {
+        return $this->hasOneThrough(Department::class, Scope::class);
+    }
+
+    public function submissions()
+    {
+        return $this->belongsToMany(Submission::class);
+    }
+
+    public function submission()
+    {
+        return $this->belongsToMany(Submission::class)->latest()->limit(1);
     }
 }
