@@ -58,6 +58,7 @@
                         <div class="nav-item">
                             <a class="nav-link" href="{{ route('editor.article') }}">{{ __('List Article') }}</a>
                         </div>
+                        @endcan
                         @can('admin')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.registered.user') }}">{{ __('Registered User') }}</a>
