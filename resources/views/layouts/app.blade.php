@@ -51,6 +51,11 @@
                             <a class="nav-link" href="{{ route('reviewer.index') }}">{{ __('List Article') }}</a>
                         </li>
                         @endcan
+                        @can('keuangan')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('keuangan.pembayaran') }}">{{ __('Pembayaran') }}</a>
+                        </li>
+                        @endcan
                         @can('editor')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('editor.index') }}">{{ __('Reviewer') }}</a>

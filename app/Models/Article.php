@@ -41,6 +41,7 @@ class Article extends Model
     public function blindManuscripts()
     {
         return $this->hasMany(BlindManuscript::class, 'article_id');
+    }
     public function department()
     {
         return $this->hasOneThrough(Department::class, Scope::class);

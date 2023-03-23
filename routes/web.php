@@ -9,6 +9,7 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KeuanganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,9 @@ Route::group([
     Route::post('/manuscript/store-revised', [AuthorController::class, 'manuscript_store_revised'])->name('manuscript.store.revised');
     Route::delete('manuscript/{id}/delete', [AuthorController::class, 'manuscript_delete'])->name('manuscript.delete');
 
+    Route::get('/pembayaran/{id}/create', [AuthorController::class, 'pembayaran'])->name('pembayaran.create');
+    Route::post('/pembayaran/store', [AuthorController::class, 'pembayaran_store'])->name('pembayaran.store');
+
     // AJAX
     Route::get('/ajax/getDataScope/{id}', [AuthorController::class, 'getDataScope']);
 });
@@ -83,6 +87,13 @@ Route::group([
 ], function () {
     Route::get('/registered-user', [AdminController::class, 'registered_user'])->name('registered.user');
     Route::get('/article', [AdminController::class, 'article'])->name('article');
+});
+Route::group([
+    'middleware' => 'role:keuangan',
+    'prefix' => 'keuangan',
+    'as' => 'keuangan.'
+], function () {
+    Route::get('/pembayaran', [KeuanganController::class, 'pembayaran'])->name('pembayaran');
 });
 Auth::routes();
 

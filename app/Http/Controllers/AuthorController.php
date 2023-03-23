@@ -14,6 +14,7 @@ use App\Models\Department;
 use App\Models\Scope;
 use App\Models\Author;
 use App\Models\Manuscript;
+use App\Models\Payment;
 use App\Models\Revision;
 use App\Models\User;
 use Session;
@@ -31,8 +32,9 @@ class AuthorController extends Controller
         // $data['articles'] = Article::where('user_id', auth()->user()->id)->get();
         $data['articles'] = DB::table('articles')
             ->leftJoin('article_submission_statuses', 'articles.id', '=', 'article_submission_statuses.article_id')
+            ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
             ->where('articles.user_id', auth()->user()->id)
-            ->select('articles.*', 'article_submission_statuses.article_id', 'article_submission_statuses.submission_status_id')->get();
+            ->select('articles.*', 'payments.payment_file', 'article_submission_statuses.article_id', 'article_submission_statuses.submission_status_id')->get();
 
         // dd($data['articles']);
         return view('author.article')->with($data);
@@ -359,6 +361,47 @@ class AuthorController extends Controller
 
         Session::flash('status', 'Hapus data berhasil!!!');
         return redirect()->back();
+    }
+
+    public function pembayaran($id)
+    {
+        $data['article'] = Article::findOrFail($id);
+        return view('author.pembayaran')->with($data);
+    }
+    public function pembayaran_store(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|image',
+        ]);
+
+        try {
+            // Author::create($request->all());
+            $payment = new Payment;
+
+            $payment->articles_id = $request->article_id;
+            $payment->payment_status = 1;
+            $payment->created_at = Carbon::now();
+            $payment->updated_at = Carbon::now();
+
+            if ($request->hasFile('file')) {
+                $extension = $request->file('file')->extension();
+                $filename = 'payment_' . $request->article_id . '_' . time() . '.' . $extension;
+                $request->file('file')->storeAs(
+                    'public/payments',
+                    $filename
+                );
+                $payment->payment_file = $filename;
+            }
+            $payment->save();
+
+            Session::flash('status', 'Input bukti pembayaran berhasil!!!');
+        } catch (Throwable $e) {
+            report($e);
+
+            return false;
+        }
+
+        return redirect()->route('author.show', $request->article_id);
     }
 
     // AJAX
