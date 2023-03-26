@@ -9,14 +9,15 @@
 
                 <div class="card-body">
                     <a href="{{ route('author.index') }}" class="btn btn-link">[Halaman Utama]</a>
-                    
+
                     <table class="table table-bordered">
                         <tr class="table-primary">
                             <th>Keterangan</th>
                             <th>Tambah/Edit</th>
                             <th>Hasil</th>
                         </tr>
-                        <tr >
+                        @can('author', 'editor')
+                        <tr>
                             <th>Authors</th>
                             <td class="text-center">
                                 @if(!$status)<a href="{{ route('author.add', $article->id)}}" class="btn btn-link"><i class="fa-sharp fa-regular fa-square-plus"></i></a>@endif
@@ -33,6 +34,7 @@
                                 @endif
                             </td>
                         </tr>
+                        @endcan
                         <tr >
                             <th>Judul</th>
                             <td class="text-center">
@@ -64,9 +66,8 @@
                         <tr >
                             <th>Status</th>
                             <td colspan="2">
-                                
-                                @if($status)
-                                    {{$status->name}}
+                                @if($review_status)
+                                    {{$review_status->name}}
                                 @else
                                     draft
                                 @endif
@@ -75,23 +76,23 @@
                         <tr >
                             <th>Manuscript</th>
                             @if($article->active == 1)<td class="text-center">
-                                @if($article->manuscript == null)<a href="{{ route('author.manuscript.create', $article->id) }}" class="btn btn-link"><i class="fa fa-upload"></i></a>@endif    
+                                @if($article->manuscript == null)<a href="{{ route('author.manuscript.create', $article->id) }}" class="btn btn-link"><i class="fa fa-upload"></i></a>@endif
                             </td>@endcan
                             <td>
                                 @if($article->manuscript !== null)
-                                    
+
                                         {!! Form::open(['url' => route('author.manuscript.delete', $article->manuscript->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
-                                        <a href="{{ asset('storage/'.$article->manuscript->file) }}" class="btn btn-link">{{$article->manuscript->file}}</a>
+                                        <a href="{{ asset('storage/manuscript/'.$article->manuscript->file) }}" class="btn btn-link">{{$article->manuscript->file}}</a>
                                         @if(!$status)<button class="btn btn-link text-danger show_confirm" data-name="{{$article->manuscript->file}}" title="hapus manuscript"><i class="fa fa-trash"></i></button>@endif
                                         {!! Form::close() !!}
-                                    
+
                                 @else
                                     <span class="text-danger"><em>Belum unggah dokumen</em></span>
                                 @endif
                             </td>
                         </tr>
-                        
-                        
+
+
                     </table>
                     @if(!$article->authors->isEmpty() && $article->manuscript)
                         {!! Form::open(['url' => route('author.submit', $article->id)]) !!}

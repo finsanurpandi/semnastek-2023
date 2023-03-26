@@ -38,7 +38,13 @@ class UserSeeder extends Seeder
                 'email' => 'participant@unsur.ac.id',
                 'password' => bcrypt('12345'),
                 'role_id' => 4
-            ]
+            ],
+            [
+                'name' => 'Editor',
+                'email' => 'editor@unsur.ac.id',
+                'password' => bcrypt('12345'),
+                'role_id' => 5
+            ],
         ]);
     }
 }

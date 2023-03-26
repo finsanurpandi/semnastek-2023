@@ -37,7 +37,7 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
-                    
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -48,6 +48,24 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('author.index') }}">{{ __('Konfirmasi Pembayaran') }}</a>
                         </li>
+                        @endcan
+                        @can('reviewer')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('reviewer.index') }}">{{ __('List Article') }}</a>
+                        </li>
+                        @endcan
+                        @can('keuangan')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('keuangan.pembayaran') }}">{{ __('Pembayaran') }}</a>
+                        </li>
+                        @endcan
+                        @can('editor')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('editor.index') }}">{{ __('Reviewer') }}</a>
+                        </li>
+                        <div class="nav-item">
+                            <a class="nav-link" href="{{ route('editor.article') }}">{{ __('List Article') }}</a>
+                        </div>
                         @endcan
                         @can('admin')
                         <li class="nav-item">
@@ -77,7 +95,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('author.password.change') }}">
+                                    <a class="dropdown-item" href="{{ route('password.change') }}">
                                         {{ __('Ubah Password') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -145,6 +163,42 @@
             })
         @endif
 
+        $('.show_confirm_approved').click(function(event) {
+          var form =  $(this).closest("form");
+          var nama = $(this).data("name");
+          event.preventDefault();
+          Swal.fire({
+                title: 'Apakah anda yakin?',
+                icon: 'warning',
+                html: "Anda akan menyetujui artikel data dengan ID <strong>"+nama+"</strong>?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Setujui!',
+            }). then((result) => {
+                if(result.value) {
+                    form.submit();
+                }
+            });
+        });
+        $('.show_confirm_rejected').click(function(event) {
+          var form =  $(this).closest("form");
+          var nama = $(this).data("name");
+          event.preventDefault();
+          Swal.fire({
+                title: 'Apakah anda yakin?',
+                icon: 'warning',
+                html: "Anda akan menolak artikel data dengan ID <strong>"+nama+"</strong>?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Tolak!',
+            }). then((result) => {
+                if(result.value) {
+                    form.submit();
+                }
+            });
+        });
         $('.show_confirm').click(function(event) {
           var form =  $(this).closest("form");
           var nama = $(this).data("name");
@@ -225,7 +279,7 @@
         function markAsRead(id)
         {
             var fetch_status;
-            
+
             fetch("{{url('lecture/markAsRead')}}", {
                 method: "POST",
                 headers: {
@@ -239,7 +293,7 @@
             })
             .catch(function (error){
                 console.log(error);
-            });  
+            });
         }
     </script>
 </body>

@@ -16,8 +16,10 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, string $role)
     {
-        if($role == 'author' && auth()->user()->role_id != 4)
-        {
+        if ($role == 'author' && auth()->user()->role_id != 4) {
+            return redirect()->back();
+        }
+        if ($role == 'editor' && auth()->user()->role_id != 5) {
             return redirect()->back();
         }
 
@@ -27,7 +29,5 @@ class CheckRole
         }
 
         return $next($request);
-        
-
     }
 }

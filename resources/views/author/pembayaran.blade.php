@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Tambah Author Artikel #{{$article->id}}</div>
+                <div class="card-header">Upload Bukti Pembayaran #{{$article->id}}</div>
 
                 <div class="card-body">
                     @if ($errors->any())
@@ -17,13 +17,19 @@
                             </ul>
                         </div>
                     @endif
+                    <form action="{{route('author.pembayaran.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="mb-3">
+                            <label id="file">File Bukti Pembayaran</label>
+                            <input type="file" id="file" name="file" class="form-control" accept="image/*" required/>
 
-                    {!! Form::open(['url' => route('author.add.store') ]) !!}
-                        @include('author.form-author')
+                        </div>
+                        {{ Form::hidden('article_id', $article->id, null) }}
+                        <small><em>Format file yang diwajibkan diunggah adalah dalam bentuk foto</em></small>
+                        <hr/>
                         <a href="{{ route('author.show', $article->id) }}" class="btn btn-danger">{{ __('Batal') }}</a>
                        {{ Form::submit('Kirim', ['class' => 'btn btn-primary']) }}
-                       <a href="{{ route('author.detail', $article->id) }}" class="btn btn-link">Tampilkan Semua Author</a>
-                    {!! Form::close() !!}
+                    </form>
                 </div>
             </div>
         </div>

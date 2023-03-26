@@ -208,7 +208,7 @@
         <div class="w-full mb-4">
           <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
-        
+
         <div class="flex flex-col md:flex-row">
           <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
@@ -230,7 +230,7 @@
               </a>
             </div>
           </div>
-          
+
           <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
               <a href="#" class="flex flex-wrap no-underline hover:no-underline">
@@ -252,7 +252,7 @@
             </div>
           </div>
       </div>
-        
+
       </div>
     </section>
 
@@ -266,7 +266,7 @@
             </div>
             <div class="relative wrap overflow-hidden p-10 h-full">
                 <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
-                
+
                 <!-- left timeline -->
                 <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                   <div class="order-1 w-5/12"></div>
@@ -324,7 +324,7 @@
                     </div>
                     <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-right" data-aos-duration="1000">
                     <h3 class="mb-3 font-bold text-white text-lg">Pelaksanaan SEMNASTEK-UNSUR 2023</h3>
-                    
+
                     </div>
                 </div>
             </div>

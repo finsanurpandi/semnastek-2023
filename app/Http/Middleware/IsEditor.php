@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class IsAuthor
+class IsEditor
 {
     /**
      * Handle an incoming request.
@@ -18,10 +17,10 @@ class IsAuthor
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (auth()->user()->role_id == 4) {
+            if (auth()->user()->role_id == 5) {
                 return $next($request);
             }
-            return back()->with('error', 'Anda tidak memiliki akses sebagai author');
+            return back()->with('error', 'Anda tidak memiliki akses sebagai participant');
         } else {
             return redirect('/login');
         }

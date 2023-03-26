@@ -15,7 +15,7 @@
     });
 
     $(document).ready(function(){
-        $('#confirm_password').on('blur', function(e){
+        $('#password-confirm').on('blur', function(e){
             if(e.target.value !== $('#password').val()){
                 Swal.fire({
                     toast: true,
@@ -25,8 +25,8 @@
                     title : "Konfirmasi password tidak sesuai",
                     icon : "error"
                 })
-                $('#confirm_password').val("");
-                $('#confirm_password').focus();
+                $('#password-confirm').val("");
+                $('#password-confirm').focus();
             }
         })
     })
