@@ -8,7 +8,7 @@
                 <div class="card-header">Registered User</div>
 
                 <div class="card-body">
-
+                    
                     <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr class="text-center table-primary">

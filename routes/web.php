@@ -54,8 +54,10 @@ Route::group([
     Route::post('/article/store', [AuthorController::class, 'store'])->name('store');
     Route::patch('/article', [AuthorController::class, 'update'])->name('update');
     Route::post('/article/{id}/submit', [AuthorController::class, 'submit'])->name('submit');
-    Route::delete('/article/{id?}/delete', [AuthorController::class, 'destroy'])->name('destroy');
-
+    Route::delete('/article/{id}/delete', [AuthorController::class, 'destroy'])->name('destroy');
+    Route::delete('/article/{id}/setdraft', [AuthorController::class, 'setdraft'])->name('setdraft');
+    
+    // revision
     Route::get('/article/{id}/revised-result', [AuthorController::class, 'revised_result'])->name('revised_result');
 
     // add author
@@ -87,7 +89,9 @@ Route::group([
 ], function () {
     Route::get('/registered-user', [AdminController::class, 'registered_user'])->name('registered.user');
     Route::get('/article', [AdminController::class, 'article'])->name('article');
+    Route::get('/download/{file}', [AdminController::class, 'download'])->name('download');
 });
+
 Route::group([
     'middleware' => 'role:keuangan',
     'prefix' => 'keuangan',

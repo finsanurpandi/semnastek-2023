@@ -148,9 +148,9 @@ class AuthorController extends Controller
             // ]);
             DB::table('articles')->where('id', $id)->update(['submitted_at' => Carbon::now()]);
 
-            DB::table('article_submission_statuses')->insert([
+            DB::table('article_submission')->insert([
                 'article_id' => $id,
-                'submission_status_id' => 1,
+                'submission_id' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
@@ -179,15 +179,28 @@ class AuthorController extends Controller
         Session::flash('status', 'Hapus data berhasil!!!');
         return redirect()->back();
     }
+    
+    public function setdraft($id)
+    {
+        Article::where('id', $id)
+                ->update([
+                    'submitted_at' => null
+                ]);
+        
+        DB::table('article_submission')->where('article_id', $id)->delete();
+        Session::flash('status', 'Perubahan status menjadi draft berhasil!!!');
+        return redirect()->back();
+    }
 
-    public function revised_result($id)
+// AUTHOR
+
+  public function revised_result($id)
     {
         $articles = Revision::where('article_id', $id)->get();
 
         return view('reviewer.revise-article-result', compact('id', 'articles'));
     }
-
-    // AUTHOR
+    
     public function author_show($id)
     {
         $data['article'] = Article::findOrFail($id);

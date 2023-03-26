@@ -45,6 +45,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('author.index') }}">{{ __('Article') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('author.index') }}">{{ __('Konfirmasi Pembayaran') }}</a>
+                        </li>
                         @endcan
                         @can('reviewer')
                         <li class="nav-item">
@@ -227,6 +230,25 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Ya, kirim sekarang!',
+            }). then((result) => {
+                if(result.value) {
+                    form.submit();
+                }
+            });
+        });
+
+        $('.show_set_draft').click(function(event) {
+          var form =  $(this).closest("form");
+          var nama = $(this).data("name");
+          event.preventDefault();
+          Swal.fire({
+                title: 'Apakah anda yakin',
+                icon: 'warning',
+                html: "Untuk mengubah status artikel id <strong>"+nama+"</strong> menjadi draft kembali?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, lakukan!',
             }). then((result) => {
                 if(result.value) {
                     form.submit();

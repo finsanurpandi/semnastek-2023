@@ -77,7 +77,17 @@
           </ul>
           @if (Route::has('login'))
             @auth
-                <button onclick="logout()" class="text-sm text-white underline">Keluar</button>
+                {{-- <button onclick="logout()" class="text-sm text-white underline">Keluar</button> --}}
+                @can('author')
+                <a href="{{ route('author.index') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  Dashboard
+                </a>
+                @endcan
+                @can('admin')
+                <a href="{{ route('admin.registered.user') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  Dashboard
+                </a>
+                @endcan
             @else
             <div class="flex justify-end">
                 <a href="{{ route('login') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">

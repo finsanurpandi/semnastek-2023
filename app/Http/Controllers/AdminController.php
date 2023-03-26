@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Article;
 
@@ -31,5 +33,11 @@ class AdminController extends Controller
         $data['articles'] = Article::with(['user','authors', 'scope', 'manuscript', 'submission'])->get();
 
         return view('admin.article')->with($data);
+    }
+
+    public function download($file)
+    {
+        $file = Crypt::decryptString($file);
+        return Storage::download($file);
     }
 }
