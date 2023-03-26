@@ -52,6 +52,7 @@ Route::group([
     Route::patch('/article', [AuthorController::class, 'update'])->name('update');
     Route::post('/article/{id}/submit', [AuthorController::class, 'submit'])->name('submit');
     Route::delete('/article/{id}/delete', [AuthorController::class, 'destroy'])->name('destroy');
+    Route::delete('/article/{id}/setdraft', [AuthorController::class, 'setdraft'])->name('setdraft');
 
     // add author
     Route::get('/{id}/show', [AuthorController::class, 'author_show'])->name('detail');
@@ -82,6 +83,7 @@ Route::group([
 ], function(){
     Route::get('/registered-user', [AdminController::class, 'registered_user'])->name('registered.user');
     Route::get('/article', [AdminController::class, 'article'])->name('article');
+    Route::get('/download/{file}', [AdminController::class, 'download'])->name('download');
 
 });
 Auth::routes();

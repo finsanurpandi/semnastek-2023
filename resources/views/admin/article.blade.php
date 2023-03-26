@@ -19,6 +19,7 @@
                             <th>JUDUL</th>
                             <th>AUTHOR KORESPONDENSI - AFILIASI</th>
                             <th>SUBMISSION STATUS</th>
+                            <th>ARTICLE</th>
                             <th>CREATED AT</th>
                         </tr>
                         @php $no = 1; @endphp
@@ -48,6 +49,7 @@
                                         @endforeach
                                     @endif
                                 </td>
+                                <td><a href="{!! route('admin.download', Crypt::EncryptString($article->manuscript->file)) !!}" class="btn btn-link" parent="_blank">{{ $article->manuscript->file }}</a></td>
                                 <td>{{ $article->created_at }}</td>
                             </tr>
                         @endforeach

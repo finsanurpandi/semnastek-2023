@@ -35,6 +35,11 @@
                                         <button class="btn btn-link text-danger text-small show_confirm" data-name="{{$article->id}}" title="hapus draft">[hapus draft]</button>
                                     {!! Form::close() !!}
                                 @endif
+                                @if($article->submitted_at)
+                                    {!! Form::open(['url' => route('author.setdraft', $article->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
+                                        <button class="btn btn-link show_set_draft" data-name="{{$article->id}}" title="set draft">set draft</button>
+                                    {!! Form::close() !!}
+                                @endif
                             </td>
                         </tr>
                         @endforeach
