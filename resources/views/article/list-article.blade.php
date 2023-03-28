@@ -19,6 +19,9 @@
                             <th>TANGGAL SUBMIT</th>
                             <th>ARTIKEL</th>
                             @endcannot
+                            @can('keuangan')
+                            <th>BUKTI BAYAR</th>
+                            @endcan
                             @can('editor')
                             <th>REVIEWER</th>
                             @endcan
@@ -58,18 +61,27 @@
                             <td><a href="{{ asset('storage/manuscript/'.$article->file) }}" class="btn btn-link">Unduh</a></td>
                             <td>{{$article->fullname}}</td>
                             @endcan
-                            @cannot('keuangan')
                             <td>
-
+                                @can('keuangan')
+                                @if($article->submission_id != 4)
+                                {!! Form::open(['url' => route('keuangan.approved_payment', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
+                                    <button class="btn btn-success btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
+                                {!! Form::close() !!}
+                                @endif
+                                @endcan
                                 @can('editor')
                                 @if ($article->reviewer_id == null)
                                 <a href="{{ route('editor.article_detail', ['article_id' => $article->article_id , 'action' => 'detail']) }}" class="btn btn-primary">Assign</a>
                                 @else
-                                <a href="{{ route('editor.article_detail', ['article_id' => $article->article_id , 'action' => 'update']) }}" class="btn btn-warning">Update</a>
+                                    @if ($article->review_id !== 1)
+                                        <a href="{{ route('editor.article_detail', ['article_id' => $article->article_id , 'action' => 'update']) }}" class="btn btn-warning">Update</a>
+                                    @else
+                                    <span class="btn btn-success">Accept Submission</span>
+                                    @endif
                                 @endif
                                 @endcan
                                 @can('reviewer')
-                                @if($article->submission_status_id == 2 && !$article->review_status_id == 3)
+                                @if($article->submission_id == 2 && !$article->review_id == 3)
                                         {!! Form::open(['url' => route('reviewer.approved', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
                                             <button class="btn btn-success btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
                                         {!! Form::close() !!}
@@ -79,20 +91,19 @@
                                         <a href="{{ route('reviewer.revised_form', $article->id) }}" class="btn btn-warning">Revised</a>
                                 @else
 
-                                    @if($article->review_status_id == 1)
+                                    @if($article->review_id == 1)
                                         <span class="btn btn-success">ACCEPTED</span>
-                                    @elseif($article->review_status_id == 4)
+                                    @elseif($article->review_id == 4)
                                         <span class="btn btn-danger">REJECTED</span>
-                                    @elseif($article->review_status_id == 3)
+                                    @elseif($article->review_id == 3)
                                         <a href="{{ route('reviewer.revised_result', $article->id) }}" class="btn btn-primary">Lihat Hasil Revisi</a>
-                                    @elseif($article->review_status_id == 2)
+                                    @elseif($article->review_id == 2)
                                         <a href="{{ route('reviewer.revised_result', $article->id) }}" class="btn btn-warning">Lihat Revisi</a>
                                     @endif
 
                                 @endif
                                 @endcan
                                     </td>
-                            @endcannot
                         </tr>
                         @endforeach
                     </table>

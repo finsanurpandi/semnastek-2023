@@ -20,15 +20,15 @@ class CreateArticleReviewStatusesTable extends Migration
             $table->timestamps();
 
             $table->foreign('article_id')
-                    ->references('id')
-                    ->on('articles')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->references('id')
+                ->on('articles')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreign('review_id')
-                    ->references('id')
-                    ->on('review_statuses')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->references('id')
+                ->on('review_statuses')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
@@ -39,6 +39,6 @@ class CreateArticleReviewStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article_review_statuses');
+        Schema::dropIfExists('article_review');
     }
 }

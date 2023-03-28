@@ -40,7 +40,27 @@
         <td colspan="2">
 
             @if($status)
-                {{$status->name}}
+                @can('reviewer')
+                    {{-- when a review_id "resubmit for review", reiviewer's page will provide this message --}}
+                    @if($review_status->review_id === 3)
+                        {{$review_status->name}}
+                    @elseif($review_status->review_id === 1 && $status->submission_id === 4)
+                        {{$status->name}}
+                    @elseif($review_status->review_id === 1)
+                        {{$review_status->name}}
+                    @else
+                        {{$status->name}}
+                    @endif
+                @endcan
+                @cannot('reviewer')
+                @if($review_status->review_id === 1 && $status->submission_id === 4)
+                    {{$status->name}}
+                @elseif($review_status->review_id === 1)
+                    {{$review_status->name}}
+                @else
+                    {{$status->name}}
+                @endif
+                @endcannot
             @else
                 draft
             @endif

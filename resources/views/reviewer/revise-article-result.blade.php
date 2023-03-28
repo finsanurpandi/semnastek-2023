@@ -26,7 +26,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>File Hasil Revisi</th>
+                            <th>Unggah File Hasil Revisi</th>
                             <td>
                                 @if($article->new_file !== null)
                                     <a href="{{ asset('storage/result_revise_manuscript/'.$article->new_file) }}" class="btn btn-link">Unduh File</a>

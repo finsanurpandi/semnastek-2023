@@ -88,6 +88,11 @@
                   Dashboard
                 </a>
                 @endcan
+                @canany(['keuangan', 'reviewer', 'editor'])
+                    <a href="{{ url('/home') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                        Home
+                    </a>
+                @endcanany
             @else
             <div class="flex justify-end">
                 <a href="{{ route('login') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">

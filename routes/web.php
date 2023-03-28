@@ -56,7 +56,7 @@ Route::group([
     Route::post('/article/{id}/submit', [AuthorController::class, 'submit'])->name('submit');
     Route::delete('/article/{id}/delete', [AuthorController::class, 'destroy'])->name('destroy');
     Route::delete('/article/{id}/setdraft', [AuthorController::class, 'setdraft'])->name('setdraft');
-    
+
     // revision
     Route::get('/article/{id}/revised-result', [AuthorController::class, 'revised_result'])->name('revised_result');
 
@@ -75,6 +75,7 @@ Route::group([
     Route::post('/manuscript/store-revised', [AuthorController::class, 'manuscript_store_revised'])->name('manuscript.store.revised');
     Route::delete('manuscript/{id}/delete', [AuthorController::class, 'manuscript_delete'])->name('manuscript.delete');
 
+    Route::get('/article/pembayaran', [AuthorController::class, 'article_pembayaran'])->name('pembayaran');
     Route::get('/pembayaran/{id}/create', [AuthorController::class, 'pembayaran'])->name('pembayaran.create');
     Route::post('/pembayaran/store', [AuthorController::class, 'pembayaran_store'])->name('pembayaran.store');
 
@@ -98,6 +99,7 @@ Route::group([
     'as' => 'keuangan.'
 ], function () {
     Route::get('/pembayaran', [KeuanganController::class, 'pembayaran'])->name('pembayaran');
+    Route::post('/pembayaran/{id}/approved', [KeuanganController::class, 'approved'])->name('approved_payment');
 });
 Auth::routes();
 

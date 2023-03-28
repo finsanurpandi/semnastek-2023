@@ -35,25 +35,16 @@
                                         <button class="btn btn-link text-danger text-small show_confirm" data-name="{{$article->id}}" title="hapus draft">[hapus draft]</button>
                                     {!! Form::close() !!}
                                 @endif
-                                
+
                                 @if($article->submitted_at)
                                     {!! Form::open(['url' => route('author.setdraft', $article->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
                                         <button class="btn btn-link show_set_draft" data-name="{{$article->id}}" title="set draft">set draft</button>
                                     {!! Form::close() !!}
                                 @endif
 
-                                @if($article->submission_status_id == 3)
+                                @if($article->submission_id == 3)
                                     <a href="{{ route('author.revised_result', $article->id) }}" class="btn btn-warning">Lihat Revisi</a>
                                 @endif
-                                
-                                @if($article->submission_status_id == 4)
-                                    @if ($article->payment_file === null)
-                                        <a href="{{ route('author.pembayaran.create', $article->id) }}" class="btn btn-link"><i class="fa fa-upload"></i></a>
-                                    @else
-                                        <p>Sudah dibayar</p>
-                                    @endif
-                                @endif
-                                
                             </td>
                         </tr>
                         @endforeach

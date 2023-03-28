@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use App\Models\Article;
-use App\Models\ArticleReviewStatus;
+use App\Models\ArticleReview;
 use App\Models\Department;
 use App\Models\Scope;
 use App\Models\Author;
@@ -42,11 +42,11 @@ class ReviewController extends Controller
 
         $articles = $blindManuscripts->map(function ($blindManuscript) {
             return DB::table('articles')
-                ->leftJoin('article_submission_statuses', 'articles.id', '=', 'article_submission_statuses.article_id')
-                ->leftJoin('article_review_statuses', 'articles.id', '=', 'article_review_statuses.article_id')
+                ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
+                ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
                 ->leftJoin('blind_manuscripts', 'blind_manuscripts.article_id', '=', 'articles.id')
                 ->where('blind_manuscripts.id', '=', $blindManuscript->id)
-                ->select('articles.*', 'article_submission_statuses.submission_status_id', 'article_review_statuses.review_status_id', 'blind_manuscripts.file')
+                ->select('articles.*', 'article_submission.submission_id', 'article_review.review_id', 'blind_manuscripts.file')
                 ->first();
         });
         return view('article.list-article', compact('articles'));
@@ -54,16 +54,23 @@ class ReviewController extends Controller
 
     public function show($id)
     {
-        $data['status'] = DB::table('article_submission_statuses')
-            ->leftJoin('articles', 'article_submission_statuses.article_id', '=', 'articles.id')
-            ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission_statuses.submission_status_id')
+        $data['status'] = DB::table('article_submission')
+            ->leftJoin('articles', 'article_submission.article_id', '=', 'articles.id')
+            ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission.submission_id')
             ->where('articles.id', $id)
-            ->select('articles.id', 'article_submission_statuses.*', 'submission_statuses.name')
-            ->orderBy('article_submission_statuses.id', 'DESC')
+            ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
+            ->orderBy('article_submission.id', 'DESC')
+            ->first();
+        $data['review_status'] = DB::table('articles')
+            ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
+            ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
+            ->where('articles.id', $id)
+            ->select('articles.id', 'article_review.review_id', 'review_statuses.name')
+            ->orderBy('article_review.id', 'DESC')
             ->first();
         $data['article'] = Article::where('id', $id)->with(['authors', 'scope', 'manuscript'])->first();
 
-        // dd($data['article']);
+        // dd($data['review_status']);
         return view('article.show')->with($data);
     }
 
@@ -71,14 +78,14 @@ class ReviewController extends Controller
     {
 
         try {
-            DB::table('article_submission_statuses')
+            DB::table('article_submission')
                 ->where('article_id', $id)
-                ->update(['submission_status_id' => 4]);
+                ->update(['submission_id' => 2]);
 
-            $status = new ArticleReviewStatus;
+            $status = new ArticleReview;
 
             $status->article_id = $id;
-            $status->review_status_id = 1;
+            $status->review_id = 1;
             $status->created_at = Carbon::now();
             $status->updated_at = Carbon::now();
 
@@ -96,12 +103,12 @@ class ReviewController extends Controller
     {
 
         try {
-            DB::table('article_submission_statuses')
+            DB::table('article_submission')
                 ->where('article_id', $id)
-                ->update(['submission_status_id' => 4]);
-            DB::table('article_review_statuses')
+                ->update(['submission_id' => 2]);
+            DB::table('article_review')
                 ->where('article_id', $id)
-                ->update(['review_status_id' => 1, 'updated_at' => Carbon::now()]);
+                ->update(['review_id' => 1, 'updated_at' => Carbon::now()]);
         } catch (Throwable $th) {
             report($e);
 
@@ -115,14 +122,14 @@ class ReviewController extends Controller
     {
 
         try {
-            DB::table('article_submission_statuses')
+            DB::table('article_submission')
                 ->where('article_id', $id)
-                ->update(['submission_status_id' => 5]);
+                ->update(['submission_id' => 5]);
 
-            $status = new ArticleReviewStatus;
+            $status = new ArticleReview;
 
             $status->article_id = $id;
-            $status->review_status_id = 4;
+            $status->review_id = 4;
             $status->created_at = Carbon::now();
             $status->updated_at = Carbon::now();
 
@@ -140,12 +147,12 @@ class ReviewController extends Controller
     {
 
         try {
-            DB::table('article_submission_statuses')
+            DB::table('article_submission')
                 ->where('article_id', $id)
-                ->update(['submission_status_id' => 5]);
-            DB::table('article_review_statuses')
+                ->update(['submission_id' => 5]);
+            DB::table('article_review')
                 ->where('article_id', $id)
-                ->update(['review_status_id' => 4, 'updated_at' => Carbon::now()]);
+                ->update(['review_id' => 4, 'updated_at' => Carbon::now()]);
         } catch (Throwable $th) {
             report($e);
 
@@ -191,13 +198,13 @@ class ReviewController extends Controller
             }
 
             try {
-                DB::table('article_submission_statuses')
+                DB::table('article_submission')
                     ->where('article_id', $request->article_id)
-                    ->update(['submission_status_id' => 3]);
-                $status = new ArticleReviewStatus;
+                    ->update(['submission_id' => 3]);
+                $status = new ArticleReview;
 
                 $status->article_id = $request->article_id;
-                $status->review_status_id = 2;
+                $status->review_id = 2;
                 $status->created_at = Carbon::now();
                 $status->updated_at = Carbon::now();
 
@@ -246,12 +253,12 @@ class ReviewController extends Controller
             }
 
             try {
-                DB::table('article_submission_statuses')
+                DB::table('article_submission')
                     ->where('article_id', $request->article_id)
-                    ->update(['submission_status_id' => 3]);
-                DB::table('article_review_statuses')
+                    ->update(['submission_id' => 3]);
+                DB::table('article_review')
                     ->where('article_id', $request->article_id)
-                    ->update(['review_status_id' => 2, 'updated_at' => Carbon::now()]);
+                    ->update(['review_id' => 2, 'updated_at' => Carbon::now()]);
             } catch (Throwable $th) {
                 report($e);
 

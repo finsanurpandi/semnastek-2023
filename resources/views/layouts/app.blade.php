@@ -46,7 +46,7 @@
                             <a class="nav-link" href="{{ route('author.index') }}">{{ __('Article') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('author.index') }}">{{ __('Konfirmasi Pembayaran') }}</a>
+                            <a class="nav-link" href="{{ route('author.pembayaran') }}">{{ __('Konfirmasi Pembayaran') }}</a>
                         </li>
                         @endcan
                         @can('reviewer')

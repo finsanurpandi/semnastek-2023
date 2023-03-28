@@ -19,7 +19,7 @@
                     @endif
                     {!! Form::model($reviewer, ['url' => route('editor.update'), 'method' => 'PATCH']) !!}
                         @include('editor.form-edit')
-                        <a href="{{ route('editor.show', $reviewer->id) }}" class="btn btn-danger">{{ __('Batal') }}</a>
+                        <a href="{{ route('editor.index', $reviewer->id) }}" class="btn btn-danger">{{ __('Batal') }}</a>
                        {{ Form::submit('Update', ['class' => 'btn btn-success']) }}
                     {!! Form::close() !!}
                 </div>

@@ -66,8 +66,19 @@
                         <tr >
                             <th>Status</th>
                             <td colspan="2">
-                                @if($review_status)
+                                @if($status)
+                                    {{-- when a status "submission in editing", author's page will provide a message "revision required", and show a message "accept submission" when reviewer was a proved --}}
+                                    @if($status->submission_id !== 3)
+                                        @if($review_status->review_id === 1 && $status->submission_id === 4)
+                                            {{$status->name}}
+                                        @elseif($review_status->review_id === 1)
+                                            {{$review_status->name}}
+                                        @else
+                                            {{$status->name}}
+                                        @endif
+                                    @else
                                     {{$review_status->name}}
+                                    @endif
                                 @else
                                     draft
                                 @endif

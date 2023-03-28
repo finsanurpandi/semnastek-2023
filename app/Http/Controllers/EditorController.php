@@ -28,12 +28,19 @@ class EditorController extends Controller
 
     public function show($id)
     {
-        $data['status'] = DB::table('article_submission_statuses')
-            ->leftJoin('articles', 'article_submission_statuses.article_id', '=', 'articles.id')
-            ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission_statuses.submission_status_id')
+        $data['status'] = DB::table('article_submission')
+            ->leftJoin('articles', 'article_submission.article_id', '=', 'articles.id')
+            ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission.submission_id')
             ->where('articles.id', $id)
-            ->select('articles.id', 'article_submission_statuses.*', 'submission_statuses.name')
-            ->orderBy('article_submission_statuses.id', 'DESC')
+            ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
+            ->orderBy('article_submission.id', 'DESC')
+            ->first();
+        $data['review_status'] = DB::table('articles')
+            ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
+            ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
+            ->where('articles.id', $id)
+            ->select('articles.id', 'article_review.review_id', 'review_statuses.name')
+            ->orderBy('article_review.id', 'DESC')
             ->first();
         $data['article'] = Article::where('id', $id)->with(['authors', 'scope', 'manuscript'])->first();
 
@@ -111,6 +118,7 @@ class EditorController extends Controller
     {
         $articles = DB::table('articles')
             ->leftJoin('blind_manuscripts', 'articles.id', '=', 'blind_manuscripts.article_id')
+            ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
             ->leftJoin('reviewers', 'blind_manuscripts.reviewer_id', '=', 'reviewers.id')
             ->leftJoin('manuscripts', 'articles.id', '=', 'manuscripts.article_id')
             ->select('*')
@@ -122,12 +130,19 @@ class EditorController extends Controller
 
     public function article_detail($article_id, $action)
     {
-        $data['status'] = DB::table('article_submission_statuses')
-            ->leftJoin('articles', 'article_submission_statuses.article_id', '=', 'articles.id')
-            ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission_statuses.submission_status_id')
+        $data['status'] = DB::table('article_submission')
+            ->leftJoin('articles', 'article_submission.article_id', '=', 'articles.id')
+            ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission.submission_id')
             ->where('articles.id', $article_id)
-            ->select('articles.id', 'article_submission_statuses.*', 'submission_statuses.name')
-            ->orderBy('article_submission_statuses.id', 'DESC')
+            ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
+            ->orderBy('article_submission.id', 'DESC')
+            ->first();
+        $data['review_status'] = DB::table('articles')
+            ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
+            ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
+            ->where('articles.id', $article_id)
+            ->select('articles.id', 'article_review.review_id', 'review_statuses.name')
+            ->orderBy('article_review.id', 'DESC')
             ->first();
         $data['article'] = Article::where('id', $article_id)->with(['authors', 'scope', 'manuscript'])->first();
         $data['reviewer'] = Reviewer::all();
@@ -166,9 +181,9 @@ class EditorController extends Controller
             }
 
             try {
-                DB::table('article_submission_statuses')
+                DB::table('article_submission')
                     ->where('article_id', $request->article_id)
-                    ->update(['submission_status_id' => 2]);
+                    ->update(['submission_id' => 2]);
             } catch (Throwable $th) {
                 report($e);
 

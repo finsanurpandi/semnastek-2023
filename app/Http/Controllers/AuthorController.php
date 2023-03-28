@@ -31,10 +31,10 @@ class AuthorController extends Controller
     {
         // $data['articles'] = Article::where('user_id', auth()->user()->id)->get();
         $data['articles'] = DB::table('articles')
-            ->leftJoin('article_submission_statuses', 'articles.id', '=', 'article_submission_statuses.article_id')
+            ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
             ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
             ->where('articles.user_id', auth()->user()->id)
-            ->select('articles.*', 'payments.payment_file', 'article_submission_statuses.article_id', 'article_submission_statuses.submission_status_id')->get();
+            ->select('articles.*', 'payments.payment_file', 'article_submission.article_id', 'article_submission.submission_id')->get();
 
         // dd($data['articles']);
         return view('author.article')->with($data);
@@ -43,29 +43,32 @@ class AuthorController extends Controller
     public function show($id)
     {
         // $data['status'] = DB::table('articles')
-        //                     ->leftJoin('article_submission_statuses', 'article_submission_statuses.article_id', '=', 'articles.id')
-        //                     ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission_statuses.submission_status_id')
+        //                     ->leftJoin('article_submission', 'article_submission.article_id', '=', 'articles.id')
+        //                     ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission.submission_id')
         //                     ->where('articles.id',$id)
-        //                     ->select('articles.id', 'article_submission_statuses.*', 'submission_statuses.name')
-        //                     ->orderBy('article_submission_statuses.id', 'DESC')
+        //                     ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
+        //                     ->orderBy('article_submission.id', 'DESC')
         //                     ->first();
 
-        $data['status'] = DB::table('article_submission_statuses')
-            ->leftJoin('articles', 'article_submission_statuses.article_id', '=', 'articles.id')
-            ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission_statuses.submission_status_id')
+        $data['status'] = DB::table('article_submission')
+            ->leftJoin('articles', 'article_submission.article_id', '=', 'articles.id')
+            ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission.submission_id')
             ->where('articles.id', $id)
-            ->select('articles.id', 'article_submission_statuses.*', 'submission_statuses.name')
-            ->orderBy('article_submission_statuses.id', 'DESC')
+            ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
+            ->orderBy('article_submission.id', 'DESC')
             ->first();
-        $data['review_status'] = DB::table('article_review_statuses')
-            ->leftJoin('articles', 'article_review_statuses.article_id', '=', 'articles.id')
-            ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review_statuses.review_status_id')
+        $data['review_status'] = DB::table('articles')
+            ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
+            ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
             ->where('articles.id', $id)
-            ->select('articles.id', 'article_review_statuses.*', 'review_statuses.name')
-            ->orderBy('article_review_statuses.id', 'DESC')
+            ->select('articles.id', 'article_review.review_id', 'review_statuses.name')
+            ->orderBy('article_review.id', 'DESC')
             ->first();
+
         $data['article'] = Article::where('id', $id)->with(['authors', 'scope', 'manuscript'])->first();
 
+        // dd($data['status']);
+        // dd($data['review_status']);
         return view('author.show')->with($data);
     }
 
@@ -179,28 +182,28 @@ class AuthorController extends Controller
         Session::flash('status', 'Hapus data berhasil!!!');
         return redirect()->back();
     }
-    
+
     public function setdraft($id)
     {
         Article::where('id', $id)
-                ->update([
-                    'submitted_at' => null
-                ]);
-        
+            ->update([
+                'submitted_at' => null
+            ]);
+
         DB::table('article_submission')->where('article_id', $id)->delete();
         Session::flash('status', 'Perubahan status menjadi draft berhasil!!!');
         return redirect()->back();
     }
 
-// AUTHOR
+    // AUTHOR
 
-  public function revised_result($id)
+    public function revised_result($id)
     {
         $articles = Revision::where('article_id', $id)->get();
 
         return view('reviewer.revise-article-result', compact('id', 'articles'));
     }
-    
+
     public function author_show($id)
     {
         $data['article'] = Article::findOrFail($id);
@@ -347,13 +350,13 @@ class AuthorController extends Controller
                     ->where('article_id', $request->article_id)
                     ->update(['new_file' => $filename, 'updated_at' => Carbon::now()]);
 
-                DB::table('article_submission_statuses')
+                DB::table('article_submission')
                     ->where('article_id', $request->article_id)
-                    ->update(['submission_status_id' => 2]);
+                    ->update(['submission_id' => 2]);
 
-                DB::table('article_review_statuses')
+                DB::table('article_review')
                     ->where('article_id', $request->article_id)
-                    ->update(['review_status_id' => 3]);
+                    ->update(['review_id' => 3]);
             }
 
             Session::flash('status', 'Dokument Terbaru berhasi ditambahkan data berhasil!!!');
@@ -376,6 +379,17 @@ class AuthorController extends Controller
         return redirect()->back();
     }
 
+    public function article_pembayaran()
+    {
+        $data['articles'] = DB::table('articles')
+            ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
+            ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
+            ->where('articles.user_id', auth()->user()->id)
+            ->select('articles.*', 'payments.payment_file', 'article_submission.article_id', 'article_submission.submission_id')->get();
+
+        // dd($data['articles']);
+        return view('author.konfirmasi-pembayaran')->with($data);
+    }
     public function pembayaran($id)
     {
         $data['article'] = Article::findOrFail($id);
