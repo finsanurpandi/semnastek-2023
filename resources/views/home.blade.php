@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header" style="color: white; background-image: linear-gradient(90deg, #36368d 0%, #343563 100%);">{{ __('Home') }}</div>
+                <div class="card-header gradient text-white ">{{ __('Home') }}</div>
 
                 <div class="card-body">
                     Selamat datang di SEMNASTEK-UNSUR.

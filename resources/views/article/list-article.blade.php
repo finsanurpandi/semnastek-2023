@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">List Artikel</div>
+                <div class="card-header gradient text-white ">List Artikel</div>
 
                 <div class="card-body">
                     <div class="table-responsive">
                     <table class="table table-bordered">
-                        <tr class="text-center table-primary">
+                        <tr class="text-center bg-secondary text-white">
                             <th>NO</th>
                             <th>ID ARTIKEL</th>
                             <th>JUDUL</th>

@@ -5,13 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Revisi Artikel') }}</div>
+                <div class="card-header gradient text-white ">{{ __('Revisi Artikel') }}</div>
 
                 <div class="card-body">
                     @foreach ($articles as $article)
                     <span class="">Revisi Tanggal - {{$article->created_at}}</span>
                     <table class="table table-bordered">
-                        <tr class="table-primary">
+                        <tr class="bg-secondary text-white">
                             <th>Keterangan</th>
                             <th>Hasil</th>
                         </tr>

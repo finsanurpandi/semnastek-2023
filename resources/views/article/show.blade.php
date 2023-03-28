@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Detail Artikel #{{$article->id}}</div>
+                <div class="card-header gradient text-white ">Detail Artikel #{{$article->id}}</div>
 
                 <div class="card-body">
                     @can('reviewer')

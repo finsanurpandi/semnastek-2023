@@ -5,13 +5,36 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Detail Artikel #{{$article->id}}</div>
-
+                <div class="card-header d-flex justify-content-between gradient text-white ">
+                    <span class="align-self-center">Detail Artikel #{{$article->id}}</span>
+                    <a href="{{ route('author.index') }}" class="btn btn-link text-white"><i class="fas fa-arrow-left"></i> Kembali</a>
+                </div>
                 <div class="card-body">
-                    <a href="{{ route('author.index') }}" class="btn btn-link">[Halaman Utama]</a>
+                    <div class="flex justify-between">
+                        <h3>
+                            <span class="badge bg-info"> Status :
+                        @if($status)
+                            {{-- when a status "submission in editing", author's page will provide a message "revision required", and show a message "accept submission" when reviewer was a proved --}}
+                            @if($status->submission_id !== 3)
+                                @if($review_status->review_id === 1 && $status->submission_id === 4)
+                                    {{$status->name}}
+                                @elseif($review_status->review_id === 1)
+                                    {{$review_status->name}}
+                                @else
+                                {{$status->name}}
+                                @endif
+                            @else
+                                {{$review_status->name}}
+                            @endif
+                        @else
+                            Draft
+                        @endif
+                        </span>
+                        </h3>
+                    </div>
 
                     <table class="table table-bordered">
-                        <tr class="table-primary">
+                        <tr class="bg-secondary text-white">
                             <th>Keterangan</th>
                             <th>Tambah/Edit</th>
                             <th>Hasil</th>
@@ -62,27 +85,6 @@
                                 @if(!$status)<a href="{{ route('author.edit', ['id' => $article->id, 'tag' => 'scope']) }}" class="btn btn-link"><i class="fa fa-edit"></i></a>@endcan
                             </td>
                             <td>{{ $article->scope->scope }}</td>
-                        </tr>
-                        <tr >
-                            <th>Status</th>
-                            <td colspan="2">
-                                @if($status)
-                                    {{-- when a status "submission in editing", author's page will provide a message "revision required", and show a message "accept submission" when reviewer was a proved --}}
-                                    @if($status->submission_id !== 3)
-                                        @if($review_status->review_id === 1 && $status->submission_id === 4)
-                                            {{$status->name}}
-                                        @elseif($review_status->review_id === 1)
-                                            {{$review_status->name}}
-                                        @else
-                                            {{$status->name}}
-                                        @endif
-                                    @else
-                                    {{$review_status->name}}
-                                    @endif
-                                @else
-                                    draft
-                                @endif
-                            </td>
                         </tr>
                         <tr >
                             <th>Manuscript</th>

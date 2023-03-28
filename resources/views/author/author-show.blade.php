@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Semua Author untuk Artikel #{{$article->id}}</div>
+                <div class="card-header gradient text-white ">Semua Author untuk Artikel #{{$article->id}}</div>
 
                 <div class="card-body">
                     <a href="{{ route('author.add', $article->id) }}" class="btn btn-primary">Tambah Author</a>
@@ -13,7 +13,7 @@
                     <br/><hr/>
                     <div class="table-responsive">
                     <table class="table table-bordered">
-                        <tr class="text-center table-primary">
+                        <tr class="text-center bg-secondary text-white">
                             <th>NO</th>
                             <th>NAMA</th>
                             <th>EMAIL</th>

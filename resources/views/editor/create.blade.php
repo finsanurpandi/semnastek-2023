@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Tambah Reviewer') }}</div>
+                <div class="card-header gradient text-white ">{{ __('Tambah Reviewer') }}</div>
 
                 <div class="card-body">
                     @if ($errors->any())
