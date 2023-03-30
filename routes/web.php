@@ -27,6 +27,13 @@ Route::get('/', function () {
 })->name('landing_page');
 
 
+Auth::routes();
+
+// Auth::routes(['verify' => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 Route::view('/unsur', 'author.page')->name('notus');
 
 // Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -101,12 +108,6 @@ Route::group([
     Route::get('/pembayaran', [KeuanganController::class, 'pembayaran'])->name('pembayaran');
     Route::post('/pembayaran/{id}/approved', [KeuanganController::class, 'approved'])->name('approved_payment');
 });
-Auth::routes();
-
-// Auth::routes(['verify' => true]);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::group([
     'middleware' => 'role:editor',

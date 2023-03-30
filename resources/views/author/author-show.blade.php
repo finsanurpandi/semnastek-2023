@@ -21,20 +21,26 @@
                             <th>AKSI</th>
                         </tr>
                         @php $no = 1; @endphp
-                        @foreach ($authors as $author)
-                        <tr class="text-center">
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $author->firstname.' '.$author->lastname}}</td>
-                            <td>{{ $author->email }}</td>
-                            <td>{{ $author->affiliation }}</td>
-                            <td>
-                                {!! Form::open(['url' => route('author.ubah.delete', $author->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
-                                        <a href="{{ route('author.ubah', $author->id) }}" class="btn btn-link" title="Edit Author"><i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-link text-danger show_confirm" data-name="{{$author->firstname.' '.$author->lastname}}"><i class="fa fa-trash"></i></button>
-                                {!! Form::close() !!}
-                            </td>
-                        </tr>
-                        @endforeach
+                        @if (count($authors) > 0)
+                            @foreach ($authors as $author)
+                            <tr class="text-center">
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $author->firstname.' '.$author->lastname}}</td>
+                                <td>{{ $author->email }}</td>
+                                <td>{{ $author->affiliation }}</td>
+                                <td>
+                                    {!! Form::open(['url' => route('author.ubah.delete', $author->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
+                                            <a href="{{ route('author.ubah', $author->id) }}" class="btn btn-link" title="Edit Author"><i class="fa fa-edit"></i></a>
+                                            <button class="btn btn-link text-danger show_confirm" data-name="{{$author->firstname.' '.$author->lastname}}"><i class="fa fa-trash"></i></button>
+                                    {!! Form::close() !!}
+                                </td>
+                            </tr>
+                            @endforeach
+                        @else
+                            <tr class="text-center">
+                                <td colspan="5">Data author kosong</td>
+                            </tr>
+                        @endif
                     </table>
                     </div>
                     <hr/>

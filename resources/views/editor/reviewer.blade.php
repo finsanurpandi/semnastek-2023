@@ -20,19 +20,26 @@
                             <th>AKSI</th>
                         </tr>
                         @php $no = 1; @endphp
-                        @foreach ($reviewers as $reviewer)
-                        <tr class="text-center">
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $reviewer->email }}</td>
-                            <td>{{ $reviewer->fullname }}</td>
-                            <td>
-                                    {!! Form::open(['url' => route('editor.destroy', $reviewer->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
-                                        <a href="{{ route('editor.edit', ['id' => $reviewer->id]) }}" class="btn btn-link"><i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-link text-danger text-small show_confirm" data-name="{{$reviewer->fullname}}" title="hapus reviewer"><i class="fa fa-trash"></i></button>
-                                    {!! Form::close() !!}
-                            </td>
-                        </tr>
-                        @endforeach
+
+                        @if (count($reviewers) > 0)
+                            @foreach ($reviewers as $reviewer)
+                            <tr class="text-center">
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $reviewer->email }}</td>
+                                <td>{{ $reviewer->fullname }}</td>
+                                <td>
+                                        {!! Form::open(['url' => route('editor.destroy', $reviewer->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
+                                            <a href="{{ route('editor.edit', ['id' => $reviewer->id]) }}" class="btn btn-link"><i class="fa fa-edit"></i></a>
+                                            <button class="btn btn-link text-danger text-small show_confirm" data-name="{{$reviewer->fullname}}" title="hapus reviewer"><i class="fa fa-trash"></i></button>
+                                        {!! Form::close() !!}
+                                </td>
+                            </tr>
+                            @endforeach
+                        @else
+                            <tr class="text-center">
+                                <td colspan="4">Data reviewer kosong</td>
+                            </tr>
+                        @endif
                     </table>
                     </div>
                 </div>

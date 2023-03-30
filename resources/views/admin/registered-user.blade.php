@@ -19,6 +19,7 @@
                             <th>AKSI</th>
                         </tr>
                         @php $no = 1; @endphp
+                        @if (count($users) > 0)
                         @foreach ($users as $user)
                             <tr class="text-center">
                                 <td>{{ $no++ }}</td>
@@ -28,6 +29,11 @@
                                 <td></td>
                             </tr>
                         @endforeach
+                        @else
+                            <tr class="text-center">
+                                <td colspan="5">Data kosong</td>
+                            </tr>
+                        @endif
                     </table>
                     </div>
                 </div>

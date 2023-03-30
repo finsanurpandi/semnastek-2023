@@ -22,9 +22,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="body-image">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md bg-navbar shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'SEMNASTEK-UNSUR') }}
@@ -99,11 +99,9 @@
                                     <a class="dropdown-item" href="{{ route('password.change') }}">
                                         {{ __('Ubah Password') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="#" onclick="confirmLogout();">
                                         {{ __('Logout') }}
-                                    </a>
+                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -127,8 +125,9 @@
         @if(session('status'))
             const Toast = Swal.mixin({
                 toast: true,
-                position: 'top-end',
+                position: 'bottom-end',
                 showConfirmButton: false,
+                confirmButtonColor: '#36368d',
                 timer: 3000,
                 timerProgressBar: true,
                 didOpen: (toast) => {
@@ -149,8 +148,9 @@
         @if(session('failed'))
             const Toast = Swal.mixin({
                 toast: true,
-                position: 'top-end',
+                position: 'bottom-end',
                 showConfirmButton: false,
+                confirmButtonColor: '#36368d',
                 timer: 3000,
                 timerProgressBar: true,
                 didOpen: (toast) => {
@@ -173,8 +173,8 @@
                 icon: 'warning',
                 html: "Anda akan menyetujui artikel data dengan ID <strong>"+nama+"</strong>?",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#36368d',
+                cancelButtonColor: '#de1508',
                 confirmButtonText: 'Ya, Setujui!',
             }). then((result) => {
                 if(result.value) {
@@ -191,8 +191,8 @@
                 icon: 'warning',
                 html: "Anda akan menolak artikel data dengan ID <strong>"+nama+"</strong>?",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#36368d',
+                cancelButtonColor: '#de1508',
                 confirmButtonText: 'Ya, Tolak!',
             }). then((result) => {
                 if(result.value) {
@@ -209,8 +209,8 @@
                 icon: 'warning',
                 html: "Anda akan menghapus data dengan nama <strong>"+nama+"</strong> dan tidak dapat mengembalikannya kembali",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#36368d',
+                cancelButtonColor: '#de1508',
                 confirmButtonText: 'Ya, hapus saja!',
             }). then((result) => {
                 if(result.value) {
@@ -228,8 +228,8 @@
                 icon: 'warning',
                 html: "Untuk mengirimkan artikel ini untuk ditinjau?",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#36368d',
+                cancelButtonColor: '#de1508',
                 confirmButtonText: 'Ya, kirim sekarang!',
             }). then((result) => {
                 if(result.value) {
@@ -247,8 +247,8 @@
                 icon: 'warning',
                 html: "Untuk mengubah status artikel id <strong>"+nama+"</strong> menjadi draft kembali?",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#36368d',
+                cancelButtonColor: '#de1508',
                 confirmButtonText: 'Ya, lakukan!',
             }). then((result) => {
                 if(result.value) {
@@ -267,12 +267,30 @@
                 icon: 'warning',
                 html: "Anda akan menghapus data dengan nama <strong>"+nama+"</strong> dan tidak dapat mengembalikannya kembali",
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
+                confirmButtonColor: '#36368d',
+                cancelButtonColor: '#de1508',
                 confirmButtonText: 'Ya, hapus saja!',
             }). then((result) => {
                 if(result.value) {
                     form.submit();
+                }
+            });
+        }
+
+        function confirmLogout()
+        {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Apakah anda yakin akan keluar?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#36368d',
+                cancelButtonColor: '#de1508',
+                confirmButtonText: 'Ya, Keluar!',
+                cancelButtonText: 'Batal',
+            }). then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('logout-form').submit();
                 }
             });
         }

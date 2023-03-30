@@ -5,8 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header gradient text-white ">{{ __('Revisi Artikel') }}</div>
-
+                <div class="card-header d-flex justify-content-between gradient text-white ">
+                    <span class="align-self-center">Revisi Artikel</span>
+                    <a href="{{ route('reviewer.index') }}" class="btn btn-link text-white"><i class="fas fa-arrow-left"></i> Kembali</a>
+                </div>
                 <div class="card-body">
                     @foreach ($articles as $article)
                     <span class="">Revisi Tanggal - {{$article->created_at}}</span>
@@ -45,15 +47,16 @@
 
                     @endforeach
                     @if($article->new_file !== null)
-                        {!! Form::open(['url' => route('reviewer.revise_to_approved', $id), 'method' => 'POST', 'id' => 'form-approve']) !!}
-                        <button class="btn btn-success btn-sm text-small show_confirm_approved" data-name="{{$id}}" title="Setujui">Approve</button>
-                        {!! Form::close() !!}
-                        {!! Form::open(['url' => route('reviewer.revise_to_rejected', $id), 'method' => 'POST', 'id' => 'form-approve']) !!}
-                        <button class="btn btn-danger btn-sm text-small show_confirm_rejected" data-name="{{$id}}" title="Setujui">Reject</button>
-                        {!! Form::close() !!}
-                        <a href="{{ route('reviewer.next_revised_form', $id) }}" class="btn btn-warning">Revised</a>
+                        <div class="d-flex justify-content-end">
+                            {!! Form::open(['url' => route('reviewer.revise_to_approved', $id), 'method' => 'POST', 'id' => 'form-approve']) !!}
+                            <button class="btn btn-success text-white text-small me-1 show_confirm_approved" data-name="{{$id}}" title="Setujui">Approve</button>
+                            {!! Form::close() !!}
+                            {!! Form::open(['url' => route('reviewer.revise_to_rejected', $id), 'method' => 'POST', 'id' => 'form-approve']) !!}
+                            <button class="btn btn-danger text-white text-small me-1 show_confirm_rejected" data-name="{{$id}}" title="Setujui">Reject</button>
+                            {!! Form::close() !!}
+                            <a href="{{ route('reviewer.next_revised_form', $id) }}" class="btn btn-warning text-white">Revised</a>
+                        </div>
                     @endif
-                    <a href="{{ route('reviewer.index') }}" class="btn btn-link">{{ __('Kembali') }}</a>
                 </div>
             </div>
         </div>

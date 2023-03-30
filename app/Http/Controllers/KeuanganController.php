@@ -18,6 +18,7 @@ class KeuanganController extends Controller
             ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
             ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
             ->select('articles.*', 'payments.payment_file', 'article_submission.submission_id', 'article_review.review_id',)
+            ->where('article_review.review_id', 1)
             ->get();
 
         return view('article.list-article', compact('articles'));
@@ -30,15 +31,6 @@ class KeuanganController extends Controller
             DB::table('article_submission')
                 ->where('article_id', $id)
                 ->update(['submission_id' => 4]);
-
-            $status = new ArticleReview;
-
-            $status->article_id = $id;
-            $status->review_id = 1;
-            $status->created_at = Carbon::now();
-            $status->updated_at = Carbon::now();
-
-            $status->save();
         } catch (Throwable $th) {
             report($e);
 

@@ -4,7 +4,11 @@
     <div class="mb-3">
         <label id="file">Pilih Reviewer</label>
         <select name="reviewer_id" class="form-control" id="">
-            <option selected disabled>Pilih Reviewer</option>
+            @if (count($reviewer) > 0)
+                <option selected disabled>Pilih Reviewer</option>
+            @else
+                <option selected disabled>REVIEWER KOSONG</option>
+            @endif
             @foreach ($reviewer as $data )
                 <option value="{{$data->id}}">{{$data->fullname}}</option>
             @endforeach

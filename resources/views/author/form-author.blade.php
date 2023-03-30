@@ -15,7 +15,7 @@
 
  <div class="mb-3">
     {{ Form::label('affiliation', 'Afiliasi') }}
-    {{ Form::textarea('affiliation', null, ['class' => 'form-control', 'rows' => 3, 'required' => 'true']) }}
+    {{ Form::text('affiliation', null, ['class' => 'form-control', 'required' => 'true']) }}
  </div>
 
 

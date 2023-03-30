@@ -23,6 +23,7 @@
                             <th>CREATED AT</th>
                         </tr>
                         @php $no = 1; @endphp
+                        @if (count($articles) > 0)
                         @foreach ($articles as $article)
                             <tr class="text-center">
                                 <td>{{$no++}}</td>
@@ -53,6 +54,11 @@
                                 <td>{{ $article->created_at }}</td>
                             </tr>
                         @endforeach
+                        @else
+                            <tr class="text-center">
+                                <td colspan="9">Data artikel kosong</td>
+                            </tr>
+                        @endif
                     </table>
                     </div>
                 </div>

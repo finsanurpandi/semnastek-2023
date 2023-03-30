@@ -20,7 +20,7 @@
                     {!! Form::model($article, ['url' => route('author.update'), 'method' => 'PATCH']) !!}
                         @include('author.form-edit')
                         <a href="{{ route('author.show', $article->id) }}" class="btn btn-danger">{{ __('Batal') }}</a>
-                       {{ Form::submit('Update', ['class' => 'btn btn-success']) }}
+                       {{ Form::submit('Update', ['class' => 'btn btn-primary']) }}
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <table class="table table-bordered">
-    <tr class="table-primary">
+    <tr class="bg-secondary text-white">
         <th>Keterangan</th>
         <th>Hasil</th>
     </tr>
@@ -43,26 +43,26 @@
                 @can('reviewer')
                     {{-- when a review_id "resubmit for review", reiviewer's page will provide this message --}}
                     @if($review_status->review_id === 3)
-                        {{$review_status->name}}
+                        <span class="badge bg-primary">{{$review_status->name}}</span>
                     @elseif($review_status->review_id === 1 && $status->submission_id === 4)
-                        {{$status->name}}
+                        <span class="badge bg-primary">{{$status->name}}</span>
                     @elseif($review_status->review_id === 1)
-                        {{$review_status->name}}
+                        <span class="badge bg-primary">{{$review_status->name}}</span>
                     @else
-                        {{$status->name}}
+                        <span class="badge bg-primary">{{$status->name}}</span>
                     @endif
                 @endcan
                 @cannot('reviewer')
                 @if($review_status->review_id === 1 && $status->submission_id === 4)
-                    {{$status->name}}
+                    <span class="badge bg-primary">{{$status->name}}</span>
                 @elseif($review_status->review_id === 1)
-                    {{$review_status->name}}
+                    <span class="badge bg-primary">{{$review_status->name}}</span>
                 @else
-                    {{$status->name}}
-                @endif
-                @endcannot
-            @else
-                draft
+                    <span class="badge bg-primary">{{$status->name}}</span>
+                    @endif
+                    @endcannot
+                    @else
+                    <span class="badge bg-primary">Draft</span>
             @endif
         </td>
     </tr>

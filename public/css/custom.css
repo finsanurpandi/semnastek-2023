@@ -8,6 +8,35 @@ html {
     scroll-behavior: smooth;
 }
 
+.body-image {
+    position: relative;
+}
+
+.body-image::before {
+    content: "";
+    background-image: url("/img/logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    filter: blur(5px);
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.bg-navbar {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(254, 252, 252, 1) 46%,
+        rgba(251, 244, 244, 1) 87%,
+        rgba(245, 245, 245, 1) 100%
+    );
+}
+
 /* warna tema */
 .gradient {
     background: linear-gradient(90deg, #36368d 0%, #343563 100%);

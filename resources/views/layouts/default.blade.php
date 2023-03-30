@@ -39,8 +39,9 @@
     <script>
     const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: 'bottom-end',
         showConfirmButton: false,
+        confirmButtonColor: '#36368d',
         timer: 3000,
     })
 

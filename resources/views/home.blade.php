@@ -7,15 +7,22 @@
             <div class="card">
                 <div class="card-header gradient text-white ">{{ __('Home') }}</div>
 
-                <div class="card-body">
-                    Selamat datang di SEMNASTEK-UNSUR.
-                    <br/>
-                    @if($role == 4)
-                    <br/>Untuk mengunggah artikel dapat dilakukan melalui menu Article pade menu kanan atas.
-                    <br/>Untuk mengunduh template penulisan, dapat dilakukan melalui <a href="{{ asset('template_semnastek.docx') }}" class="btn btn-link">[link]</a> berikut.
-                    @elseif ($role == 5)
-                    <br/>Untuk menambahkan reviewer dapat dilakukan melalui menu Reviewer pade menu kanan atas.
-                    @endif
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <div class="mb-3 text-center">
+                        <h4>Selamat datang di SEMNASTEK-UNSUR.</h4>
+                        <br/>
+                        @if($role == 4)
+                            <br/>Untuk mengunggah artikel dapat dilakukan melalui menu Article pade menu kanan atas.
+                            <br/>Untuk mengunduh template penulisan, dapat dilakukan melalui <a href="{{ asset('template_semnastek.docx') }}" class="btn btn-link">[link]</a> berikut.
+                        @elseif ($role == 5)
+                            <br/>Untuk menambahkan reviewer dapat dilakukan melalui menu Reviewer pade menu kanan atas.
+                        @elseif ($role == 3)
+                            <br/>Untuk melihat list artikel dapat dilakukan melalui menu List Article pade menu kanan atas.
+                        @endif
+                    </div>
+                    <div>
+                        <img src="{{asset('img/callforpaper.png')}}" alt="" width="100%">
+                    </div>
                 </div>
             </div>
         </div>

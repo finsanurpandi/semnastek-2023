@@ -19,7 +19,7 @@
             if(e.target.value !== $('#password').val()){
                 Swal.fire({
                     toast: true,
-                    position: 'top-end',
+                    position: 'bottom-end',
                     showConfirmButton: false,
                     timer: 3000,
                     title : "Konfirmasi password tidak sesuai",

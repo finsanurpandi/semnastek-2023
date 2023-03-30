@@ -10,7 +10,7 @@
 
 <div class="mb-3">
     {{ Form::label('title', 'Judul') }}
-    {{ Form::textarea('title', null, ['class' => 'form-control', 'rows' => 3, 'required' => 'true']) }}
+    {{ Form::text('title', null, ['class' => 'form-control', 'required' => 'true']) }}
  </div>
 
  <div class="mb-3">

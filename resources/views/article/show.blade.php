@@ -5,15 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header gradient text-white ">Detail Artikel #{{$article->id}}</div>
-
-                <div class="card-body">
+                <div class="card-header d-flex justify-content-between gradient text-white ">
+                    <span class="align-self-center">Detail Artikel #{{$article->id}}</span>
                     @can('reviewer')
-                    <a href="{{ route('reviewer.index') }}" class="btn btn-link">[Halaman Utama]</a>
+                    <a href="{{ route('reviewer.index') }}" class="btn btn-link text-white"><i class="fas fa-arrow-left"></i> Kembali</a>
                     @endcan
                     @can('editor')
-                    <a href="{{ route('editor.article') }}" class="btn btn-link">[Halaman Utama]</a>
+                    <a href="{{ route('editor.index') }}" class="btn btn-link text-white"><i class="fas fa-arrow-left"></i> Kembali</a>
                     @endcan
+                </div>
+                <div class="card-body">
 
                     @include("article.data-article")
 

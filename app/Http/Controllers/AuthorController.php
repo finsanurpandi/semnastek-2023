@@ -383,8 +383,10 @@ class AuthorController extends Controller
     {
         $data['articles'] = DB::table('articles')
             ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
+            ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
             ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
             ->where('articles.user_id', auth()->user()->id)
+            ->where('article_review.review_id', 1)
             ->select('articles.*', 'payments.payment_file', 'article_submission.article_id', 'article_submission.submission_id')->get();
 
         // dd($data['articles']);
