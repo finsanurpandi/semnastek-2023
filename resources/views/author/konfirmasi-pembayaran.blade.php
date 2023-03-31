@@ -24,8 +24,13 @@
                                 <td><a href="{{ route('author.show', $article->id) }}" class="btn btn-link">{{ $article->id }}</a></td>
                                 <td>{{ $article->title }}</td>
                                 <td>
-                                    @if ($article->payment_file === null)
+                                    @if ($article->payment_file === null )
                                         <a href="{{ route('author.pembayaran.create', $article->id) }}" class="btn btn-link"><i class="fa fa-upload"></i></a>
+                                    @elseif($article->payment_status == 0)
+                                        <div class="d-flex flex-column">
+                                            <a href="{{ route('author.pembayaran.reupload_form', $article->id) }}" class="btn btn-link"><i class="fa fa-upload"></i></a>
+                                            <span class="text-danger"><em>Bukti Pembayaran tidak valid, lakukan upload kembali!</em></span>
+                                        </div>
                                     @else
                                         <p>Sudah dibayar</p>
                                     @endif

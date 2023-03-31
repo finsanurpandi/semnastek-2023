@@ -387,7 +387,7 @@ class AuthorController extends Controller
             ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
             ->where('articles.user_id', auth()->user()->id)
             ->where('article_review.review_id', 1)
-            ->select('articles.*', 'payments.payment_file', 'article_submission.article_id', 'article_submission.submission_id')->get();
+            ->select('articles.*', 'payments.payment_file', 'payments.payment_status', 'article_submission.article_id', 'article_submission.submission_id')->get();
 
         // dd($data['articles']);
         return view('author.konfirmasi-pembayaran')->with($data);
@@ -395,6 +395,13 @@ class AuthorController extends Controller
     public function pembayaran($id)
     {
         $data['article'] = Article::findOrFail($id);
+        $data['route_link'] = 'store';
+        return view('author.pembayaran')->with($data);
+    }
+    public function pembayaran_reupload_form($id)
+    {
+        $data['article'] = Article::findOrFail($id);
+        $data['route_link'] = 'reupload';
         return view('author.pembayaran')->with($data);
     }
     public function pembayaran_store(Request $request)
@@ -424,6 +431,38 @@ class AuthorController extends Controller
             $payment->save();
 
             Session::flash('status', 'Input bukti pembayaran berhasil!!!');
+        } catch (Throwable $e) {
+            report($e);
+
+            return false;
+        }
+
+        return redirect()->route('author.show', $request->article_id);
+    }
+
+    public function pembayaran_reupload(Request $request)
+    {
+        $data = Payment::where('articles_id', $request->article_id)->get();
+        Storage::delete('public/payments/' . $data[0]->payment_file);
+
+        $request->validate([
+            'file' => 'required|image',
+        ]);
+
+        try {
+            if ($request->hasFile('file')) {
+                $extension = $request->file('file')->extension();
+                $filename = 'payment_' . $request->article_id . '_' . time() . '.' . $extension;
+                $request->file('file')->storeAs(
+                    'public/payments',
+                    $filename
+                );
+
+                DB::table('payments')
+                    ->where('articles_id', $request->article_id)
+                    ->update(['payment_status' => 1, 'payment_file' => $filename, 'updated_at' => Carbon::now()]);
+            }
+            Session::flash('status', 'Upload ulang bukti pembayaran berhasil!!!');
         } catch (Throwable $e) {
             report($e);
 

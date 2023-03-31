@@ -17,7 +17,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{route('author.pembayaran.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('author.pembayaran.' .$route_link)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label id="file">File Bukti Pembayaran</label>

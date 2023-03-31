@@ -37,7 +37,7 @@
                                         {!! Form::close() !!}
                                     @endif
 
-                                    @if($article->submitted_at)
+                                    @if($article->submitted_at && $article->submission_id == 1)
                                         {!! Form::open(['url' => route('author.setdraft', $article->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
                                             <button class="btn btn-link text-danger show_set_draft" data-name="{{$article->id}}" title="set draft">Set Draft</button>
                                         {!! Form::close() !!}

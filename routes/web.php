@@ -85,6 +85,8 @@ Route::group([
     Route::get('/article/pembayaran', [AuthorController::class, 'article_pembayaran'])->name('pembayaran');
     Route::get('/pembayaran/{id}/create', [AuthorController::class, 'pembayaran'])->name('pembayaran.create');
     Route::post('/pembayaran/store', [AuthorController::class, 'pembayaran_store'])->name('pembayaran.store');
+    Route::get('/pembayaran/{id}/reupload_form', [AuthorController::class, 'pembayaran_reupload_form'])->name('pembayaran.reupload_form');
+    Route::post('/pembayaran/reupload', [AuthorController::class, 'pembayaran_reupload'])->name('pembayaran.reupload');
 
     // AJAX
     Route::get('/ajax/getDataScope/{id}', [AuthorController::class, 'getDataScope']);
@@ -107,6 +109,7 @@ Route::group([
 ], function () {
     Route::get('/pembayaran', [KeuanganController::class, 'pembayaran'])->name('pembayaran');
     Route::post('/pembayaran/{id}/approved', [KeuanganController::class, 'approved'])->name('approved_payment');
+    Route::post('/pembayaran/{id}/reupload', [KeuanganController::class, 'reupload'])->name('reupload_payment');
 });
 
 Route::group([

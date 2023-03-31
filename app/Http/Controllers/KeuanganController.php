@@ -17,7 +17,7 @@ class KeuanganController extends Controller
             ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
             ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
             ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
-            ->select('articles.*', 'payments.payment_file', 'article_submission.submission_id', 'article_review.review_id',)
+            ->select('articles.*', 'payments.payment_file', 'payments.payment_status', 'article_submission.submission_id', 'article_review.review_id',)
             ->where('article_review.review_id', 1)
             ->get();
 
@@ -38,6 +38,22 @@ class KeuanganController extends Controller
         }
 
         Session::flash('status', 'Artikel berhasil disetujui!!!');
+        return redirect()->route('keuangan.pembayaran');
+    }
+
+    public function reupload($id)
+    {
+        try {
+            DB::table('payments')
+                ->where('articles_id', $id)
+                ->update(['payment_status' => 0]);
+        } catch (Throwable $th) {
+            report($e);
+
+            return false;
+        }
+
+        Session::flash('status', 'Form upload ulang berhasil dikirim!!!');
         return redirect()->route('keuangan.pembayaran');
     }
 }

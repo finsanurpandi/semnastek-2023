@@ -65,9 +65,18 @@
                                     <td>
                                         @can('keuangan')
                                         @if($article->review_id == 1 && $article->payment_file !== null && $article->submission_id != 4)
-                                        {!! Form::open(['url' => route('keuangan.approved_payment', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
-                                            <button class="btn btn-success text-white btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
-                                        {!! Form::close() !!}
+                                            @if($article->payment_status == 0)
+                                                <span class="badge bg-warning">Sedang diupload ulang</span>
+                                            @else
+                                                <div class="d-flex justify-content-center">
+                                                    {!! Form::open(['url' => route('keuangan.approved_payment', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
+                                                    <button class="btn btn-success text-white btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
+                                                    {!! Form::close() !!}
+                                                    {!! Form::open(['url' => route('keuangan.reupload_payment', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
+                                                    <button class="btn btn-warning ms-2 text-white btn-sm text-small show_confirm_reupload" data-name="{{$article->id}}" title="Upload Ulang">Re-Upload</button>
+                                                    {!! Form::close() !!}
+                                                </div>
+                                            @endif
                                         @endif
                                         @if($article->submission_id == 4)
                                             <span class="badge bg-primary">Published</span>

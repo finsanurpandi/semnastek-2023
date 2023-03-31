@@ -182,6 +182,26 @@
                 }
             });
         });
+
+        $('.show_confirm_reupload').click(function(event) {
+          var form =  $(this).closest("form");
+          var nama = $(this).data("name");
+          event.preventDefault();
+          Swal.fire({
+                title: 'Apakah anda yakin?',
+                icon: 'warning',
+                html: "Anda tidak akan menerima bukti pembayaran artikel data dengan ID <strong>"+nama+"</strong>?",
+                showCancelButton: true,
+                confirmButtonColor: '#36368d',
+                cancelButtonColor: '#de1508',
+                confirmButtonText: 'Upload Ulang!',
+            }). then((result) => {
+                if(result.value) {
+                    form.submit();
+                }
+            });
+        });
+
         $('.show_confirm_rejected').click(function(event) {
           var form =  $(this).closest("form");
           var nama = $(this).data("name");

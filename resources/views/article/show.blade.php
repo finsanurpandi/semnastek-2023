@@ -11,7 +11,7 @@
                     <a href="{{ route('reviewer.index') }}" class="btn btn-link text-white"><i class="fas fa-arrow-left"></i> Kembali</a>
                     @endcan
                     @can('editor')
-                    <a href="{{ route('editor.index') }}" class="btn btn-link text-white"><i class="fas fa-arrow-left"></i> Kembali</a>
+                    <a href="{{ route('editor.article') }}" class="btn btn-link text-white"><i class="fas fa-arrow-left"></i> Kembali</a>
                     @endcan
                 </div>
                 <div class="card-body">
