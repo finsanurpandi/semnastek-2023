@@ -130,6 +130,8 @@ Route::group([
     Route::get('/reviewer/{id}/edit', [EditorController::class, 'edit'])->name('edit');
     Route::patch('/reviewer', [EditorController::class, 'update'])->name('update');
     Route::delete('/reviewer/{id}/delete', [EditorController::class, 'destroy'])->name('destroy');
+
+    Route::get('/article/export', [EditorController::class, 'export'])->name('export');
 });
 
 Route::group([

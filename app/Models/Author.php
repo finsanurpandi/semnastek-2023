@@ -16,4 +16,9 @@ class Author extends Model
         'email',
         'order'
     ];
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
 }

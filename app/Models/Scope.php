@@ -9,8 +9,15 @@ class Scope extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['scope', 'department_id'];
+
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
     }
 }

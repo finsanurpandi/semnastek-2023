@@ -8,6 +8,7 @@
                 <div class="card-header gradient text-white ">List Artikel</div>
 
                 <div class="card-body">
+                    <a href="{{ route('editor.export') }}" class="btn btn-primary mb-1"><i class="fas fa-file-export"></i> Export Data Article</a>
                     <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr class="text-center bg-secondary text-white">

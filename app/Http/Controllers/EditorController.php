@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ArticlesExport;
 use App\Http\Requests\StoreReviewerRequest;
 use App\Models\Article;
 use App\Models\BlindManuscript;
 use App\Models\Reviewer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EditorController extends Controller
 {
@@ -92,6 +95,9 @@ class EditorController extends Controller
         try {
             $reviewer = Reviewer::findOrFail($request->id);
             $reviewer->update($request->all());
+            DB::table('users')
+                ->where('email', $request->email)
+                ->update(['name' => $request->fullname]);
         } catch (Throwable $e) {
             report($e);
 
@@ -234,5 +240,11 @@ class EditorController extends Controller
         }
 
         return redirect()->route('editor.article', $manuscript->article_id);
+    }
+
+    public function export()
+    {
+        $fileName = 'articles-' . date('Y-m-d') . '.xlsx';
+        return Excel::download(new ArticlesExport, $fileName);
     }
 }
