@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Exports\ArticlesExport;
 use App\Http\Requests\StoreReviewerRequest;
 use App\Models\Article;
+use App\Models\ArticleReview;
 use App\Models\BlindManuscript;
 use App\Models\Reviewer;
+use App\Models\Revision;
+use App\Models\RevisionEditor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -125,9 +128,11 @@ class EditorController extends Controller
         $articles = DB::table('articles')
             ->leftJoin('blind_manuscripts', 'articles.id', '=', 'blind_manuscripts.article_id')
             ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
+            ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
             ->leftJoin('reviewers', 'blind_manuscripts.reviewer_id', '=', 'reviewers.id')
             ->leftJoin('manuscripts', 'articles.id', '=', 'manuscripts.article_id')
-            ->select('*')
+            ->leftJoin('revisions', 'articles.id', '=', 'revisions.article_id')
+            ->select('articles.*', 'blind_manuscripts.article_id', 'blind_manuscripts.file', 'blind_manuscripts.reviewer_id', 'article_review.review_id', 'article_submission.submission_id', 'manuscripts.file', 'revisions.revision_file', 'revisions.comment', 'revisions.new_file', 'reviewers.fullname')
             ->whereNotNull('submitted_at')
             ->get();
 
@@ -240,6 +245,168 @@ class EditorController extends Controller
         }
 
         return redirect()->route('editor.article', $manuscript->article_id);
+    }
+
+    public function approved($id)
+    {
+
+        try {
+            DB::table('article_submission')
+                ->where('article_id', $id)
+                ->update(['submission_id' => 2]);
+
+            $status = new ArticleReview;
+
+            $status->article_id = $id;
+            $status->review_id = 1;
+            $status->created_at = Carbon::now();
+            $status->updated_at = Carbon::now();
+
+            $status->save();
+        } catch (Throwable $th) {
+            report($e);
+
+            return false;
+        }
+
+        Session::flash('status', 'Artikel berhasil disetujui!!!');
+        return redirect()->route('editor.article');
+    }
+
+    public function rejected($id)
+    {
+
+        try {
+            DB::table('article_submission')
+                ->where('article_id', $id)
+                ->update(['submission_id' => 5]);
+
+            $status = new ArticleReview;
+
+            $status->article_id = $id;
+            $status->review_id = 4;
+            $status->created_at = Carbon::now();
+            $status->updated_at = Carbon::now();
+
+            $status->save();
+        } catch (Throwable $th) {
+            report($e);
+
+            return false;
+        }
+
+        Session::flash('status', 'Artikel telah ditolak!!!');
+        return redirect()->route('editor.article');
+    }
+
+    public function revise_to_approved($id)
+    {
+
+        try {
+            DB::table('article_submission')
+                ->where('article_id', $id)
+                ->update(['submission_id' => 2]);
+            DB::table('article_review')
+                ->where('article_id', $id)
+                ->update(['review_id' => 1, 'updated_at' => Carbon::now()]);
+        } catch (Throwable $th) {
+            report($e);
+
+            return false;
+        }
+
+        Session::flash('status', 'Artikel berhasil disetujui!!!');
+        return redirect()->route('reviewer.index');
+    }
+
+    public function revise_to_rejected($id)
+    {
+
+        try {
+            DB::table('article_submission')
+                ->where('article_id', $id)
+                ->update(['submission_id' => 5]);
+            DB::table('article_review')
+                ->where('article_id', $id)
+                ->update(['review_id' => 4, 'updated_at' => Carbon::now()]);
+        } catch (Throwable $th) {
+            report($e);
+
+            return false;
+        }
+
+        Session::flash('status', 'Artikel berhasil disetujui!!!');
+        return redirect()->route('reviewer.index');
+    }
+
+    public function revised_result($id)
+    {
+        $articles = Revision::where('article_id', $id)->get();
+        // dd($articles);
+        return view('article.revise-article-result', compact('id', 'articles'));
+    }
+
+    public function manuscript_revised($id)
+    {
+        $data['article'] = Article::findOrFail($id);
+        $data['action'] = 'editor';
+        return view('article.upload-manuscript-revised')->with($data);
+    }
+
+    public function revised(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:docx,doc|max:5120',
+        ]);
+
+        try {
+            $revise = new RevisionEditor;
+
+            $revise->article_id = $request->article_id;
+            $revise->comment = $request->comment;
+            $revise->created_at = Carbon::now();
+            $revise->updated_at = Carbon::now();
+
+            if ($request->hasFile('file')) {
+                $extension = $request->file('file')->extension();
+                $filename = 'new_manuscript_' . $request->article_id . '_' . time() . '.' . $extension;
+                $request->file('file')->storeAs(
+                    'public/revise_manuscript',
+                    $filename
+                );
+
+                $revise->revision_file = $filename;
+            }
+            $revise->save();
+
+            try {
+                DB::table('article_submission')
+                    ->where('article_id', $request->article_id)
+                    ->update(['submission_id' => 3]);
+
+                $status = new ArticleReview;
+
+                $status->article_id = $request->article_id;
+                $status->review_id = 2;
+                $status->created_at = Carbon::now();
+                $status->updated_at = Carbon::now();
+
+                $status->save();
+            } catch (Throwable $th) {
+                report($e);
+
+                return false;
+            }
+
+
+            Session::flash('status', 'Dokument Terbaru berhasi ditambahkan data berhasil!!!');
+        } catch (Throwable $e) {
+            report($e);
+
+            return false;
+        }
+
+        return redirect()->route('editor.article', $request->article_id);
     }
 
     public function export()

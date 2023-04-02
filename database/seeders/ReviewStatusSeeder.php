@@ -31,6 +31,18 @@ class ReviewStatusSeeder extends Seeder
                 'id' => 4,
                 'name' => 'Decline Submission',
             ],
+            [
+                'id' => 5,
+                'name' => 'Accept By Review',
+            ],
+            [
+                'id' => 6,
+                'name' => 'Declined By Review',
+            ],
+            [
+                'id' => 7,
+                'name' => 'Revised By Review',
+            ],
         ]);
     }
 }

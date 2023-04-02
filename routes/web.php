@@ -120,9 +120,21 @@ Route::group([
     Route::get('/reviewer', [EditorController::class, 'index'])->name('index');
     Route::get('/article', [EditorController::class, 'article_list'])->name('article');
     Route::get('/article/{id}/show', [EditorController::class, 'show'])->name('show');
+    Route::get('/article/{id}/revised-result', [EditorController::class, 'revised_result'])->name('revised_result');
     Route::get('/article/{article_id}/{action}', [EditorController::class, 'article_detail'])->name('article_detail');
     Route::post('/blind-manuscript/store', [EditorController::class, 'blind_manuscript_store'])->name('blind_manuscript.store');
     Route::post('/blind-manuscript/edit', [EditorController::class, 'blind_manuscript_edit'])->name('blind_manuscript.edit');
+
+    //revisi
+
+    Route::post('/article/{id}/approved', [EditorController::class, 'approved'])->name('approved');
+    Route::post('/article/{id}/rejected', [EditorController::class, 'rejected'])->name('rejected');
+    Route::post('/article/{id}/revise-approved', [EditorController::class, 'revise_to_approved'])->name('revise_to_approved');
+    Route::post('/article/{id}/revise-rejected', [EditorController::class, 'revise_to_rejected'])->name('revise_to_rejected');
+    Route::get('/manuscript/{id}/revised', [EditorController::class, 'manuscript_revised'])->name('manuscript.revised');
+    Route::post('/manuscript/store-revised', [EditorController::class, 'revised'])->name('manuscript.store.revised');
+
+    Route::get('/article/{id}/revised-result', [EditorController::class, 'revised_result'])->name('revised_result');
 
     //kelola reviewer
     Route::get('/reviewer/create', [EditorController::class, 'create'])->name('create');
@@ -144,12 +156,10 @@ Route::group([
 
     Route::post('/article/{id}/approved', [ReviewController::class, 'approved'])->name('approved');
     Route::post('/article/{id}/rejected', [ReviewController::class, 'rejected'])->name('rejected');
-    Route::post('/article/{id}/revise-approved', [ReviewController::class, 'revise_to_approved'])->name('revise_to_approved');
-    Route::post('/article/{id}/revise-rejected', [ReviewController::class, 'revise_to_rejected'])->name('revise_to_rejected');
     Route::get('/article/{id}/revised-form', [ReviewController::class, 'revised_form'])->name('revised_form');
-    Route::get('/article/{id}/next-revised-form', [ReviewController::class, 'next_revised_form'])->name('next_revised_form');
+    // Route::get('/article/{id}/next-revised-form', [ReviewController::class, 'next_revised_form'])->name('next_revised_form');
     Route::post('/article/revised', [ReviewController::class, 'revised'])->name('revised');
-    Route::post('/article/next-revised', [ReviewController::class, 'next_revision'])->name('next_revision');
+    // Route::post('/article/next-revised', [ReviewController::class, 'next_revision'])->name('next_revision');
     Route::get('/article/{id}/revised-result', [ReviewController::class, 'revised_result'])->name('revised_result');
 });
 

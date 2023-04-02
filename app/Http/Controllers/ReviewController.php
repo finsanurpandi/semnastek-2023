@@ -45,8 +45,9 @@ class ReviewController extends Controller
                 ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
                 ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
                 ->leftJoin('blind_manuscripts', 'blind_manuscripts.article_id', '=', 'articles.id')
+                ->leftJoin('revisions', 'revisions.article_id', '=', 'articles.id')
                 ->where('blind_manuscripts.id', '=', $blindManuscript->id)
-                ->select('articles.*', 'article_submission.submission_id', 'article_review.review_id', 'blind_manuscripts.file')
+                ->select('articles.*', 'revisions.revision_file', 'article_submission.submission_id', 'article_review.review_id', 'blind_manuscripts.file')
                 ->first();
         });
         return view('article.list-article', compact('articles'));
@@ -85,7 +86,7 @@ class ReviewController extends Controller
             $status = new ArticleReview;
 
             $status->article_id = $id;
-            $status->review_id = 1;
+            $status->review_id = 5;
             $status->created_at = Carbon::now();
             $status->updated_at = Carbon::now();
 
@@ -99,37 +100,19 @@ class ReviewController extends Controller
         Session::flash('status', 'Artikel berhasil disetujui!!!');
         return redirect()->route('reviewer.index');
     }
-    public function revise_to_approved($id)
-    {
 
-        try {
-            DB::table('article_submission')
-                ->where('article_id', $id)
-                ->update(['submission_id' => 2]);
-            DB::table('article_review')
-                ->where('article_id', $id)
-                ->update(['review_id' => 1, 'updated_at' => Carbon::now()]);
-        } catch (Throwable $th) {
-            report($e);
-
-            return false;
-        }
-
-        Session::flash('status', 'Artikel berhasil disetujui!!!');
-        return redirect()->route('reviewer.index');
-    }
     public function rejected($id)
     {
 
         try {
             DB::table('article_submission')
                 ->where('article_id', $id)
-                ->update(['submission_id' => 5]);
+                ->update(['submission_id' => 2]);
 
             $status = new ArticleReview;
 
             $status->article_id = $id;
-            $status->review_id = 4;
+            $status->review_id = 6;
             $status->created_at = Carbon::now();
             $status->updated_at = Carbon::now();
 
@@ -141,25 +124,6 @@ class ReviewController extends Controller
         }
 
         Session::flash('status', 'Artikel telah ditolak!!!');
-        return redirect()->route('reviewer.index');
-    }
-    public function revise_to_rejected($id)
-    {
-
-        try {
-            DB::table('article_submission')
-                ->where('article_id', $id)
-                ->update(['submission_id' => 5]);
-            DB::table('article_review')
-                ->where('article_id', $id)
-                ->update(['review_id' => 4, 'updated_at' => Carbon::now()]);
-        } catch (Throwable $th) {
-            report($e);
-
-            return false;
-        }
-
-        Session::flash('status', 'Artikel berhasil disetujui!!!');
         return redirect()->route('reviewer.index');
     }
     public function revised_form($id)
@@ -195,24 +159,6 @@ class ReviewController extends Controller
                     $filename
                 );
                 $revise->revision_file = $filename;
-            }
-
-            try {
-                DB::table('article_submission')
-                    ->where('article_id', $request->article_id)
-                    ->update(['submission_id' => 3]);
-                $status = new ArticleReview;
-
-                $status->article_id = $request->article_id;
-                $status->review_id = 2;
-                $status->created_at = Carbon::now();
-                $status->updated_at = Carbon::now();
-
-                $status->save();
-            } catch (Throwable $th) {
-                report($e);
-
-                return false;
             }
 
             $revise->save();
@@ -280,7 +226,6 @@ class ReviewController extends Controller
     public function revised_result($id)
     {
         $articles = Revision::where('article_id', $id)->get();
-        // dd($articles);
-        return view('reviewer.revise-article-result', compact('id', 'articles'));
+        return view('article.revise-article-result', compact('id', 'articles'));
     }
 }

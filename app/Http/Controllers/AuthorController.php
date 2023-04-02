@@ -16,6 +16,7 @@ use App\Models\Author;
 use App\Models\Manuscript;
 use App\Models\Payment;
 use App\Models\Revision;
+use App\Models\RevisionEditor;
 use App\Models\User;
 use Session;
 
@@ -199,9 +200,17 @@ class AuthorController extends Controller
 
     public function revised_result($id)
     {
-        $articles = Revision::where('article_id', $id)->get();
+        $revision = DB::table('revisions')
+            ->select('*')
+            ->where('revisions.article_id', $id);
 
-        return view('reviewer.revise-article-result', compact('id', 'articles'));
+        $articles = DB::table('revision_editors')
+            ->select('*')
+            ->where('revision_editors.article_id', $id)
+            ->union($revision)
+            ->get();
+
+        return view('article.revise-article-result', compact('id', 'articles'));
     }
 
     public function author_show($id)
@@ -293,7 +302,8 @@ class AuthorController extends Controller
     public function manuscript_revised($id)
     {
         $data['article'] = Article::findOrFail($id);
-        return view('author.upload-manuscript-revised')->with($data);
+        $data['action'] = 'author';
+        return view('article.upload-manuscript-revised')->with($data);
     }
 
     public function manuscript_store(Request $request)
@@ -346,6 +356,10 @@ class AuthorController extends Controller
                     'public/result_revise_manuscript',
                     $filename
                 );
+                DB::table('revision_editors')
+                    ->where('article_id', $request->article_id)
+                    ->update(['new_file' => $filename, 'updated_at' => Carbon::now()]);
+
                 DB::table('revisions')
                     ->where('article_id', $request->article_id)
                     ->update(['new_file' => $filename, 'updated_at' => Carbon::now()]);
