@@ -30,7 +30,7 @@ class ArticlesExport implements FromArray, WithHeadings, ShouldAutoSize
             'Keywords',
             'Email Corresponding',
             'Tanggal Submit',
-            'Abstract',
+            'Submission Status',
         ];
     }
 }

@@ -60,19 +60,23 @@ class Article extends Model
         return $this->belongsToMany(Submission::class)->latest()->limit(1);
     }
 
+    public function articleSubmission()
+    {
+        return $this->hasOne(ArticleSubmission::class);
+    }
+
     public static function getExportArticles()
     {
 
-        $articles = Article::all();
+        $articles = Article::with('articleSubmission.submissionStatus')->get();
 
         $data = $articles->map(function ($article) {
             $authorsString = $article->authors->map(function ($author) {
-                return $author->firstname . ' ' . $author->lastname . ' (' . $author->affiliation . ')';;
+                return $author->firstname . ' ' . $author->lastname . ' (' . $author->affiliation . ')';
             })->implode(', ');
 
             return [
                 'title' => $article->title,
-                'abstract' => $article->abstract,
                 'keywords' => $article->keywords,
                 'corresponding_email' => $article->corresponding_email,
                 'submitted_at' => $article->submitted_at,
@@ -80,6 +84,7 @@ class Article extends Model
                 'reviewers' => $article->reviewers->pluck('fullname')->first(),
                 'scope' => $article->scope->scope,
                 'department_name' => $article->scope->department->name,
+                'submission_status' => $article->articleSubmission->submissionStatus->name,
             ];
         });
 
@@ -96,7 +101,7 @@ class Article extends Model
             $data_filter[$i]['keywords'] = $data[$i]['keywords'];
             $data_filter[$i]['corresponding_email'] = $data[$i]['corresponding_email'];
             $data_filter[$i]['submitted_at'] = $data[$i]['submitted_at'];
-            $data_filter[$i]['abstract'] = $data[$i]['abstract'];
+            $data_filter[$i]['submission_status'] = $data[$i]['submission_status'];
         }
 
         return $data_filter;
