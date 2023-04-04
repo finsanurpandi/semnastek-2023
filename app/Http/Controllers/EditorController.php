@@ -41,6 +41,7 @@ class EditorController extends Controller
             ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
             ->orderBy('article_submission.id', 'DESC')
             ->first();
+
         $data['review_status'] = DB::table('articles')
             ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
             ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
@@ -48,9 +49,9 @@ class EditorController extends Controller
             ->select('articles.id', 'article_review.review_id', 'review_statuses.name')
             ->orderBy('article_review.id', 'DESC')
             ->first();
+
         $data['article'] = Article::where('id', $id)->with(['authors', 'scope', 'manuscript'])->first();
 
-        // dd($data['article']);
         return view('article.show')->with($data);
     }
 
@@ -67,8 +68,6 @@ class EditorController extends Controller
             $reviewer = DB::table('reviewers')->insertGetId([
                 'fullname' => $validated['fullname'],
                 'email' => $validated['email'],
-                // 'created_at' => Carbon::now(),
-                // 'updated_at' => Carbon::now(),
             ]);
 
             $user = DB::table('users')->insert([
@@ -111,10 +110,6 @@ class EditorController extends Controller
         return redirect()->route('editor.index', $request->id);
     }
 
-    public function submit($id)
-    {
-    }
-
     public function destroy($id)
     {
         Reviewer::destroy($id);
@@ -132,7 +127,8 @@ class EditorController extends Controller
             ->leftJoin('reviewers', 'blind_manuscripts.reviewer_id', '=', 'reviewers.id')
             ->leftJoin('manuscripts', 'articles.id', '=', 'manuscripts.article_id')
             ->leftJoin('revisions', 'articles.id', '=', 'revisions.article_id')
-            ->select('articles.*', 'blind_manuscripts.article_id', 'blind_manuscripts.file', 'blind_manuscripts.reviewer_id', 'article_review.review_id', 'article_submission.submission_id', 'manuscripts.file', 'revisions.revision_file', 'revisions.comment', 'revisions.new_file', 'reviewers.fullname')
+            ->leftJoin('revision_editors', 'articles.id', '=', 'revision_editors.article_id')
+            ->select('articles.*', 'blind_manuscripts.article_id', 'blind_manuscripts.file', 'blind_manuscripts.reviewer_id', 'article_review.review_id', 'article_submission.submission_id', 'manuscripts.file', 'revisions.revision_file', 'revisions.comment', 'revisions.new_file', 'reviewers.fullname', 'revision_editors.new_file as final_paper')
             ->whereNotNull('submitted_at')
             ->get();
 
@@ -148,6 +144,7 @@ class EditorController extends Controller
             ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
             ->orderBy('article_submission.id', 'DESC')
             ->first();
+
         $data['review_status'] = DB::table('articles')
             ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
             ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
@@ -155,12 +152,11 @@ class EditorController extends Controller
             ->select('articles.id', 'article_review.review_id', 'review_statuses.name')
             ->orderBy('article_review.id', 'DESC')
             ->first();
+
         $data['article'] = Article::where('id', $article_id)->with(['authors', 'scope', 'manuscript'])->first();
         $data['reviewer'] = Reviewer::all();
         $data['blind_manuscripts'] = BlindManuscript::where('article_id', $article_id)->first();
         $data['action'] = $action;
-
-        // dd($data['blind_manuscripts']);
 
         return view('article.show')->with($data);
     }
@@ -173,7 +169,6 @@ class EditorController extends Controller
         ]);
 
         try {
-            // Author::create($request->all());
             $manuscript = new BlindManuscript;
 
             $manuscript->article_id = $request->article_id;
@@ -208,7 +203,6 @@ class EditorController extends Controller
 
             return false;
         }
-
 
         return redirect()->route('editor.article', $request->article_id);
     }
@@ -249,20 +243,13 @@ class EditorController extends Controller
 
     public function approved($id)
     {
-
         try {
             DB::table('article_submission')
                 ->where('article_id', $id)
                 ->update(['submission_id' => 2]);
-
-            $status = new ArticleReview;
-
-            $status->article_id = $id;
-            $status->review_id = 1;
-            $status->created_at = Carbon::now();
-            $status->updated_at = Carbon::now();
-
-            $status->save();
+            DB::table('article_review')
+                ->where('article_id', $id)
+                ->update(['review_id' => 1]);
         } catch (Throwable $th) {
             report($e);
 
@@ -275,20 +262,13 @@ class EditorController extends Controller
 
     public function rejected($id)
     {
-
         try {
             DB::table('article_submission')
                 ->where('article_id', $id)
                 ->update(['submission_id' => 5]);
-
-            $status = new ArticleReview;
-
-            $status->article_id = $id;
-            $status->review_id = 4;
-            $status->created_at = Carbon::now();
-            $status->updated_at = Carbon::now();
-
-            $status->save();
+            DB::table('article_review')
+                ->where('article_id', $id)
+                ->update(['review_id' => 4]);
         } catch (Throwable $th) {
             report($e);
 
@@ -342,8 +322,11 @@ class EditorController extends Controller
     public function revised_result($id)
     {
         $articles = Revision::where('article_id', $id)->get();
-        // dd($articles);
-        return view('article.revise-article-result', compact('id', 'articles'));
+        if (count($articles) > 0) {
+            return view('article.revise-article-result', compact('id', 'articles'));
+        } else {
+            return redirect()->route('editor.manuscript.revised', ['id' => $id]);
+        }
     }
 
     public function manuscript_revised($id)
@@ -383,15 +366,9 @@ class EditorController extends Controller
                 DB::table('article_submission')
                     ->where('article_id', $request->article_id)
                     ->update(['submission_id' => 3]);
-
-                $status = new ArticleReview;
-
-                $status->article_id = $request->article_id;
-                $status->review_id = 2;
-                $status->created_at = Carbon::now();
-                $status->updated_at = Carbon::now();
-
-                $status->save();
+                DB::table('article_review')
+                    ->where('article_id', $request->article_id)
+                    ->update(['review_id' => 2]);
             } catch (Throwable $th) {
                 report($e);
 

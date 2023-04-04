@@ -79,10 +79,6 @@ class ReviewController extends Controller
     {
 
         try {
-            DB::table('article_submission')
-                ->where('article_id', $id)
-                ->update(['submission_id' => 2]);
-
             $status = new ArticleReview;
 
             $status->article_id = $id;
@@ -105,10 +101,6 @@ class ReviewController extends Controller
     {
 
         try {
-            DB::table('article_submission')
-                ->where('article_id', $id)
-                ->update(['submission_id' => 2]);
-
             $status = new ArticleReview;
 
             $status->article_id = $id;
@@ -161,7 +153,18 @@ class ReviewController extends Controller
                 $revise->revision_file = $filename;
             }
 
+
+            $status = new ArticleReview;
+
+            $status->article_id = $request->article_id;
+            $status->review_id = 7;
+            $status->created_at = Carbon::now();
+            $status->updated_at = Carbon::now();
+
+            $status->save();
             $revise->save();
+
+
             Session::flash('status', 'Revisi berhasil diberikan!!!');
         } catch (Throwable $e) {
             report($e);

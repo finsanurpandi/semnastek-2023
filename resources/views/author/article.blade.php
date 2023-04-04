@@ -19,7 +19,7 @@
                             <th>JUDUL</th>
                             <th>TANGGAL DIBUAT</th>
                             <th>TANGGAL SUBMIT</th>
-                            <th>AKSI</th>
+                            <th><i class="fas fa-gear"></i></th>
                         </tr>
                         @php $no = 1; @endphp
                         @if (count($articles) > 0)
@@ -41,10 +41,21 @@
                                         {!! Form::open(['url' => route('author.setdraft', $article->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
                                             <button class="btn btn-link text-danger show_set_draft" data-name="{{$article->id}}" title="set draft">Set Draft</button>
                                         {!! Form::close() !!}
-                                    @endif
-
-                                    @if($article->submission_id == 3)
-                                        <a href="{{ route('author.revised_result', $article->id) }}" class="btn btn-warning text-white">Lihat Revisi</a>
+                                    @elseif($article->submission_id == 3)
+                                    <a href="{{ route('author.revised_result', $article->id) }}" class="btn btn-warning text-white">Lihat Revisi</a>
+                                    @elseif($article->submission_id == 2 && $article->review_id != 1)
+                                    <span class="badge bg-warning">In Review</span>
+                                    {{-- when a status "submission in editing", author's page will provide a message "revision required", and show a message "accept submission" when reviewer was a proved --}}
+                                    @elseif($article->submission_id !== 3)
+                                        @if($article->review_id === 1 && $article->submission_id === 4)
+                                            <span class="badge bg-success">Published</span>
+                                        @elseif($article->review_id === 1)
+                                            <span class="badge bg-primary">{{$article->name}}</span>
+                                        @else
+                                            <span class="badge bg-danger">{{$article->name}}</span>
+                                        @endif
+                                    @else
+                                        <span class="badge bg-warning">{{$article->name}}</span>
                                     @endif
                                 </td>
                             </tr>

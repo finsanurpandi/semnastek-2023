@@ -14,7 +14,7 @@
                     @endcan
                 </div>
                 <div class="card-body">
-                    @foreach ($articles as $article)
+                    @foreach ($articles as $key => $article)
                     <span class="">Revisi Tanggal - {{$article->created_at}}</span>
                     <table class="table table-bordered">
                         <tr class="bg-secondary text-white">
@@ -22,16 +22,27 @@
                             <th>Hasil</th>
                         </tr>
                         <tr >
-                            <th>Komentar</th>
+                            @if($key == 0)
+                                <th>Komentar Editor</th>
+                            @else
+                                <th>Komentar Reviewer</th>
+                            @endif
                             <td class="text-justify">{{ $article->comment }}</td>
                         </tr>
                         <tr>
                             @can('editor')
                                 <th>File Revisi Reviewer</th>
                             @endcan
-                            @cannot('editor')
+                            @can('reviewer')
                                 <th>File Revisi</th>
-                            @endcannot
+                            @endcan
+                            @can('author')
+                                @if($key == 0)
+                                    <th>File Revisi Editor</th>
+                                @else
+                                    <th>File Revisi Reviewer</th>
+                                @endif
+                            @endcan
                             <td>
                                 @can('editor')
                                     <a href="{{ asset('storage/revise_manuscript/'.$article->revision_file) }}" class="btn btn-link">{{$article->revision_file}}</a>

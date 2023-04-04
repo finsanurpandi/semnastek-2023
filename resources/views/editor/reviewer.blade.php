@@ -17,7 +17,7 @@
                             <th>NO</th>
                             <th>EMAIL</th>
                             <th>NAMA LENGKAP</th>
-                            <th>AKSI</th>
+                            <th><i class="fas fa-gear"></i></th>
                         </tr>
                         @php $no = 1; @endphp
 

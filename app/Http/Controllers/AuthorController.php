@@ -30,27 +30,21 @@ class AuthorController extends Controller
 
     public function index()
     {
-        // $data['articles'] = Article::where('user_id', auth()->user()->id)->get();
+
         $data['articles'] = DB::table('articles')
             ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
+            ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
             ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
+            ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission.submission_id')
+            ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
             ->where('articles.user_id', auth()->user()->id)
-            ->select('articles.*', 'payments.payment_file', 'article_submission.article_id', 'article_submission.submission_id')->get();
+            ->select('articles.*', 'payments.payment_file', 'article_submission.article_id', 'article_submission.submission_id', 'article_review.review_id', 'submission_statuses.name', 'review_statuses.name')->get();
 
-        // dd($data['articles']);
         return view('author.article')->with($data);
     }
 
     public function show($id)
     {
-        // $data['status'] = DB::table('articles')
-        //                     ->leftJoin('article_submission', 'article_submission.article_id', '=', 'articles.id')
-        //                     ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission.submission_id')
-        //                     ->where('articles.id',$id)
-        //                     ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
-        //                     ->orderBy('article_submission.id', 'DESC')
-        //                     ->first();
-
         $data['status'] = DB::table('article_submission')
             ->leftJoin('articles', 'article_submission.article_id', '=', 'articles.id')
             ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission.submission_id')
@@ -58,6 +52,7 @@ class AuthorController extends Controller
             ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
             ->orderBy('article_submission.id', 'DESC')
             ->first();
+
         $data['review_status'] = DB::table('articles')
             ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
             ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
@@ -68,8 +63,6 @@ class AuthorController extends Controller
 
         $data['article'] = Article::where('id', $id)->with(['authors', 'scope', 'manuscript'])->first();
 
-        // dd($data['status']);
-        // dd($data['review_status']);
         return view('author.show')->with($data);
     }
 
@@ -93,7 +86,6 @@ class AuthorController extends Controller
 
     public function store(StoreArticleRequest $request)
     {
-        // $article = Article::create($request->validated());
         $validated = $request->validated();
 
         try {
@@ -146,10 +138,6 @@ class AuthorController extends Controller
     {
 
         try {
-            // $article = Article::findOrFail($id);
-            // $article->update([
-            //     'submitted_at' => Carbon::now()
-            // ]);
             DB::table('articles')->where('id', $id)->update(['submitted_at' => Carbon::now()]);
 
             DB::table('article_submission')->insert([
@@ -196,8 +184,6 @@ class AuthorController extends Controller
         return redirect()->back();
     }
 
-    // AUTHOR
-
     public function revised_result($id)
     {
         $revision = DB::table('revisions')
@@ -212,6 +198,8 @@ class AuthorController extends Controller
 
         return view('article.revise-article-result', compact('id', 'articles'));
     }
+
+    // AUTHOR
 
     public function author_show($id)
     {
@@ -313,7 +301,6 @@ class AuthorController extends Controller
         ]);
 
         try {
-            // Author::create($request->all());
             $manuscript = new Manuscript;
 
             $manuscript->article_id = $request->article_id;
@@ -403,7 +390,6 @@ class AuthorController extends Controller
             ->where('article_review.review_id', 1)
             ->select('articles.*', 'payments.payment_file', 'payments.payment_status', 'article_submission.article_id', 'article_submission.submission_id')->get();
 
-        // dd($data['articles']);
         return view('author.konfirmasi-pembayaran')->with($data);
     }
     public function pembayaran($id)
@@ -425,7 +411,6 @@ class AuthorController extends Controller
         ]);
 
         try {
-            // Author::create($request->all());
             $payment = new Payment;
 
             $payment->articles_id = $request->article_id;

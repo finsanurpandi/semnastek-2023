@@ -18,7 +18,7 @@
                             <th>NAMA</th>
                             <th>EMAIL</th>
                             <th>AFILIASI</th>
-                            <th>AKSI</th>
+                            <th><i class="fas fa-gear"></i></th>
                         </tr>
                         @php $no = 1; @endphp
                         @if (count($authors) > 0)

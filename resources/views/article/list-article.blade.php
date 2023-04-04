@@ -28,7 +28,7 @@
                             @can('editor')
                             <th>REVIEWER</th>
                             @endcan
-                            <th>AKSI</th>
+                            <th><i class="fas fa-gear"></i></th>
                         </tr>
                         @php $no = 1; @endphp
                         @if (count($articles) > 0)
@@ -50,7 +50,7 @@
                                     <td>{{ $article->submitted_at }}</td>
                                     @endcannot
                                     @can('reviewer')
-                                    <td><a href="{{ asset('storage/blind_manuscript/'.$article->file) }}" class="btn btn-link">Unduh</a></td>
+                                    <td><a href="{{ asset('storage/blind_manuscript/'.$article->file) }}" class="btn btn-link">Unduh Blind Manuscript</a></td>
                                     @endcan
                                     @can('keuangan')
                                     <td>
@@ -62,13 +62,15 @@
                                     </td>
                                     @endcan
                                     @can('editor')
-                                    <td><a href="{{ asset('storage/manuscript/'.$article->file) }}" class="btn btn-link">Unduh</a></td>
+                                    <td><a href="{{ asset('storage/manuscript/'.$article->file) }}" class="btn btn-link">Unduh Manuscript</a></td>
                                     <td>
                                         <span>{{$article->fullname}}</span> <br />
                                         @if($article->review_id == 5)
                                         <span class="badge bg-success">Accepted By Review</span>
                                         @elseif($article->review_id == 6)
                                         <span class="badge bg-danger">Declined By Review</span>
+                                        @elseif($article->review_id == 7)
+                                        <span class="badge bg-warning">Revised By Review</span>
                                         @endif
                                     </td>
                                     @endcan
@@ -102,56 +104,73 @@
                                                 <span class="badge bg-success text-white">Accepted Submission</span>
                                             @elseif ($article->review_id == 4)
                                                 <span class="badge bg-danger text-white">Declined Submission</span>
+                                            @elseif($article->submission_id == 3)
+                                                <span class="badge bg-primary">Submission In Editing</span>
+                                            @elseif($article->review_id == 3)
+                                                <a href="{{ asset('storage/result_revise_manuscript/'.$article->final_paper) }}" class="btn btn-link">Lihat Final Paper</a>
+                                                <div class="d-flex">
+                                                {!! Form::open(['url' => route('editor.approved', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
+                                                <button class="btn btn-success me-1 text-white btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
+                                                {!! Form::close() !!}
+                                                {!! Form::open(['url' => route('editor.rejected', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
+                                                <button class="btn btn-danger me-1 btn-sm text-small show_confirm_rejected" data-name="{{$article->id}}" title="Setujui">Reject</button>
+                                                {!! Form::close() !!}
+                                            </div>
                                             @elseif($article->submission_id == 4)
                                                 <span class="badge bg-primary">Published</span>
                                             @elseif($article->review_id == 5 || $article->review_id == 6 || $article->revision_file !== null)
                                                 @if($article->submission_id == 2)
                                                     <div class="d-flex">
                                                         {!! Form::open(['url' => route('editor.approved', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
-                                                        <button class="btn btn-success text-white btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
+                                                        <button class="btn btn-success me-1 text-white btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
                                                         {!! Form::close() !!}
                                                         {!! Form::open(['url' => route('editor.rejected', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
-                                                        <button class="btn btn-danger btn-sm text-small show_confirm_rejected" data-name="{{$article->id}}" title="Setujui">Reject</button>
+                                                        <button class="btn btn-danger me-1 btn-sm text-small show_confirm_rejected" data-name="{{$article->id}}" title="Setujui">Reject</button>
                                                         {!! Form::close() !!}
-                                                        <a href="{{ route('editor.revised_result', $article->id) }}" class="btn btn-sm btn-warning text-white">Lihat Revisi</a>
+                                                        @if($article->review_id == 7)
+                                                            <a href="{{ route('editor.revised_result', $article->id) }}" class="btn btn-sm btn-warning text-white">Lihat Revisi</a>
+                                                        @else
+                                                            <a href="{{ route('editor.revised_result', $article->id) }}" class="btn btn-sm btn-warning text-white">Revisi</a>
+                                                        @endif
                                                     </div>
                                                 @else
-
-                                                    @if($article->review_id == 1)
-                                                        <span class="badge bg-success text-white">ACCEPTED</span>
-                                                    @elseif($article->review_id == 4)
-                                                        <span class="badge bg-danger text-white">REJECTED</span>
-                                                    @elseif($article->review_id == 3 || $article->review_id == 2)
-                                                    @endif
-
+                                                    <span class="badge bg-warning">In Review by Reviewer</span>
                                                 @endif
+                                            @else
+                                                <span class="badge bg-warning">In Review by Reviewer</span>
                                             @endif
                                         @endif
                                         @endcan
                                         @can('reviewer')
-                                        @if($article->revision_file == null || $article->review_id == 5)
+                                        @if ($article->review_id == 1 && $article->submission_id != 4)
+                                            <span class="badge bg-success text-white">Accepted Submission</span>
+                                        @elseif ($article->review_id == 4)
+                                            <span class="badge bg-danger text-white">Declined Submission</span>
+                                        @elseif($article->submission_id == 3)
+                                            <span class="badge bg-primary">In Review - Submission In Editing</span>
+                                        @elseif($article->review_id == 3)
+                                            <span class="badge bg-primary">In Review - Resubmit For Review to Editor</span>
+                                        @elseif($article->submission_id == 4)
+                                            <span class="badge bg-primary">Published</span>
+                                        @elseif($article->review_id != 5 && $article->review_id != 6 && $article->review_id != 7 )
                                         <div class="d-flex">
                                             {!! Form::open(['url' => route('reviewer.approved', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
-                                            <button class="btn btn-success text-white btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
+                                            <button class="btn btn-success me-1 text-white btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
                                             {!! Form::close() !!}
                                             {!! Form::open(['url' => route('reviewer.rejected', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
-                                            <button class="btn btn-danger btn-sm text-small show_confirm_rejected" data-name="{{$article->id}}" title="Setujui">Reject</button>
+                                            <button class="btn btn-danger me-1 btn-sm text-small show_confirm_rejected" data-name="{{$article->id}}" title="Setujui">Reject</button>
                                             {!! Form::close() !!}
-                                            <a href="{{ route('reviewer.revised_form', $article->id) }}" class="btn btn-warning btn-sm text-white">Revised</a>
+                                            @if($article->revision_file !== null)
+                                                <a href="{{ route('reviewer.revised_result', $article->id) }}" class="btn btn-sm btn-primary">Lihat Revisi</a>
+                                            @else
+                                                <a href="{{ route('reviewer.revised_form', $article->id) }}" class="btn btn-warning btn-sm text-white">Revise</a>
+                                            @endif
                                         </div>
                                         @else
-                                            @if ($article->review_id == 1 && $article->submission_id != 4)
-                                                <span class="badge bg-success text-white">Accepted Submission</span>
-                                            @elseif ($article->review_id == 4)
-                                                <span class="badge bg-danger text-white">Declined Submission</span>
-                                            @elseif($article->submission_id == 4)
-                                                <span class="badge bg-primary">Published</span>
-                                            @elseif($article->review_id == 5 || $article->review_id == 6 || $article->revision_file !== null)
-                                                <a href="{{ route('reviewer.revised_result', $article->id) }}" class="btn btn-sm btn-primary">Lihat Revisi</a>
-                                            @endif
+                                            <span class="badge bg-warning">In Review by Editor</span>
                                         @endif
                                         @endcan
-                                            </td>
+                                    </td>
                                 </tr>
                             @endforeach
                         @else

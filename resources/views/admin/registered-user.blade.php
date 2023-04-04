@@ -16,7 +16,7 @@
                             <th>NAMA</th>
                             <th>EMAIL</th>
                             <th>TANGGAL DIBUAT</th>
-                            <th>AKSI</th>
+                            <th><i class="fas fa-gear"></i></th>
                         </tr>
                         @php $no = 1; @endphp
                         @if (count($users) > 0)

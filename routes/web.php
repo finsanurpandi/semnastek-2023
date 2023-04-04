@@ -131,10 +131,10 @@ Route::group([
     Route::post('/article/{id}/rejected', [EditorController::class, 'rejected'])->name('rejected');
     Route::post('/article/{id}/revise-approved', [EditorController::class, 'revise_to_approved'])->name('revise_to_approved');
     Route::post('/article/{id}/revise-rejected', [EditorController::class, 'revise_to_rejected'])->name('revise_to_rejected');
-    Route::get('/manuscript/{id}/revised', [EditorController::class, 'manuscript_revised'])->name('manuscript.revised');
-    Route::post('/manuscript/store-revised', [EditorController::class, 'revised'])->name('manuscript.store.revised');
 
-    Route::get('/article/{id}/revised-result', [EditorController::class, 'revised_result'])->name('revised_result');
+    Route::get('/article/revised/{id}/form', [EditorController::class, 'manuscript_revised'])->name('manuscript.revised');
+    Route::post('/article/store-revised', [EditorController::class, 'revised'])->name('manuscript.store.revised');
+
 
     //kelola reviewer
     Route::get('/reviewer/create', [EditorController::class, 'create'])->name('create');
