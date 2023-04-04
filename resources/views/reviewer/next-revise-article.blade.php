@@ -20,7 +20,7 @@
 
                     <form action="{{route('reviewer.next_revision')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                       @include('reviewer.form-revision');
+                            @include('reviewer.form-revision');
                     </form>
                 </div>
             </div>

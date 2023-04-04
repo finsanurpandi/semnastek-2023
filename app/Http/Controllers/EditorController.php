@@ -130,6 +130,7 @@ class EditorController extends Controller
             ->leftJoin('revision_editors', 'articles.id', '=', 'revision_editors.article_id')
             ->select('articles.*', 'blind_manuscripts.article_id', 'blind_manuscripts.file', 'blind_manuscripts.reviewer_id', 'article_review.review_id', 'article_submission.submission_id', 'manuscripts.file', 'revisions.revision_file', 'revisions.comment', 'revisions.new_file', 'reviewers.fullname', 'revision_editors.new_file as final_paper')
             ->whereNotNull('submitted_at')
+            ->orderBy('id', 'DESC')
             ->get();
 
         return view('article.list-article', compact('articles'));
@@ -277,46 +278,6 @@ class EditorController extends Controller
 
         Session::flash('status', 'Artikel telah ditolak!!!');
         return redirect()->route('editor.article');
-    }
-
-    public function revise_to_approved($id)
-    {
-
-        try {
-            DB::table('article_submission')
-                ->where('article_id', $id)
-                ->update(['submission_id' => 2]);
-            DB::table('article_review')
-                ->where('article_id', $id)
-                ->update(['review_id' => 1, 'updated_at' => Carbon::now()]);
-        } catch (Throwable $th) {
-            report($e);
-
-            return false;
-        }
-
-        Session::flash('status', 'Artikel berhasil disetujui!!!');
-        return redirect()->route('reviewer.index');
-    }
-
-    public function revise_to_rejected($id)
-    {
-
-        try {
-            DB::table('article_submission')
-                ->where('article_id', $id)
-                ->update(['submission_id' => 5]);
-            DB::table('article_review')
-                ->where('article_id', $id)
-                ->update(['review_id' => 4, 'updated_at' => Carbon::now()]);
-        } catch (Throwable $th) {
-            report($e);
-
-            return false;
-        }
-
-        Session::flash('status', 'Artikel berhasil disetujui!!!');
-        return redirect()->route('reviewer.index');
     }
 
     public function revised_result($id)

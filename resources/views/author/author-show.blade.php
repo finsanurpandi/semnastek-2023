@@ -23,18 +23,18 @@
                         @php $no = 1; @endphp
                         @if (count($authors) > 0)
                             @foreach ($authors as $author)
-                            <tr class="text-center">
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $author->firstname.' '.$author->lastname}}</td>
-                                <td>{{ $author->email }}</td>
-                                <td>{{ $author->affiliation }}</td>
-                                <td>
-                                    {!! Form::open(['url' => route('author.ubah.delete', $author->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
-                                            <a href="{{ route('author.ubah', $author->id) }}" class="btn btn-link" title="Edit Author"><i class="fa fa-edit"></i></a>
-                                            <button class="btn btn-link text-danger show_confirm" data-name="{{$author->firstname.' '.$author->lastname}}"><i class="fa fa-trash"></i></button>
-                                    {!! Form::close() !!}
-                                </td>
-                            </tr>
+                                <tr class="text-center">
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $author->firstname.' '.$author->lastname}}</td>
+                                    <td>{{ $author->email }}</td>
+                                    <td>{{ $author->affiliation }}</td>
+                                    <td>
+                                        {!! Form::open(['url' => route('author.ubah.delete', $author->id), 'method' => 'DELETE', 'id' => 'form-hapus']) !!}
+                                                <a href="{{ route('author.ubah', $author->id) }}" class="btn btn-link" title="Edit Author"><i class="fa fa-edit"></i></a>
+                                                <button class="btn btn-link text-danger show_confirm" data-name="{{$author->firstname.' '.$author->lastname}}"><i class="fa fa-trash"></i></button>
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
                             @endforeach
                         @else
                             <tr class="text-center">
@@ -44,7 +44,6 @@
                     </table>
                     </div>
                     <hr/>
-                    {{-- <a href="{{ route('author.index') }}" class="btn btn-link">[Semua Artikel]</a> --}}
                     <a href="{{ route('author.show', $article->id) }}" class="btn btn-link">[Detail Artikel #{{$article->id}}]</a>
                 </div>
             </div>

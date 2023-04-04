@@ -19,10 +19,10 @@ class KeuanganController extends Controller
             ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
             ->select('articles.*', 'payments.payment_file', 'payments.payment_status', 'article_submission.submission_id', 'article_review.review_id',)
             ->where('article_review.review_id', 1)
+            ->orderBy('id', 'DESC')
             ->get();
 
         return view('article.list-article', compact('articles'));
-        // dd($articles);
     }
 
     public function approved($id)

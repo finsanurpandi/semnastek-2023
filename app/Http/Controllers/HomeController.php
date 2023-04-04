@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $role = Auth::id();
+        $role = Auth::user()->role_id;
         return view('home', compact('role'));
     }
 }

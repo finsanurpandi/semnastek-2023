@@ -20,9 +20,9 @@
 
                     {!! Form::open(['url' => route('author.add.store') ]) !!}
                         @include('author.form-author')
-                        <a href="{{ route('author.show', $article->id) }}" class="btn btn-danger">{{ __('Batal') }}</a>
+                            <a href="{{ route('author.show', $article->id) }}" class="btn btn-danger">{{ __('Batal') }}</a>
                        {{ Form::submit('Kirim', ['class' => 'btn btn-primary']) }}
-                       <a href="{{ route('author.detail', $article->id) }}" class="btn btn-link">Tampilkan Semua Author</a>
+                            <a href="{{ route('author.detail', $article->id) }}" class="btn btn-link">Tampilkan Semua Author</a>
                     {!! Form::close() !!}
                 </div>
             </div>

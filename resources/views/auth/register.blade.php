@@ -37,9 +37,6 @@
                         <input type="password" id="password-confirm" name="password_confirmation" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Confirm Password" aria-label="ConfirmPassword" aria-describedby="confirm_password-addon" autocomplete="off" required/>
                         <input type="hidden" value="4" name="role_id"/>
                     </div>
-                    {{-- <div class="mb-4">
-                        <input type="text" name="address" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Alamat" aria-label="Alamat" aria-describedby="alamat-addon" autocomplete="off" required/>
-                    </div> --}}
                     <button type="submit" class="py-2 w-full px-5 gradient text-white border rounded-xl hover:scale-110 duration-300">DAFTAR</button>
                     <p class="mt-4 mb-0 leading-normal text-sm">Sudah memiliki akun? <a href="{{route('login')}}" class="font-bold text-slate-700">LOGIN</a></p>
                 </form>

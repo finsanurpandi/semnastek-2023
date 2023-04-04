@@ -17,6 +17,7 @@
                             </ul>
                         </div>
                     @endif
+
                     <form action="{{route('author.pembayaran.' .$route_link)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">

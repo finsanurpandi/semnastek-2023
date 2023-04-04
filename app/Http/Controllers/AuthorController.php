@@ -38,7 +38,9 @@ class AuthorController extends Controller
             ->leftJoin('submission_statuses', 'submission_statuses.id', '=', 'article_submission.submission_id')
             ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
             ->where('articles.user_id', auth()->user()->id)
-            ->select('articles.*', 'payments.payment_file', 'article_submission.article_id', 'article_submission.submission_id', 'article_review.review_id', 'submission_statuses.name', 'review_statuses.name')->get();
+            ->select('articles.*', 'payments.payment_file', 'article_submission.article_id', 'article_submission.submission_id', 'article_review.review_id', 'submission_statuses.name', 'review_statuses.name')
+            ->orderBy('id', 'DESC')
+            ->get();
 
         return view('author.article')->with($data);
     }
@@ -388,7 +390,9 @@ class AuthorController extends Controller
             ->leftJoin('payments', 'articles.id', '=', 'payments.articles_id')
             ->where('articles.user_id', auth()->user()->id)
             ->where('article_review.review_id', 1)
-            ->select('articles.*', 'payments.payment_file', 'payments.payment_status', 'article_submission.article_id', 'article_submission.submission_id')->get();
+            ->select('articles.*', 'payments.payment_file', 'payments.payment_status', 'article_submission.article_id', 'article_submission.submission_id')
+            ->orderBy('id', 'DESC')
+            ->get();
 
         return view('author.konfirmasi-pembayaran')->with($data);
     }

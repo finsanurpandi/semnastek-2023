@@ -31,8 +31,6 @@ class ReviewController extends Controller
 
     public function index()
     {
-        // $articles = Article::whereNotNull('submitted_at')->get();
-
         // get user
         $user = Auth::user();
         // get reviewer
@@ -48,6 +46,7 @@ class ReviewController extends Controller
                 ->leftJoin('revisions', 'revisions.article_id', '=', 'articles.id')
                 ->where('blind_manuscripts.id', '=', $blindManuscript->id)
                 ->select('articles.*', 'revisions.revision_file', 'article_submission.submission_id', 'article_review.review_id', 'blind_manuscripts.file')
+                ->orderBy('id', 'DESC')
                 ->first();
         });
         return view('article.list-article', compact('articles'));
@@ -62,6 +61,7 @@ class ReviewController extends Controller
             ->select('articles.id', 'article_submission.*', 'submission_statuses.name')
             ->orderBy('article_submission.id', 'DESC')
             ->first();
+
         $data['review_status'] = DB::table('articles')
             ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
             ->leftJoin('review_statuses', 'review_statuses.id', '=', 'article_review.review_id')
@@ -69,15 +69,14 @@ class ReviewController extends Controller
             ->select('articles.id', 'article_review.review_id', 'review_statuses.name')
             ->orderBy('article_review.id', 'DESC')
             ->first();
+
         $data['article'] = Article::where('id', $id)->with(['authors', 'scope', 'manuscript'])->first();
 
-        // dd($data['review_status']);
         return view('article.show')->with($data);
     }
 
     public function approved($id)
     {
-
         try {
             $status = new ArticleReview;
 
@@ -99,7 +98,6 @@ class ReviewController extends Controller
 
     public function rejected($id)
     {
-
         try {
             $status = new ArticleReview;
 
@@ -118,13 +116,10 @@ class ReviewController extends Controller
         Session::flash('status', 'Artikel telah ditolak!!!');
         return redirect()->route('reviewer.index');
     }
+
     public function revised_form($id)
     {
         return view('reviewer.revise-article', compact('id'));
-    }
-    public function next_revised_form($id)
-    {
-        return view('reviewer.next-revise-article', compact('id'));
     }
 
     public function revised(Request $request)
@@ -165,56 +160,6 @@ class ReviewController extends Controller
             $revise->save();
 
 
-            Session::flash('status', 'Revisi berhasil diberikan!!!');
-        } catch (Throwable $e) {
-            report($e);
-
-            return false;
-        }
-
-
-        return redirect()->route('reviewer.index');
-    }
-    public function next_revision(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:docx,doc|max:5120',
-            'comment' => 'required',
-        ]);
-
-        try {
-            // Author::create($request->all());
-            $revise = new Revision;
-
-            $revise->article_id = $request->article_id;
-            $revise->comment = $request->comment;
-            $revise->created_at = Carbon::now();
-            $revise->updated_at = Carbon::now();
-
-            if ($request->hasFile('file')) {
-                $extension = $request->file('file')->extension();
-                $filename = 'revise_manuscript_' . $request->article_id . '_' . time() . '.' . $extension;
-                $request->file('file')->storeAs(
-                    'public/revise_manuscript',
-                    $filename
-                );
-                $revise->revision_file = $filename;
-            }
-
-            try {
-                DB::table('article_submission')
-                    ->where('article_id', $request->article_id)
-                    ->update(['submission_id' => 3]);
-                DB::table('article_review')
-                    ->where('article_id', $request->article_id)
-                    ->update(['review_id' => 2, 'updated_at' => Carbon::now()]);
-            } catch (Throwable $th) {
-                report($e);
-
-                return false;
-            }
-
-            $revise->save();
             Session::flash('status', 'Revisi berhasil diberikan!!!');
         } catch (Throwable $e) {
             report($e);

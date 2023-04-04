@@ -43,12 +43,6 @@ Route::view('/unsur', 'author.page')->name('notus');
 // Route::get('/register', [RegisterController::class, 'index'])->name('register');
 // Route::post('/register', [RegisterController::class, 'store'])->name('register');
 
-Route::middleware('participants')->group(function () {
-    Route::get('/participant', [ParticipantController::class, 'index'])->name('participant');
-    Route::post('/participant/artikel', [ParticipantController::class, 'upload'])->name('participant.upload');
-    Route::get('/participant/unduh/{article_file}', [ParticipantController::class, 'unduh'])->name('participant.unduh');
-});
-
 Route::group([
     'middleware' => 'role:author',
     'prefix' => 'author',
@@ -125,16 +119,12 @@ Route::group([
     Route::post('/blind-manuscript/store', [EditorController::class, 'blind_manuscript_store'])->name('blind_manuscript.store');
     Route::post('/blind-manuscript/edit', [EditorController::class, 'blind_manuscript_edit'])->name('blind_manuscript.edit');
 
-    //revisi
-
     Route::post('/article/{id}/approved', [EditorController::class, 'approved'])->name('approved');
     Route::post('/article/{id}/rejected', [EditorController::class, 'rejected'])->name('rejected');
-    Route::post('/article/{id}/revise-approved', [EditorController::class, 'revise_to_approved'])->name('revise_to_approved');
-    Route::post('/article/{id}/revise-rejected', [EditorController::class, 'revise_to_rejected'])->name('revise_to_rejected');
-
     Route::get('/article/revised/{id}/form', [EditorController::class, 'manuscript_revised'])->name('manuscript.revised');
     Route::post('/article/store-revised', [EditorController::class, 'revised'])->name('manuscript.store.revised');
 
+    Route::get('/article/export', [EditorController::class, 'export'])->name('export');
 
     //kelola reviewer
     Route::get('/reviewer/create', [EditorController::class, 'create'])->name('create');
@@ -142,8 +132,6 @@ Route::group([
     Route::get('/reviewer/{id}/edit', [EditorController::class, 'edit'])->name('edit');
     Route::patch('/reviewer', [EditorController::class, 'update'])->name('update');
     Route::delete('/reviewer/{id}/delete', [EditorController::class, 'destroy'])->name('destroy');
-
-    Route::get('/article/export', [EditorController::class, 'export'])->name('export');
 });
 
 Route::group([
@@ -153,13 +141,10 @@ Route::group([
 ], function () {
     Route::get('/article', [ReviewController::class, 'index'])->name('index');
     Route::get('/article/{id}/show', [ReviewController::class, 'show'])->name('show');
-
     Route::post('/article/{id}/approved', [ReviewController::class, 'approved'])->name('approved');
     Route::post('/article/{id}/rejected', [ReviewController::class, 'rejected'])->name('rejected');
     Route::get('/article/{id}/revised-form', [ReviewController::class, 'revised_form'])->name('revised_form');
-    // Route::get('/article/{id}/next-revised-form', [ReviewController::class, 'next_revised_form'])->name('next_revised_form');
     Route::post('/article/revised', [ReviewController::class, 'revised'])->name('revised');
-    // Route::post('/article/next-revised', [ReviewController::class, 'next_revision'])->name('next_revision');
     Route::get('/article/{id}/revised-result', [ReviewController::class, 'revised_result'])->name('revised_result');
 });
 

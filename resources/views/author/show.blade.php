@@ -39,6 +39,7 @@
                             <th>Tambah/Edit</th>
                             <th>Hasil</th>
                         </tr>
+
                         @can('author', 'editor')
                         <tr>
                             <th>Authors</th>
@@ -58,6 +59,7 @@
                             </td>
                         </tr>
                         @endcan
+
                         <tr >
                             <th>Judul</th>
                             <td class="text-center">
