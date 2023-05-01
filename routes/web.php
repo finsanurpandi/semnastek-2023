@@ -94,6 +94,9 @@ Route::group([
     Route::get('/registered-user', [AdminController::class, 'registered_user'])->name('registered.user');
     Route::get('/article', [AdminController::class, 'article'])->name('article');
     Route::get('/download/{file}', [AdminController::class, 'download'])->name('download');
+    Route::get('/setting', [AdminController::class, 'setting'])->name('setting');
+    Route::patch('/setting/duedate', [AdminController::class, 'due_date_update'])->name('duedate');
+    Route::patch('/setting/payment', [AdminController::class, 'payment_update'])->name('payment');
 });
 
 Route::group([

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Models\Article;
+use App\Models\Setting;
+use Session;
 
 class AdminController extends Controller
 {
@@ -39,5 +41,46 @@ class AdminController extends Controller
     {
         $file = Crypt::decryptString($file);
         return Storage::download($file);
+    }
+
+    public function setting()
+    {
+        $data['setting'] = Setting::find(1);
+
+        return view('admin.setting')->with($data);
+    }
+
+    public function due_date_update(Request $request)
+    {
+        Setting::where('id', 1)
+                ->update([
+                    'due_date' => $request->duedate
+                ]);
+
+        Session::flash('status', 'Due Date berhasil diupdate');
+
+        return redirect()->back();
+    }
+
+    public function payment_update(Request $request)
+    {
+        $state = Setting::find(1);
+
+        if($state->payment == 1)
+        {
+            Setting::where('id', 1)
+                ->update([
+                    'payment' => false
+            ]);
+        } else {
+            Setting::where('id', 1)
+                ->update([
+                    'payment' => true
+            ]);
+        }
+
+        Session::flash('status', 'Menu Payment berhasil diupdate');
+
+        return redirect()->back();
     }
 }

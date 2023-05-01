@@ -19,6 +19,7 @@ use App\Models\Revision;
 use App\Models\RevisionEditor;
 use App\Models\User;
 use Session;
+use App\Models\Setting;
 
 
 class AuthorController extends Controller
@@ -26,6 +27,17 @@ class AuthorController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function check_due_date()
+    {
+        $setting = Setting::find(1);
+
+        if(Carbon::now()->greaterThan($setting->due_date))
+        {
+            // abort(403);
+            return view('due_date');
+        }
     }
 
     public function index()
@@ -88,6 +100,8 @@ class AuthorController extends Controller
 
     public function store(StoreArticleRequest $request)
     {
+        $this->check_due_date();
+
         $validated = $request->validated();
 
         try {
@@ -384,6 +398,12 @@ class AuthorController extends Controller
 
     public function article_pembayaran()
     {
+        $setting = Setting::findOrFail(1);
+        if($setting->payment == 0)
+        {
+            return view('author.pembayaran-disable');
+        }
+
         $data['articles'] = DB::table('articles')
             ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
             ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')

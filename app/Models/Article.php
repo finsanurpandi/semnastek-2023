@@ -84,7 +84,7 @@ class Article extends Model
                 'reviewers' => $article->reviewers->pluck('fullname')->first(),
                 'scope' => $article->scope->scope,
                 'department_name' => $article->scope->department->name,
-                'submission_status' => $article->articleSubmission->submissionStatus->name,
+                // 'submission_status' => $article->articleSubmission->submissionStatus->name,
             ];
         });
 
@@ -101,7 +101,7 @@ class Article extends Model
             $data_filter[$i]['keywords'] = $data[$i]['keywords'];
             $data_filter[$i]['corresponding_email'] = $data[$i]['corresponding_email'];
             $data_filter[$i]['submitted_at'] = $data[$i]['submitted_at'];
-            $data_filter[$i]['submission_status'] = $data[$i]['submission_status'];
+            // $data_filter[$i]['submission_status'] = $data[$i]['submission_status'];
         }
 
         return $data_filter;

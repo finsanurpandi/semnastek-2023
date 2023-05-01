@@ -75,6 +75,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.article') }}">{{ __('Article') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.setting') }}">{{ __('Setting') }}</a>
+                        </li>
                         @endcan
                         <!-- Authentication Links -->
                         @guest

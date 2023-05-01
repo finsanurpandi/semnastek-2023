@@ -40,7 +40,11 @@
                                     - {{ $article->scope->scope }}
                                 </td>
                                 <td>{{ $article->title }}</td>
-                                <td>{{ $article->authors[0]->firstname.' '.$article->authors[0]->lastname}} ({{ $article->authors[0]->affiliation }})</td>
+                                <td>
+                                    @if(!$article->authors->isEmpty())
+                                        {{ $article->authors[0]->firstname.' '.$article->authors[0]->lastname}} ({{ $article->authors[0]->affiliation }})
+                                    @endif
+                                </td>
                                 <td>
                                     @if($article->submitted_at == null)
                                         Draft
@@ -50,7 +54,11 @@
                                         @endforeach
                                     @endif
                                 </td>
-                                <td><a href="{!! route('admin.download', Crypt::EncryptString($article->manuscript->file)) !!}" class="btn btn-link" parent="_blank">{{ $article->manuscript->file }}</a></td>
+                                <td>
+                                    @if($article->manuscript)
+                                        <a href="{!! route('admin.download', Crypt::EncryptString($article->manuscript->file)) !!}" class="btn btn-link" parent="_blank">{{ $article->manuscript->file }}</a>
+                                    @endif
+                                </td>
                                 <td>{{ $article->created_at }}</td>
                             </tr>
                         @endforeach
