@@ -128,10 +128,11 @@ class EditorController extends Controller
             ->leftJoin('manuscripts', 'articles.id', '=', 'manuscripts.article_id')
             ->leftJoin('revisions', 'articles.id', '=', 'revisions.article_id')
             ->leftJoin('revision_editors', 'articles.id', '=', 'revision_editors.article_id')
-            ->select('articles.*', 'blind_manuscripts.article_id', 'blind_manuscripts.file', 'blind_manuscripts.reviewer_id', 'article_review.review_id', 'article_submission.submission_id', 'manuscripts.file', 'revisions.revision_file', 'revisions.comment', 'revisions.new_file', 'reviewers.fullname', 'revision_editors.new_file as final_paper')
+            ->select(DB::raw('DISTINCT articles.*, blind_manuscripts.article_id, blind_manuscripts.file, blind_manuscripts.reviewer_id, article_review.review_id, article_submission.submission_id, manuscripts.file, revisions.revision_file, revisions.comment, revisions.new_file, reviewers.fullname, revision_editors.new_file as final_paper'))
             ->whereNotNull('submitted_at')
             ->orderBy('id', 'DESC')
             ->get();
+
 
         return view('article.list-article', compact('articles'));
     }
