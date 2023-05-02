@@ -74,7 +74,7 @@
                                     @endcan
 
                                     @can('editor')
-                                        <td><a href="{{ asset('storage/manuscript/'.$article->file) }}" class="btn btn-link">Unduh Manuscript</a></td>
+                                        <td><a href="{{ asset('storage/'.$article->file) }}" class="btn btn-link">Unduh Manuscript</a></td>
                                         <td>
                                             <span>{{$article->fullname}}</span> <br />
                                             @if($article->review_id == 5)

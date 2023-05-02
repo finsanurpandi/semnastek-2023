@@ -22,12 +22,14 @@ class ArticlesExport implements FromArray, WithHeadings, ShouldAutoSize
     {
         return [
             'No',
+            'ID_article',
             'Authors',
+            'Afiliasi',
             'Reviewer',
             'Scope',
             'Bidang Keahlian',
             'Title',
-            'Keywords',
+            // 'Keywords',
             'Email Corresponding',
             'Tanggal Submit',
             'Submission Status',

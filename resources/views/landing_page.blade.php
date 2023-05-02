@@ -25,7 +25,7 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     </head>
 
-    <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+    <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;" data-modal-target="defaultModal" data-modal-show="defaultModal">
 
       <div class="Loader" id="Loader">
         <div class="LoaderWrapper">
@@ -77,7 +77,7 @@
           </ul>
           @if (Route::has('login'))
             @auth
-                {{-- <button onclick="logout()" class="text-sm text-white underline">Keluar</button> --}}
+                <!--<button onclick="logout()" class="text-sm text-white underline">Keluar</button>-->
                 @can('author')
                 <a href="{{ route('author.index') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   Dashboard
@@ -88,11 +88,6 @@
                   Dashboard
                 </a>
                 @endcan
-                @canany(['keuangan', 'reviewer', 'editor'])
-                    <a href="{{ url('/home') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                        Home
-                    </a>
-                @endcanany
             @else
             <div class="flex justify-end">
                 <a href="{{ route('login') }}" id="navAction" class="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
@@ -213,7 +208,7 @@
         <div class="w-full mb-4">
           <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
-
+        
         <div class="flex flex-col md:flex-row">
           <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
@@ -228,14 +223,14 @@
           <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
               <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                <img class="inline object-contain mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/60111.jpg') }}" style="width: 200px;" alt="Profile image"/>
+                <img class="inline object-contain mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/Mokhamad-Hendayun.jpg') }}" style="width: 200px;" alt="Profile image"/>
                 <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
                   Dr. Ing. Mokhamad Hendayun, Ir
                 </div>
               </a>
             </div>
           </div>
-
+          
           <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
               <a href="#" class="flex flex-wrap no-underline hover:no-underline">
@@ -249,15 +244,15 @@
           <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
             <div class="flex-1 bg-white py-8 rounded-t rounded-b-none overflow-hidden shadow">
               <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-                  <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/60111.jpg') }}" style="width: 200px;" alt="Profile image"/>
+                  <img class="inline object-contain w-24 mx-auto p-1 rounded-full ring-2 ring-gray-900" src="{{ asset('img/chairrudin.jpg') }}" style="width: 200px;" alt="Profile image"/>
                   <div class="w-full font-bold text-xl text-center py-4 text-gray-600 px-6">
-                      #
+                      Dr. Chairrudin, Ir., M.M., M.T.
                   </div>
               </a>
             </div>
           </div>
       </div>
-
+        
       </div>
     </section>
 
@@ -271,7 +266,7 @@
             </div>
             <div class="relative wrap overflow-hidden p-10 h-full">
                 <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
-
+                
                 <!-- left timeline -->
                 <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                   <div class="order-1 w-5/12"></div>
@@ -289,11 +284,11 @@
                 <div class="mb-8 flex justify-between items-center w-full right-timeline">
                     <div class="order-first md:order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-first md:order-1 bg-gray-400 shadow-xl w-24 h-24 rounded-full">
-                        <h1 class="mx-auto font-semibold text-sm text-white">30 April</h1>
+                        <h1 class="mx-auto font-semibold text-sm text-white" style="text-decoration-line: line-through; text-decoration-color: red;">30 April</h1>
                     </div>
                     <div class="order-last md:order-1 gradient rounded-lg shadow-xl px-6 py-4 w-5/12" data-aos="zoom-in-left" data-aos-duration="1000">
-                        <h3 class="mb-3 font-bold text-white text-lg">Extended Deadline Submission</h3>
-                        <p class="text-sm leading-snug tracking-wide text-white text-opacity-100">Penambahan batas akhir pengiriman artikel.</p>
+                        <h3 class="mb-3 font-bold text-white text-lg" style="text-decoration-line: line-through; text-decoration-color: red;">Extended Deadline Submission</h3>
+                        <p class="text-sm leading-snug tracking-wide text-white text-opacity-100 text-sm font-medium leading-snug tracking-wide text-white text-opacity-100" style="text-decoration-line: line-through; text-decoration-color: red;">Penambahan batas akhir pengiriman artikel.</p>
                     </div>
                 </div>
 
@@ -301,11 +296,11 @@
                 <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                     <div class="order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-1 gradient shadow-xl w-24 h-24 rounded-full">
-                        <h1 class="mx-auto font-semibold text-sm text-white">15 Mei</h1>
+                        <h1 class="mx-auto font-semibold text-sm text-white">20 Mei</h1>
                     </div>
                     <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-right" data-aos-duration="1000">
-                    <h3 class="mb-3 font-bold text-white text-lg">Acceptance Notice</h3>
-                    <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">Tanggal Pengumuman penerimaan artikel seminar nasional.</p>
+                    <h3 class="mb-3 font-bold text-white text-lg">Final Call</h3>
+                    <p class="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">Batas akhir penerimaan artikel</p>
                     </div>
                 </div>
 
@@ -313,10 +308,10 @@
                 <div class="mb-8 flex justify-between items-center w-full right-timeline">
                     <div class="order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-1 bg-gray-400 shadow-xl w-24 h-24 rounded-full">
-                    <h1 class="mx-auto font-semibold text-sm text-white">10 Juni</h1>
+                    <h1 class="mx-auto font-semibold text-sm text-white">3 Juni</h1>
                     </div>
                     <div class="order-1 gradient rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-left" data-aos-duration="1000">
-                    <h3 class="mb-3 font-bold text-white text-lg">Deadline Registration</h3>
+                    <h3 class="mb-3 font-bold text-white text-lg">Acceptance Notice</h3>
                     <p class="text-sm leading-snug tracking-wide text-white text-opacity-100">Batas akhir pembayaran biaya registrasi seminar nasional.</p>
                     </div>
                 </div>
@@ -325,13 +320,24 @@
                 <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                     <div class="order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-1 gradient shadow-xl w-24 h-24 rounded-full">
-                        <h1 class="mx-auto font-semibold text-sm text-white">20 Juni</h1>
+                        <h1 class="mx-auto font-semibold text-sm text-white">10 Juni</h1>
                     </div>
                     <div class="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-right" data-aos-duration="1000">
-                    <h3 class="mb-3 font-bold text-white text-lg">Pelaksanaan SEMNASTEK-UNSUR 2023</h3>
-
+                    <h3 class="mb-3 font-bold text-white text-lg">Deadline Registration</h3>
+                    <p class="text-sm leading-snug tracking-wide text-white text-opacity-100">Batas akhir pembayaran biaya registrasi seminar nasional.</p>
                     </div>
                 </div>
+
+                <!-- right timeline -->
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                  <div class="order-1 w-5/12"></div>
+                  <div class="z-20 flex items-center order-1 bg-gray-400 shadow-xl w-24 h-24 rounded-full">
+                  <h1 class="mx-auto font-semibold text-sm text-white">20 Juni</h1>
+                  </div>
+                  <div class="order-1 gradient rounded-lg shadow-xl w-5/12 px-6 py-4" data-aos="zoom-in-left" data-aos-duration="1000">
+                  <h3 class="mb-3 font-bold text-white text-lg">Pelaksanaan SEMNASTEK-UNSUR 2023</h3>
+                  </div>f
+              </div>
             </div>
         </div>
 
@@ -492,7 +498,7 @@
         <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
           <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
             <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div class="w-full p-8 text-3xl font-bold text-center">Registrasi Pemakalah Artikel</div>
+              <div class="w-full p-8 text-3xl font-bold text-center">Author</div>
               <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
             </div>
             <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
@@ -515,7 +521,7 @@
           </div>
           <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10" data-aos="fade-up" data-aos-delay="200">
             <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-              <div class="w-full p-8 text-3xl font-bold text-center">Registrasi Seminar Tanpa Artikel</div>
+              <div class="w-full p-8 text-3xl font-bold text-center">Peserta</div>
               <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
             </div>
             <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
@@ -563,7 +569,7 @@
                 Gedung Fakultas Teknik Universitas Suryakancana - Jl. Pasirgede Raya, Bojongherang, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43216
                 <br />
                 Instagram : <a href="https://www.instagram.com/ft.unsur" target="_blank">ftunsur</a><br />
-                Email : <a href="https://mail.google.com/mail/?view=cm&fs=1&to=semantek@unsur.ac.id" target="_blank">fteknik@unsur.ac.id</a><br />
+                Email : <a href="https://mail.google.com/mail/?view=cm&fs=1&to=semnastek@unsur.ac.id" target="_blank">semnastek@unsur.ac.id</a><br />
                 Situs Website : <a href="https://ft.unsur.ac.id" target="_blank">ft.unsur.ac.id</a>
               </p>
           </div>
