@@ -26,7 +26,13 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}</td>
-                                <td></td>
+                                <td>
+                                    <form method="post" action="{{ route('admin.reset.pass')}}" id="reset-password">
+                                        @csrf
+                                        <input type="hidden" value="{{ $user->id }}" name="id"/>
+                                        <button class="btn btn-link show_reset_password" data-name="{{ $user->name }}">Reset Password</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         @else

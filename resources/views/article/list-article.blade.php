@@ -19,8 +19,8 @@
                             <th>JUDUL</th>
 
                             @cannot('keuangan')
-                                <th>TANGGAL DIBUAT</th>
-                                <th>TANGGAL SUBMIT</th>
+                                <th>DEPARTMENT</th>
+                                <th>SCOPE</th>
                                 <th>ARTIKEL</th>
                             @endcannot
 
@@ -56,8 +56,24 @@
                                     <td>{{ $article->title }}</td>
 
                                     @cannot('keuangan')
-                                        <td>{{ $article->created_at }}</td>
-                                        <td>{{ $article->submitted_at }}</td>
+                                        <td>
+                                            @foreach($scopes as $scope)
+                                                @if($scope->id == $article->scope_id)
+                                                    @foreach($departments as $department)
+                                                        @if($department->id == $scope->department_id)
+                                                            {{ $department->name }}
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach($scopes as $scope)
+                                                @if($scope->id == $article->scope_id)
+                                                    {{ $scope->scope}}
+                                                @endif
+                                            @endforeach
+                                        </td>
                                     @endcannot
 
                                     @can('reviewer')

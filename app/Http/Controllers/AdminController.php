@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Setting;
@@ -80,6 +81,15 @@ class AdminController extends Controller
         }
 
         Session::flash('status', 'Menu Payment berhasil diupdate');
+
+        return redirect()->back();
+    }
+
+    public function reset_password(Request $request)
+    {
+        // dd($request->id);
+        User::where('id', $request->id)->update(['password' => Hash::make('12345678')]);
+        Session::flash('status', 'Password telah berhasil diatur ulang');
 
         return redirect()->back();
     }

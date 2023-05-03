@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Database\Query\JoinClause;
 
 class EditorController extends Controller
 {
@@ -120,6 +121,9 @@ class EditorController extends Controller
 
     public function article_list()
     {
+        $scopes = DB::table('scopes')->get();
+        $departments = DB::table('departments')->get();
+
         $articles = DB::table('articles')
             ->leftJoin('blind_manuscripts', 'articles.id', '=', 'blind_manuscripts.article_id')
             ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
@@ -133,8 +137,11 @@ class EditorController extends Controller
             ->orderBy('id', 'DESC')
             ->get();
 
+        
 
-        return view('article.list-article', compact('articles'));
+        
+
+        return view('article.list-article', compact('articles', 'departments', 'scopes'));
     }
 
     public function article_detail($article_id, $action)

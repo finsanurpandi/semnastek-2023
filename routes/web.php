@@ -97,6 +97,8 @@ Route::group([
     Route::get('/setting', [AdminController::class, 'setting'])->name('setting');
     Route::patch('/setting/duedate', [AdminController::class, 'due_date_update'])->name('duedate');
     Route::patch('/setting/payment', [AdminController::class, 'payment_update'])->name('payment');
+
+    Route::post('/reset_password', [AdminController::class, 'reset_password'])->name('reset.pass');
 });
 
 Route::group([

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header gradient text-white ">Articles</div>
 
@@ -28,7 +28,7 @@
                             <tr class="text-center">
                                 <td>{{$no++}}</td>
                                 <td>{{ $article->id }}</td>
-                                <td>{{ $article->user->name }}</td>
+                                <td>{{ $article->user->name }} <hr/> {{ $article->user->email }}</td>
                                 <td>
                                     @if($article->scope->department_id == 1)
                                         Sipil
@@ -42,21 +42,19 @@
                                 <td>{{ $article->title }}</td>
                                 <td>
                                     @if(!$article->authors->isEmpty())
-                                        {{ $article->authors[0]->firstname.' '.$article->authors[0]->lastname}} ({{ $article->authors[0]->affiliation }})
+                                        {{ $article->authors[0]->firstname.' '.$article->authors[0]->lastname}} ({{ $article->authors[0]->affiliation }}) <hr/> {{ $article->corresponding_email}}
                                     @endif
                                 </td>
                                 <td>
                                     @if($article->submitted_at == null)
-                                        Draft
+                                        <span class="text-danger text-bold"><strong>Draft</strong></span>
                                     @else
-                                        @foreach($article->submission as $status)
-                                            {{$status->name}}
-                                        @endforeach
+                                       Submitted
                                     @endif
                                 </td>
                                 <td>
                                     @if($article->manuscript)
-                                        <a href="{!! route('admin.download', Crypt::EncryptString($article->manuscript->file)) !!}" class="btn btn-link" parent="_blank">{{ $article->manuscript->file }}</a>
+                                        <a href="{!! route('admin.download', Crypt::EncryptString($article->manuscript->file)) !!}" class="btn btn-link" parent="_blank">[FILE]</a>
                                     @endif
                                 </td>
                                 <td>{{ $article->created_at }}</td>
