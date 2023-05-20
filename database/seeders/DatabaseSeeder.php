@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ScopeSeeder::class,
             ReviewStatusSeeder::class,
             SubmissionStatusSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

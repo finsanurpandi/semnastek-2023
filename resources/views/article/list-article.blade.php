@@ -56,7 +56,7 @@
                                     <td>{{ $article->title }}</td>
 
                                     @cannot('keuangan')
-                                        <td>
+                                        {{-- <td>
                                             @foreach($scopes as $scope)
                                                 @if($scope->id == $article->scope_id)
                                                     @foreach($departments as $department)
@@ -73,7 +73,7 @@
                                                     {{ $scope->scope}}
                                                 @endif
                                             @endforeach
-                                        </td>
+                                        </td> --}}
                                     @endcannot
 
                                     @can('reviewer')
@@ -187,14 +187,16 @@
                                                 {!! Form::open(['url' => route('reviewer.approved', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
                                                     <button class="btn btn-success me-1 text-white btn-sm text-small show_confirm_approved" data-name="{{$article->id}}" title="Setujui">Approve</button>
                                                 {!! Form::close() !!}
-                                                {!! Form::open(['url' => route('reviewer.rejected', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
-                                                    <button class="btn btn-danger me-1 btn-sm text-small show_confirm_rejected" data-name="{{$article->id}}" title="Setujui">Reject</button>
-                                                {!! Form::close() !!}
+                                                
                                                 @if($article->revision_file !== null)
                                                     <a href="{{ route('reviewer.revised_result', $article->id) }}" class="btn btn-sm btn-primary">Lihat Revisi</a>
                                                 @else
                                                     <a href="{{ route('reviewer.revised_form', $article->id) }}" class="btn btn-warning btn-sm text-white">Revise</a>
                                                 @endif
+                                                &nbsp;
+                                                {!! Form::open(['url' => route('reviewer.rejected', $article->id), 'method' => 'POST', 'id' => 'form-approve']) !!}
+                                                    <button class="btn btn-danger me-1 btn-sm text-small show_confirm_rejected" data-name="{{$article->id}}" title="Setujui">Reject</button>
+                                                {!! Form::close() !!}
                                             </div>
                                             @else
                                                 <span class="badge bg-warning">In Review by Editor</span>

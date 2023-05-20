@@ -38,17 +38,32 @@ class ReviewController extends Controller
         // get all blind manuscript by reviewer
         $blindManuscripts = $reviewer->blindManuscripts;
 
-        $articles = $blindManuscripts->map(function ($blindManuscript) {
-            return DB::table('articles')
-                ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
-                ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
-                ->leftJoin('blind_manuscripts', 'blind_manuscripts.article_id', '=', 'articles.id')
-                ->leftJoin('revisions', 'revisions.article_id', '=', 'articles.id')
-                ->where('blind_manuscripts.id', '=', $blindManuscript->id)
-                ->select('articles.*', 'revisions.revision_file', 'article_submission.submission_id', 'article_review.review_id', 'blind_manuscripts.file')
-                ->orderBy('id', 'DESC')
-                ->first();
-        });
+        $id = array();
+        foreach ($blindManuscripts as $blind) {
+            array_push($id, $blind->id);
+        }
+
+        // $articles = $blindManuscripts->map(function ($blindManuscript) {
+        //     return DB::table('articles')
+        //         ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
+        //         ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
+        //         ->leftJoin('blind_manuscripts', 'blind_manuscripts.article_id', '=', 'articles.id')
+        //         ->leftJoin('revisions', 'revisions.article_id', '=', 'articles.id')
+        //         ->where('blind_manuscripts.id', '=', $blindManuscript->id)
+        //         ->select('articles.*', 'revisions.revision_file', 'article_submission.submission_id', 'article_review.review_id', 'blind_manuscripts.file')
+        //         ->orderBy('id', 'DESC')
+        //         ->first();
+        // });
+
+        $articles = DB::table('articles')
+            ->leftJoin('article_submission', 'articles.id', '=', 'article_submission.article_id')
+            ->leftJoin('article_review', 'articles.id', '=', 'article_review.article_id')
+            ->leftJoin('blind_manuscripts', 'blind_manuscripts.article_id', '=', 'articles.id')
+            ->leftJoin('revisions', 'revisions.article_id', '=', 'articles.id')
+            ->whereIn('blind_manuscripts.id', $id)
+            ->select('articles.*', 'revisions.revision_file', 'article_submission.submission_id', 'article_review.review_id', 'blind_manuscripts.file')
+            ->orderBy('id', 'DESC')
+            ->get();
         return view('article.list-article', compact('articles'));
     }
 

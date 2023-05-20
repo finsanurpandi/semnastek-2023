@@ -299,6 +299,25 @@
             });
         });
 
+        $('.show_force_submit').click(function(event) {
+          var form =  $(this).closest("form");
+          var nama = $(this).data("name");
+          event.preventDefault();
+          Swal.fire({
+                title: 'Apakah anda yakin?',
+                icon: 'warning',
+                html: "Anda akan melakukan force submit untuk artikel milik <strong>"+nama+"</strong>?",
+                showCancelButton: true,
+                confirmButtonColor: '#36368d',
+                cancelButtonColor: '#de1508',
+                confirmButtonText: 'Ya, Setujui!',
+            }). then((result) => {
+                if(result.value) {
+                    form.submit();
+                }
+            });
+        });
+
         function deleteConfirmation(nama)
         {
             event.preventDefault();

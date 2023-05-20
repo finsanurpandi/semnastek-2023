@@ -93,4 +93,26 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function force_submit(Request $request)
+    {
+        try {
+            DB::table('articles')->where('id', $request->id)->update(['submitted_at' => now()]);
+
+            DB::table('article_submission')->insert([
+                'article_id' => $request->id,
+                'submission_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+
+            Session::flash('status', 'Force submit berhasil!!!');
+        } catch (Throwable $e) {
+            report($e);
+
+            return false;
+        }
+
+        return redirect()->back();
+    }
 }

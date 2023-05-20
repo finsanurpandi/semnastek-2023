@@ -48,6 +48,13 @@
                                 <td>
                                     @if($article->submitted_at == null)
                                         <span class="text-danger text-bold"><strong>Draft</strong></span>
+                                        @if($article->manuscript)
+                                            <form method="post" action="{{ route('admin.force.submit')}}" id="force-submit">
+                                                @csrf
+                                                <input type="hidden" value="{{ $article->id }}" name="id"/>
+                                                <button class="btn btn-link show_force_submit" data-name="{{ $article->user->name }}">Force Submit</button>
+                                            </form>
+                                        @endif
                                     @else
                                        Submitted
                                     @endif

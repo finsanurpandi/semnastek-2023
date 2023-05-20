@@ -99,6 +99,8 @@ Route::group([
     Route::patch('/setting/payment', [AdminController::class, 'payment_update'])->name('payment');
 
     Route::post('/reset_password', [AdminController::class, 'reset_password'])->name('reset.pass');
+
+    Route::post('/force-submit', [AdminController::class, 'force_submit'])->name('force.submit');
 });
 
 Route::group([
